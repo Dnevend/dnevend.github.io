@@ -70,22 +70,3 @@
     width: 180px;
   }
 }
-
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.buttons button {
-  color: var(--custom-color);
-  border: 1px solid var(--custom-color);
-  border-radius: 10px;
-  background: none;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.buttons button:hover {
-  transform: scale(1.3);
-}
