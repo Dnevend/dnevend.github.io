@@ -182,7 +182,7 @@
   filter: sepia(0.3) grayscale(0.8) brightness(0.7) contrast(0.6)
     drop-shadow(0 4px 16px rgba(26, 92, 58, 0.04));
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: float 6s ease-in-out infinite;
+  animation: float 10s ease-in-out infinite;
   mix-blend-mode: multiply;
 }
 
@@ -221,14 +221,12 @@
 
 /* Dark Mode Image Adjustments */
 [data-theme="dark"] .ywysl {
-  opacity: 0.7;
   filter: invert(0.85) contrast(1.1) brightness(1.1)
     drop-shadow(0 8px 32px rgba(45, 212, 191, 0.4));
   mix-blend-mode: normal;
 }
 
 [data-theme="dark"] .zxfcl {
-  opacity: 0.6;
   filter: invert(0.2) contrast(1.05) brightness(0.95)
     drop-shadow(0 8px 40px rgba(45, 212, 191, 0.3));
   mix-blend-mode: normal;

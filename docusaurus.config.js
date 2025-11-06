@@ -98,12 +98,12 @@ const config = {
       image: 'https://github.html.zone/Dnevend/dnevend.github.io',
       navbar: {
         title: 'Dnevend',
-        logo: {
-          alt: 'Avatar',
-          src: 'img/avatar.webp',
-          width: 32,
-          height: 32
-        },
+        // logo: {
+        //   alt: 'Avatar',
+        //   src: 'img/avatar.webp',
+        //   width: 32,
+        //   height: 32
+        // },
         items: [
           {
             type: 'docSidebar',
