@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwiki=self.webpackChunkwiki||[]).push([[2977],{6818:a=>{a.exports=JSON.parse('{"tag":{"label":"trade","permalink":"/mark/tags/trade","allTagsPath":"/mark/tags","count":1,"items":[{"id":"trade","title":"\u4ea4\u6613","description":"\u539f\u5219","permalink":"/mark/trade"}],"unlisted":false}}')}}]);
