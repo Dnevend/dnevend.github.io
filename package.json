@@ -4,15 +4,16 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "npm run generate-blog-data &&docusaurus start",
+    "start": "docusaurus start",
     "build": "npm run generate-blog-data && docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "npm run generate-blog-data && docusaurus deploy",
+    "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "generate-blog-data": "node scripts/generate-blog-data.js"
+    "generate-blog-data": "node scripts/generate-blog-data.js",
+    "prebuild": "npm run generate-blog-data"
   },
   "dependencies": {
     "@docusaurus/core": "^3.0.0",

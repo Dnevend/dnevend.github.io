@@ -1,22 +1,33 @@
-[
+// 自动生成的博客数据文件
+// 请勿手动编辑此文件，此文件由 scripts/generate-blog-data.js 自动生成
+
+export const blogPostsData = [
   {
     "title": "多么痛的领悟",
     "description": "总结一下那些在二级市场不断受到的教训，现在学费交的差不多了，准备夺回属于我的一切",
     "permalink": "/blog/trading-thinking",
     "date": "2025-11-08",
     "tags": [
-      "Crypto",
-      "Trading"
-    ]
+      {
+        "label": "Crypto"
+      },
+      {
+        "label": "Trading"
+      }
+    ],
+    "readingTime": "3 min read"
   },
   {
     "title": "为革命保护“视”力",
-    "description": "怎么优雅的在推特上冲浪（摸鱼），由此为开端接触并开发一款浏览器插件",
+    "description": "如何优雅的在推特上冲浪（摸鱼），由此为开端开发一款浏览器插件",
     "permalink": "/blog/attention-and-extension",
     "date": "2024-10-28",
     "tags": [
-      "extension"
-    ]
+      {
+        "label": "extension"
+      }
+    ],
+    "readingTime": "7 min read"
   },
   {
     "title": "Telegram 支付机器人开发小记",
@@ -24,10 +35,17 @@
     "permalink": "/blog/tg-payment-guide",
     "date": "2024-08-01",
     "tags": [
-      "Telegram BOT",
-      "Telegram Stars",
-      "TON"
-    ]
+      {
+        "label": "Telegram BOT"
+      },
+      {
+        "label": "Telegram Stars"
+      },
+      {
+        "label": "TON"
+      }
+    ],
+    "readingTime": "7 min read"
   },
   {
     "title": "视差滚动实践",
@@ -35,9 +53,14 @@
     "permalink": "/blog/parallax-scrolling-effect",
     "date": "2024-07-01",
     "tags": [
-      "frontend",
-      "css"
-    ]
+      {
+        "label": "frontend"
+      },
+      {
+        "label": "css"
+      }
+    ],
+    "readingTime": "8 min read"
   },
   {
     "title": "移动端调试指南",
@@ -45,7 +68,12 @@
     "permalink": "/blog/debug-mobile-web",
     "date": "2024-06-01",
     "tags": [
-      "tech"
-    ]
+      {
+        "label": "tech"
+      }
+    ],
+    "readingTime": "5 min read"
   }
-]
+];
+
+console.log('📝 已加载 5 篇博客文章数据');
