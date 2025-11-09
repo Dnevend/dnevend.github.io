@@ -34,7 +34,7 @@
         <id>https://dnevend.site/blog/attention-and-extension</id>
         <link href="https://dnevend.site/blog/attention-and-extension"/>
         <updated>2024-10-28T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[注意力与浏览器插件开发小记]]></summary>
+        <summary type="html"><![CDATA[如何优雅的在推特上冲浪（摸鱼），由此为开端开发一款浏览器插件]]></summary>
         <content type="html"><![CDATA[<blockquote>
 <p>  “观察自己发现，其实不是注意力不集中，而是注意力非常容易集中，比如一个小红点，一条信息，都会让自己从放空的状态中跳出来，进入到具体的事物中去。
 或许问题不该是如何集中注意力，而是想办法把环境中容易吸引注意力的事物挪掉。
@@ -206,7 +206,7 @@
         <id>https://dnevend.site/blog/parallax-scrolling-effect</id>
         <link href="https://dnevend.site/blog/parallax-scrolling-effect"/>
         <updated>2024-07-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[视差滚动是一种在网页设计和视频游戏中常见的视觉效果技术，它通过在不同速度上移动页面或屏幕上的多层图像，创造出深度感和动感。]]></summary>
+        <summary type="html"><![CDATA[视差滚动是一种在网页设计和视频游戏中常见的视觉效果技术，它通过在不同速度上移动页面或屏幕上的多层图像，创造出深度感和动感]]></summary>
         <content type="html"><![CDATA[<blockquote>
 <p>视差滚动是一种在网页设计和视频游戏中常见的视觉效果技术，它通过在不同速度上移动页面或屏幕上的多层图像，创造出深度感和动感。
 这种效果通过前景、中景和背景以不同的速度移动来实现，使得近处的对象看起来移动得更快，而远处的对象移动得较慢。</p>
@@ -267,7 +267,7 @@
         <id>https://dnevend.site/blog/debug-mobile-web</id>
         <link href="https://dnevend.site/blog/debug-mobile-web"/>
         <updated>2024-06-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[使用 `chrome://inspect` 和 `whistle` 进行移动端调试]]></summary>
+        <summary type="html"><![CDATA[前端怎么在移动端进行调试？`chrome://inspect` 和 `whistle` 助你搞定一切]]></summary>
         <content type="html"><![CDATA[<p>当移动端 web 项目部署在生产环境，项目部署在 Android/iOS 或其他移动设备下发生问题, 或想要模拟请求与拦截响应数据时，你会通过什么方式来进行处理与调试？</p>
 <p>当项目是移动端的普通网页时，你可以通过 Chrome 浏览器自带的 <code>chrome://inspect</code> 功能，通过数据线连接真机设备以实现开发调试。</p>
 <p>但当遇到需要模拟特定请求或响应内容、注入脚本、修改请求响应头的场景时，inspect 就难以应对了。又或者，你的项目作为 WebView 或 JsBridge 页面嵌入在其他的第三方应用内，在这几种场景下，你就可以使用代理抓包工具来完成更高级的调试操作。</p>

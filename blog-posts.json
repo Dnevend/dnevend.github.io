@@ -11,7 +11,7 @@
   },
   {
     "title": "为革命保护“视”力",
-    "description": "注意力与浏览器插件开发小记",
+    "description": "如何优雅的在推特上冲浪（摸鱼），由此为开端开发一款浏览器插件",
     "permalink": "/blog/attention-and-extension",
     "date": "2024-10-28",
     "tags": [
@@ -31,7 +31,7 @@
   },
   {
     "title": "视差滚动实践",
-    "description": "视差滚动是一种在网页设计和视频游戏中常见的视觉效果技术，它通过在不同速度上移动页面或屏幕上的多层图像，创造出深度感和动感。",
+    "description": "视差滚动是一种在网页设计和视频游戏中常见的视觉效果技术，它通过在不同速度上移动页面或屏幕上的多层图像，创造出深度感和动感",
     "permalink": "/blog/parallax-scrolling-effect",
     "date": "2024-07-01",
     "tags": [
@@ -41,7 +41,7 @@
   },
   {
     "title": "移动端调试指南",
-    "description": "使用 `chrome://inspect` 和 `whistle` 进行移动端调试",
+    "description": "前端怎么在移动端进行调试？`chrome://inspect` 和 `whistle` 助你搞定一切",
     "permalink": "/blog/debug-mobile-web",
     "date": "2024-06-01",
     "tags": [
