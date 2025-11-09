@@ -4,6 +4,7 @@ import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
+import BlogList from "@site/src/components/BlogList";
 import styles from "./index.module.css";
 import ZhanXiFuChangLiu from "../../static/img/zxfcl.png";
 import YunWoYiShangLeng from "../../static/img/ywysl.png";
@@ -36,6 +37,7 @@ export default function Home() {
       <HomepageHeader />
       <main>
         <HomepageFeatures />
+        <BlogList />
         <img src={YunWoYiShangLeng} alt="雲臥衣裳冷" className={styles.ywysl} />
       </main>
     </Layout>
