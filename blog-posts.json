@@ -1,0 +1,51 @@
+[
+  {
+    "title": "多么痛的领悟",
+    "description": "总结一下那些在二级市场不断受到的教训，现在学费交的差不多了，准备夺回属于我的一切",
+    "permalink": "/blog/trading-thinking",
+    "date": "2025-11-08",
+    "tags": [
+      "Crypto",
+      "Trading"
+    ]
+  },
+  {
+    "title": "为革命保护“视”力",
+    "description": "注意力与浏览器插件开发小记",
+    "permalink": "/blog/attention-and-extension",
+    "date": "2024-10-28",
+    "tags": [
+      "extension"
+    ]
+  },
+  {
+    "title": "Telegram 支付机器人开发小记",
+    "description": "基于Grammy框架的 Telegram Bot 支付机器人（TON、Star）开发小记",
+    "permalink": "/blog/tg-payment-guide",
+    "date": "2024-08-01",
+    "tags": [
+      "Telegram BOT",
+      "Telegram Stars",
+      "TON"
+    ]
+  },
+  {
+    "title": "视差滚动实践",
+    "description": "视差滚动是一种在网页设计和视频游戏中常见的视觉效果技术，它通过在不同速度上移动页面或屏幕上的多层图像，创造出深度感和动感。",
+    "permalink": "/blog/parallax-scrolling-effect",
+    "date": "2024-07-01",
+    "tags": [
+      "frontend",
+      "css"
+    ]
+  },
+  {
+    "title": "移动端调试指南",
+    "description": "使用 `chrome://inspect` 和 `whistle` 进行移动端调试",
+    "permalink": "/blog/debug-mobile-web",
+    "date": "2024-06-01",
+    "tags": [
+      "tech"
+    ]
+  }
+]
