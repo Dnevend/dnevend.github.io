@@ -1,7 +1,7 @@
 ---
 slug: debug-mobile-web
 title: 移动端调试指南
-description: 使用 `chrome://inspect` 和 `whistle` 进行移动端调试
+description: 前端怎么在移动端进行调试？`chrome://inspect` 和 `whistle` 助你搞定一切
 date: 2024-06-01
 authors: [Dnevend]
 tags: [tech]

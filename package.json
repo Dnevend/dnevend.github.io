@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
+    "start": "npm run generate-blog-data &&docusaurus start",
     "build": "npm run generate-blog-data && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "npm run generate-blog-data && docusaurus deploy",
