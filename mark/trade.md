@@ -46,7 +46,7 @@ tags: [trade]
 
 - [CoinGlass](https://coinglass.com/)
 
-  - [https://x.com/AlbertCoinGlass/status/1987818316447060438](CoinGlass 上手指南)
+  - [CoinGlass 上手指南](https://x.com/AlbertCoinGlass/status/1987818316447060438)
 
     ```
     持仓 (Open Interest - OI) & 持仓变化 (OI Change)：持仓 (OI) 指的是在特定时刻，市场上所有“未平仓”（还没关掉）的合约的总价值。持仓变化 (OI Change) 则是这个总价值在一段时间内（比如 1 小时或 24 小时）的增加或减少。
