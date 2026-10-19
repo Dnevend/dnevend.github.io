@@ -125,6 +125,7 @@
             <name>小学后生</name>
             <uri>https://dnevend.github.io</uri>
         </author>
+        <category label="共笔" term="共笔"/>
         <category label="AI" term="AI"/>
         <category label="Agent" term="Agent"/>
         <category label="Claude Code" term="Claude Code"/>
