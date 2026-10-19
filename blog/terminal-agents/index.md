@@ -4,7 +4,7 @@ title: 终端里那么多 Agent，到底该用哪个？
 description: Claude Code、Codex、OpenCode、pi……一次把 Coding Agent 的分层、阵营、取舍和「要不要把 Agent 当主力入口」讲清楚
 date: 2026-10-19
 authors: [Dnevend]
-tags: [AI, Agent, Claude Code, OpenCode]
+tags: [共笔, AI, Agent, Claude Code, OpenCode]
 ---
 
 # 终端里那么多 Agent，到底该用哪个？

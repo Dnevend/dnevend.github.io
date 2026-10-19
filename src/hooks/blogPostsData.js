@@ -9,6 +9,9 @@ export const blogPostsData = [
     "date": "2026-10-19",
     "tags": [
       {
+        "label": "共笔"
+      },
+      {
         "label": "AI"
       },
       {
