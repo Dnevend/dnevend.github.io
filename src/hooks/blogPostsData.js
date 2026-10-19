@@ -24,7 +24,7 @@ export const blogPostsData = [
         "label": "OpenCode"
       }
     ],
-    "readingTime": "13 min read"
+    "readingTime": "14 min read"
   },
   {
     "title": "多么痛的领悟",
