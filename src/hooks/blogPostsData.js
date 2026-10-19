@@ -3,6 +3,27 @@
 
 export const blogPostsData = [
   {
+    "title": "终端里那么多 Agent，到底该用哪个？",
+    "description": "Claude Code、Codex、OpenCode、pi……一次把 Coding Agent 的分层、阵营、取舍和「要不要把 Agent 当主力入口」讲清楚",
+    "permalink": "/blog/terminal-agents",
+    "date": "2026-10-19",
+    "tags": [
+      {
+        "label": "AI"
+      },
+      {
+        "label": "Agent"
+      },
+      {
+        "label": "Claude Code"
+      },
+      {
+        "label": "OpenCode"
+      }
+    ],
+    "readingTime": "13 min read"
+  },
+  {
     "title": "多么痛的领悟",
     "description": "总结一下那些在二级市场不断受到的教训，现在学费交的差不多了，准备夺回属于我的一切",
     "permalink": "/blog/trading-thinking",
@@ -76,4 +97,4 @@ export const blogPostsData = [
   }
 ];
 
-console.log('📝 已加载 5 篇博客文章数据');
+console.log('📝 已加载 6 篇博客文章数据');
