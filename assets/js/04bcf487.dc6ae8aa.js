@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwiki||=[]).push([[4171],{754(t){t.exports=JSON.parse('{"tag":{"label":"pattern","permalink":"/docs/tags/pattern","allTagsPath":"/docs/tags","count":1,"items":[{"id":"pattern/intro","title":"\u4ecb\u7ecd","description":"\u7ef4\u57fa\u767e\u79d1\u5b9a\u4e49","permalink":"/docs/pattern/intro"}],"unlisted":false}}')}}]);

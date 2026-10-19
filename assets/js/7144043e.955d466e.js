@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwiki||=[]).push([[7387],{8078(e){e.exports=JSON.parse('{"tag":{"label":"docker","permalink":"/docs/tags/docker","allTagsPath":"/docs/tags","count":1,"items":[{"id":"devops/docker","title":"Docker","description":"","permalink":"/docs/devops/docker"}],"unlisted":false}}')}}]);

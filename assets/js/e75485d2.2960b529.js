@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwiki||=[]).push([[6503],{9233(t){t.exports=JSON.parse('{"tag":{"label":"utxo","permalink":"/docs/tags/utxo","allTagsPath":"/docs/tags","count":1,"items":[{"id":"blockchain/utxo","title":"UTXO","description":"UTXO(Unspent transaction output)","permalink":"/docs/blockchain/utxo"}],"unlisted":false}}')}}]);

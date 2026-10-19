@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwiki||=[]).push([[993],{6088(s){s.exports=JSON.parse('{"tag":{"label":"uniswap","permalink":"/docs/tags/uniswap","allTagsPath":"/docs/tags","count":1,"items":[{"id":"blockchain/uniswap","title":"Uniswap","description":"\u4ecb\u7ecd","permalink":"/docs/blockchain/uniswap"}],"unlisted":false}}')}}]);
