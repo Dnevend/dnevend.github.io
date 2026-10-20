@@ -16,6 +16,8 @@
         <content type="html"><![CDATA[<p>书桌一角，近来多了一台旧热敏打印机。二手市场上捡来的，原本是给小饭馆打菜单、给超市打流水的命，如今被我派了个闲差：每天早上九点，自己醒来，吐出一页斯多葛。</p>
 <p>纸上是一篇短文，英文在前，译文在后，挑几个生词，配一幅黑白小图。印完了，电脑再把英文念一遍，送进我的 Telegram。纸在桌上，声音在耳边，一日的功课就算开了头。</p>
 <p>这台机器从头到尾，是我指挥 AI 搭起来的。写下来，一是记它怎样转起来；二是记中途那些坑——坑是 AI 一个个排查、一个个填平的，我只在几个岔路口拍了板。这条路走下来，恰好能说明白一件事：AI 替我们干了什么，又有什么是它替不了的。</p>
+<p>从废纸到成品：</p>
+<table><thead><tr><th style="text-align:center"><img decoding="async" loading="lazy" alt="调试时打废的一摞纸" src="https://dnevend.site/assets/images/result_1-79409904af4493c320aeec9e757fda06.webp" width="1600" height="1200" class="img_ev3q"></th><th style="text-align:center"><img decoding="async" loading="lazy" alt="最终效果" src="https://dnevend.site/assets/images/result_2-5a942345603e2f783b4beeda0288e437.webp" width="1600" height="1200" class="img_ev3q"></th></tr></thead><tbody><tr><td style="text-align:center">调试时打废的一摞纸</td><td style="text-align:center">最终效果</td></tr></tbody></table>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="为什么要一台打印机">为什么要一台打印机<a href="https://dnevend.site/blog/stoic-printer#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%B8%80%E5%8F%B0%E6%89%93%E5%8D%B0%E6%9C%BA" class="hash-link" aria-label="为什么要一台打印机的直接链接" title="为什么要一台打印机的直接链接" translate="no">​</a></h2>
 <p>两个念头，撞在了一处。</p>
 <p>其一，我想让 AI 走出那方聊天框。这几年它像个坐堂的先生，你不叩门，它不开口。我想要倒过来：它到了时辰自己起身做事，把结果递到我手上，我连一个窗口都不必打开。这是工程意义上的变化——从「人调 AI」到「AI 定时跑」。</p>
@@ -34,8 +36,6 @@
 </ol>
 <p>这里有一条设计上的分界，值得单说：<strong>生成内容的每一步，都没用大模型。</strong> 翻译走免费接口，生词靠词频表加离线词典，配图去图库搜。大模型的力气，全花在写这套程序上；程序每天跑起来的时候，不再惊动它。</p>
 <p>好处是实打实的：<strong>跑一次几乎零成本</strong>——没有 token，只有打印机吐出的半张纸；<strong>输出稳定</strong>——不担心哪天模型换了脾气，小票的格式跟着变脸。这算是我这段时间的一条心得：能走确定接口的，就别上大模型。大模型贵在「生成」和「判断」，不在「每天按点搬砖」。</p>
-<p>从废纸到成品：</p>
-<table><thead><tr><th style="text-align:center"><img decoding="async" loading="lazy" alt="调试时打废的一摞纸" src="https://dnevend.site/assets/images/result_1-79409904af4493c320aeec9e757fda06.webp" width="1600" height="1200" class="img_ev3q"></th><th style="text-align:center"><img decoding="async" loading="lazy" alt="最终效果" src="https://dnevend.site/assets/images/result_2-5a942345603e2f783b4beeda0288e437.webp" width="1600" height="1200" class="img_ev3q"></th></tr></thead><tbody><tr><td style="text-align:center">调试时打废的一摞纸</td><td style="text-align:center">最终效果</td></tr></tbody></table>
 <p>节选一段原文：</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Think about how rarely we give ourselves fully</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">to whatever we're doing. Working, some part of</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">us is thinking about the errands we need to run</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">later or the conversation we had the other day.</span><br></div></code></pre></div></div>
 <p>机器挑出的生词是 errands、inaccessible、sphere……每个词后面都跟着它在原文里的那一句。比背单词表有意思：你知道它是从哪篇文章里长出来的，而不是标本钉在纸板上。</p>
