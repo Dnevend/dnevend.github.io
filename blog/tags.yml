@@ -24,6 +24,14 @@ OpenCode:
   label: OpenCode
   permalink: /opencode
 
+OpenClaw:
+  label: OpenClaw
+  permalink: /openclaw
+
+英语学习:
+  label: 英语学习
+  permalink: /english-learning
+
 Telegram BOT:
   label: Telegram BOT
   permalink: /telegram-bot
