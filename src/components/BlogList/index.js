@@ -1,55 +1,12 @@
 import React from "react";
-import clsx from "clsx";
 import styles from "./styles.module.css";
 import Link from "@docusaurus/Link";
-import { useBlogPosts } from "@site/src/hooks/useBlogPosts";
 import Head from "@docusaurus/Head";
-
-// 简化的骨架屏组件 - 仅在开发环境使用
-function BlogPostSkeleton() {
-  if (process.env.NODE_ENV !== "development") {
-    return null;
-  }
-
-  return (
-    <div className={styles.blogPost}>
-      <div className={clsx(styles.blogPostLink, styles.skeleton)}>
-        <div className={styles.blogPostContent}>
-          <div
-            className={clsx(styles.blogPostTitle, styles.skeletonText)}
-          ></div>
-          <div
-            className={clsx(styles.blogPostDescription, styles.skeletonText)}
-          ></div>
-          <div className={styles.blogPostMeta}>
-            <div
-              className={clsx(styles.blogPostDate, styles.skeletonText)}
-            ></div>
-            <div className={styles.blogPostTags}>
-              <div
-                className={clsx(styles.blogPostTag, styles.skeletonText)}
-              ></div>
-              <div
-                className={clsx(styles.blogPostTag, styles.skeletonText)}
-              ></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+import { useBlogPosts } from "@site/src/hooks/useBlogPosts";
 
 export default function BlogList() {
-  // 使用SSG优化的Hook获取博客数据
-  const { posts, isLoading, error } = useBlogPosts(6);
-
-  // 开发环境下的错误处理
-  React.useEffect(() => {
-    if (error && process.env.NODE_ENV === "development") {
-      console.error("Blog posts error:", error);
-    }
-  }, [error]);
+  // 数据来自 plugins/blog-home-data 全局数据，构建时与博客插件保持一致
+  const posts = useBlogPosts(6);
 
   // 生成结构化数据
   const structuredData = React.useMemo(() => {
@@ -61,7 +18,7 @@ export default function BlogList() {
       "name": "最新文章 - 小学後生",
       "description": "最新发布的技术博客文章",
       "url": "https://dnevend.site",
-      "blogPost": posts.slice(0, 6).map((post) => ({
+      "blogPost": posts.map((post) => ({
         "@type": "BlogPosting",
         "headline": post.title,
         "description": post.description,
@@ -84,44 +41,6 @@ export default function BlogList() {
       }))
     };
   }, [posts]);
-
-  // 开发环境下显示加载状态
-  if (isLoading && process.env.NODE_ENV === "development") {
-    return (
-      <section className={styles.blogList}>
-        <div className={styles.blogListHeader}>
-          <h2 className={styles.blogListTitle}>最新文章</h2>
-          <Link to="/blog" className={styles.viewAllLink}>
-            查看全部
-          </Link>
-        </div>
-
-        <div className={styles.blogPosts}>
-          {[...Array(3)].map((_, index) => (
-            <BlogPostSkeleton key={index} />
-          ))}
-        </div>
-      </section>
-    );
-  }
-
-  // 如果没有博客文章
-  if (posts.length === 0) {
-    return (
-      <section className={styles.blogList}>
-        <div className={styles.blogListHeader}>
-          <h2 className={styles.blogListTitle}>最新文章</h2>
-          <Link to="/blog" className={styles.viewAllLink}>
-            查看全部
-          </Link>
-        </div>
-
-        <div className={styles.emptyState}>
-          <p>暂无博客文章</p>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <>
@@ -151,43 +70,42 @@ export default function BlogList() {
         </div>
 
         <div className={styles.blogPosts}>
-        {posts.map((post) => {
-          // 确保文章数据存在
-          if (!post || !post.permalink) {
-            return null;
-          }
-
-          return (
-            <article key={post.permalink} className={styles.blogPost}>
-              <Link to={post.permalink} className={styles.blogPostLink}>
-                <div className={styles.blogPostContent}>
-                  <h3 className={styles.blogPostTitle}>
-                    {post.title || "无标题"}
-                  </h3>
-                  <p className={styles.blogPostDescription}>
-                    {post.description || ""}
-                  </p>
-                  <div className={styles.blogPostMeta}>
-                    <time className={styles.blogPostDate}>
-                      {post.date
-                        ? new Date(post.date).toLocaleDateString("zh-CN")
-                        : "未知日期"}
-                    </time>
-                    <div className={styles.blogPostTags}>
-                      {post.tags &&
-                        post.tags.map((tag, tagIndex) => (
-                          <span key={tagIndex} className={styles.blogPostTag}>
-                            {tag.label || tag}
-                          </span>
-                        ))}
+          {posts.length === 0 ? (
+            <div className={styles.emptyState}>
+              <p>暂无博客文章</p>
+            </div>
+          ) : (
+            posts.map((post) => (
+              <article key={post.permalink} className={styles.blogPost}>
+                <Link to={post.permalink} className={styles.blogPostLink}>
+                  <div className={styles.blogPostContent}>
+                    <h3 className={styles.blogPostTitle}>
+                      {post.title || "无标题"}
+                    </h3>
+                    <p className={styles.blogPostDescription}>
+                      {post.description || ""}
+                    </p>
+                    <div className={styles.blogPostMeta}>
+                      <time className={styles.blogPostDate}>
+                        {post.date
+                          ? new Date(post.date).toLocaleDateString("zh-CN")
+                          : "未知日期"}
+                      </time>
+                      <div className={styles.blogPostTags}>
+                        {post.tags &&
+                          post.tags.map((tag, tagIndex) => (
+                            <span key={tagIndex} className={styles.blogPostTag}>
+                              {tag.label || tag}
+                            </span>
+                          ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            </article>
-          );
-        })}
-      </div>
+                </Link>
+              </article>
+            ))
+          )}
+        </div>
       </section>
     </>
   );

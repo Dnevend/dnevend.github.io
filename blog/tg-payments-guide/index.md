@@ -13,6 +13,8 @@ tags: [Telegram BOT, Telegram Stars, TON]
 
 随着 Telegram 迈向区块链&小程序时代，Telegram 内部已经与 TON 钱包做了集成，并为了应对 Apple 和 Google 关于数字产品销售的政策监管需要上线了 Telegram Stars 作为支付方式。依托 Telegram 生态的数亿用户，存在着大量机遇，并为区块链走向 Mass Adoption 铺设了一条新的高速公路。本文基于 grammY 框架，分享支付机器人开发过程中的心得，助你成功。
 
+<!-- truncate -->
+
 ## 支付机器人
 
 [点击此处访问完整 Demo 地址](https://github.com/Dnevend/tg-payment-bot)
