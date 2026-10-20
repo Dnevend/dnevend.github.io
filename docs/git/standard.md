@@ -17,7 +17,7 @@ tags: [git, standard]
 
 每条提交消息由标头、正文和页脚组成。
 
-- header 是强制性的, 必须符合[Commit Message Header](#commit-header)格式.
+- header 是强制性的, 必须符合[Commit Message Header](#commit-message-header)格式.
 
 - body 对于除“docs”类型之外的所有提交都是强制性的.
 
@@ -31,7 +31,7 @@ tags: [git, standard]
 <footer>
 ```
 
-### <a name="commit-header"></a>Commit Message Header
+### Commit Message Header
 
 ```
 <type>(<scope>): <short summary>
