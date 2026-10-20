@@ -47,7 +47,7 @@
 <li class=""><strong>我定方向、验货、拍板。</strong> 换朗读音色时，让 AI 生成几段试听，我一段段听过，自己挑；真机联调，也是我在人与机器之间来回传话。</li>
 </ul>
 <p>代码我确实没写几行，但「要什么」这句话，始终是我说的。AI 再快，也猜不到我要的是一张清晨九点的纸，而不是一个更漂亮的网页。<strong>手艺可以外包，心意外包不了。</strong></p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="四个坑ai-排查我拍板">四个坑：AI 排查，我拍板<a href="https://dnevend.site/blog/stoic-printer#%E5%9B%9B%E4%B8%AA%E5%9D%91ai-%E6%8E%92%E6%9F%A5%E6%88%91%E6%8B%8D%E6%9D%BF" class="hash-link" aria-label="四个坑：AI 排查，我拍板的直接链接" title="四个坑：AI 排查，我拍板的直接链接" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="遇到坑ai-排查我拍板">遇到坑，AI 排查，我拍板<a href="https://dnevend.site/blog/stoic-printer#%E9%81%87%E5%88%B0%E5%9D%91ai-%E6%8E%92%E6%9F%A5%E6%88%91%E6%8B%8D%E6%9D%BF" class="hash-link" aria-label="遇到坑，AI 排查，我拍板的直接链接" title="遇到坑，AI 排查，我拍板的直接链接" translate="no">​</a></h2>
 <p>下面这四个坑，没有一个是我自己查出来的。抓日志、读字节流、翻协议文档、试方案，全是 AI 干的。我做的事情只有一件：在岔路口说往哪走。这个分工我看得很重：<strong>AI 能把每个坑查到底，可哪个坑值得填、填成什么样，得由人来定。</strong></p>
 <p><strong>一个字母的大小写。</strong> 封面图印出来是一长条乱码，中间还平白被切了一刀。AI 起初怀疑旧机器的固件，想先把配图关掉绕过去。这一步我没答应：配图是这张票的门面，可以晚两天，不能砍，一定要出图。AI 只好回头，把自己发出去的字节流逐段对照 ESC/POS 手册，最后查出是位图指令写错了：<code>GS v</code> 写成了 <code>GS V</code>。小写的 v 是「打印光栅位图」，大写的 V 是「切纸」。打印机何错之有？它一丝不苟地执行了一道错误的命令。</p>
 <p><strong>「No route to host」。</strong> 手动跑一切正常，一挂进定时任务就找不着打印机。AI 一层层往下排，定位到 macOS 的「本地网络」权限：前台进程能连局域网，launchd 拉起的后台进程会被拦在门外。它没去跟系统授权较劲，而是给程序加了一道兜底：连不上时退回系统自带的 nc，直接往 9100 端口发字节。这一处我没插手。绕开问题而不硬碰，本身也是一种工程判断。</p>
