@@ -1,0 +1,61 @@
+# 博客标签中心定义。
+# key 必须与文章 frontMatter 中 `tags:` 的写法完全一致（区分大小写与空格），
+# label 是页面上展示的名字，permalink 是 /blog/tags/<permalink> 的稳定地址。
+# 好处：标签 URL 不再被 lodash.kebabCase 自动推导（例如 OpenCode → open-code），
+# 也让 "Claude Code"、"Telegram BOT" 之类的展示名不被 _.capitalize 改写。
+
+共笔:
+  label: 共笔
+  permalink: /共笔
+
+AI:
+  label: AI
+  permalink: /ai
+
+Agent:
+  label: Agent
+  permalink: /agent
+
+Claude Code:
+  label: Claude Code
+  permalink: /claude-code
+
+OpenCode:
+  label: OpenCode
+  permalink: /opencode
+
+Telegram BOT:
+  label: Telegram BOT
+  permalink: /telegram-bot
+
+Telegram Stars:
+  label: Telegram Stars
+  permalink: /telegram-stars
+
+TON:
+  label: TON
+  permalink: /ton
+
+Crypto:
+  label: Crypto
+  permalink: /crypto
+
+Trading:
+  label: Trading
+  permalink: /trading
+
+extension:
+  label: extension
+  permalink: /extension
+
+tech:
+  label: tech
+  permalink: /tech
+
+frontend:
+  label: frontend
+  permalink: /frontend
+
+css:
+  label: css
+  permalink: /css

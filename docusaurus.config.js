@@ -18,13 +18,6 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Dnevend', // Usually your GitHub org/user name.
-  projectName: 'wiki', // Usually your repo name.
-
-  deploymentBranch: 'gh-pages',
-
   onBrokenLinks: 'throw',
 
   markdown: {
@@ -51,7 +44,7 @@ const config = {
         },
         blog: {
           showReadingTime: true,
-          blogSidebarTitle: 'All posts',
+          blogSidebarTitle: '全部文章',
           blogSidebarCount: 'ALL',
           feedOptions: {
             type: 'all',
@@ -69,7 +62,7 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-        googleAnalytics: {
+        gtag: {
           trackingID: 'G-JWBWXN9RCT',
           anonymizeIP: true,
         },
@@ -87,20 +80,15 @@ const config = {
         sidebarPath: require.resolve('./sidebars.mark.js'),
       },
     ],
-    [
-      '@docusaurus/plugin-google-gtag',
-      {
-        trackingID: 'G-JWBWXN9RCT',
-      },
-    ],
+    // 首页博客列表数据：直接复用博客插件的 frontMatter，构建时生成全局数据
+    './plugins/blog-home-data',
   ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
-      // image: 'img/docusaurus-social-card.jpg',
-      image: 'https://github.html.zone/Dnevend/dnevend.github.io',
+      // 站点分享卡片（OpenGraph / Twitter）
+      image: 'img/social-card.jpg',
       navbar: {
         title: 'Dnevend',
         // logo: {
@@ -164,7 +152,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Dnevend's Website, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Dnevend. Built with Docusaurus.`,
       },
       prism: {
         theme: lightTheme,
@@ -172,7 +160,6 @@ const config = {
         additionalLanguages: ['bash', 'diff', 'json'],
       },
     }),
-  scripts: []
 };
 
 module.exports = config;
