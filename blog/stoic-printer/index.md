@@ -94,3 +94,4 @@ later or the conversation we had the other day.
 项目开源，想自己攒一台的，请便：[github.com/Dnevend/daily-stoic-printer](https://github.com/Dnevend/daily-stoic-printer)。
 
 ![附：程序渲染的小票预览](./receipt.png)
+
