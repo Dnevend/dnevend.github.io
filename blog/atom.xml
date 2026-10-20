@@ -71,120 +71,81 @@
         <category label="英语学习" term="英语学习"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[终端里那么多 Agent，到底该用哪个？]]></title>
+        <title type="html"><![CDATA[终端里那么多 Agent，最不值钱的就是「选哪个」]]></title>
         <id>https://dnevend.site/blog/terminal-agents</id>
         <link href="https://dnevend.site/blog/terminal-agents"/>
         <updated>2026-10-19T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Claude Code、Codex、OpenCode、pi……一次把 Coding Agent 的分层、阵营、取舍和「要不要把 Agent 当主力入口」讲清楚]]></summary>
-        <content type="html"><![CDATA[<p>我的电脑里装着 OpenCode、OpenClaw、pi、一个一年没更新的 cursor-agent，<code>Applications</code> 里还躺着 Codex、Cursor、Trae。每个都号称「AI Agent」，每个我都用过几天。</p>
-<p>某天我终于问了自己三个问题：</p>
-<ol>
-<li class="">这些终端窗口是不是都算 Agent？它们到底差在哪？</li>
-<li class="">终端 CLI 这么多，哪个好？</li>
-<li class="">把 Agent 当作日常工作的主力入口，到底是不是好选择？</li>
-</ol>
-<p>这篇文章是我把这三个问题想清楚之后的结论。</p>
+        <summary type="html"><![CDATA[工具会一茬茬地换，值得留下的是你怎么调教它——分层、取舍，和「没有证据就不算完成」这条底线]]></summary>
+        <content type="html"><![CDATA[<p>我的电脑像一座废弃的驿站。OpenCode、OpenClaw、pi 都还在；一个 cursor-agent 一年没醒过；<code>Applications</code> 里还躺着 Codex、Cursor、Trae。每个来时都自称 Agent，每个我都陪着用过几天。</p>
+<p>后来我才明白，我一直问错了问题。不是「哪匹马好」，而是「我为什么从没学会驯马」。</p>
 <blockquote>
 <p><strong>TL;DR</strong></p>
 <ul>
 <li class="">终端窗口只是<strong>界面</strong>。Claude Code、OpenCode、pi 这类工具 = <strong>外壳（Harness）+ 界面</strong>，Agent = 模型 + 外壳。同一个模型放进不同外壳，表现可以差很远。</li>
-<li class="">各家 CLI 的功能正在趋同，真正的差异只有三点：<strong>绑定什么模型、怎么收费、开放程度</strong>。</li>
-<li class="">选择策略：<strong>一个主力 + 一个备用</strong>，别装一堆。</li>
-<li class="">Agent 适合当工程与知识工作的主力入口，但前提是<strong>人负责验收</strong>，并且你的配置资产<strong>与具体工具解耦</strong>。</li>
+<li class="">工具之间的功能正在趋同，选型真正要看的只有三件事：<strong>绑定什么模型、怎么收费、开放程度</strong>。</li>
+<li class="">但比选型更要紧的，是<strong>你怎么调教它</strong>：定什么规矩、什么时候放手、什么时候签字。</li>
+<li class="">一句话：<strong>一个主力 + 一个备用，剩下的功夫花在调教上，别花在装工具上。</strong></li>
 </ul>
 </blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="一先拆开看agent-到底是什么">一、先拆开看：Agent 到底是什么<a href="https://dnevend.site/blog/terminal-agents#%E4%B8%80%E5%85%88%E6%8B%86%E5%BC%80%E7%9C%8Bagent-%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88" class="hash-link" aria-label="一、先拆开看：Agent 到底是什么的直接链接" title="一、先拆开看：Agent 到底是什么的直接链接" translate="no">​</a></h2>
 <p>我们常说「打开 Claude Code」「打开 OpenCode」，好像打开的就是 Agent 本身。其实一个 Agent 可以拆成三层：</p>
-<table><thead><tr><th>层</th><th>作用</th><th>例子</th></tr></thead><tbody><tr><td><strong>模型</strong></td><td>大脑，负责思考和决策</td><td>Claude、GPT、Gemini、DeepSeek、GLM、Kimi</td></tr><tr><td><strong>Harness（外壳）</strong></td><td>跑「调模型 → 执行工具 → 把结果喂回去」的循环；管理工具、权限、上下文压缩、会话</td><td>Claude Code、OpenCode、pi</td></tr><tr><td><strong>界面</strong></td><td>你看到的东西</td><td>终端 TUI、桌面 App、网页</td></tr></tbody></table>
-<p>理解这个分层有一个直接的好处：<strong>你会知道问题出在哪一层。</strong></p>
+<table><thead><tr><th>层</th><th>作用</th><th>例子</th></tr></thead><tbody><tr><td><strong>模型</strong></td><td>大脑，负责思考和决策</td><td>Claude、GPT、Gemini、DeepSeek、GLM、Kimi</td></tr><tr><td><strong>Harness（外壳）</strong></td><td>跑「调模型 → 执行工具 → 把结果喂回去」的循环；管工具、权限、上下文压缩、会话</td><td>Claude Code、OpenCode、pi</td></tr><tr><td><strong>界面</strong></td><td>你看到的东西</td><td>终端 TUI、桌面 App、网页</td></tr></tbody></table>
+<p>理解这个分层只有一个用处：<strong>出问题时你知道该怪谁。</strong></p>
 <ul>
-<li class="">改错了代码、理解偏了需求，多半是<strong>模型</strong>的问题；</li>
-<li class="">上下文爆了、工具调不动、权限乱拦，多半是<strong>外壳</strong>的问题；</li>
-<li class="">用着别扭、看 diff 难受，那是<strong>界面</strong>的问题。</li>
+<li class="">改错了代码、理解偏了需求，多半是<strong>模型</strong>的锅；</li>
+<li class="">上下文爆了、工具调不动、权限乱拦，多半是<strong>外壳</strong>的锅；</li>
+<li class="">用着别扭、看 diff 难受，那是<strong>界面</strong>的锅。</li>
 </ul>
-<p>外壳决定了模型能用哪些工具、能看到多少上下文、能不能派子代理。所以「同一个 Claude，在 A 工具里很聪明、在 B 工具里很笨」并不奇怪。</p>
-<p>外壳和界面其实可以拆开：pi 能通过 SDK/RPC 无界面运行，OpenCode 也能作为常驻服务、用 HTTP 调用。你平时看到的「终端窗口」，只是最外面那层界面。</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="二三个典型代表精装修可换装的精装修毛坯房">二、三个典型代表：精装修、可换装的精装修、毛坯房<a href="https://dnevend.site/blog/terminal-agents#%E4%BA%8C%E4%B8%89%E4%B8%AA%E5%85%B8%E5%9E%8B%E4%BB%A3%E8%A1%A8%E7%B2%BE%E8%A3%85%E4%BF%AE%E5%8F%AF%E6%8D%A2%E8%A3%85%E7%9A%84%E7%B2%BE%E8%A3%85%E4%BF%AE%E6%AF%9B%E5%9D%AF%E6%88%BF" class="hash-link" aria-label="二、三个典型代表：精装修、可换装的精装修、毛坯房的直接链接" title="二、三个典型代表：精装修、可换装的精装修、毛坯房的直接链接" translate="no">​</a></h2>
-<p>拿我最常用的三个来对比：</p>
-<table><thead><tr><th></th><th>Claude Code</th><th>OpenCode</th><th>pi</th></tr></thead><tbody><tr><td>出品</td><td>Anthropic 官方</td><td>开源社区（SST 团队）</td><td>Mario Zechner 个人项目</td></tr><tr><td>开源</td><td>否</td><td>是</td><td>是</td></tr><tr><td>模型</td><td>主要是 Claude</td><td>几乎所有厂商</td><td>多厂商</td></tr><tr><td>哲学</td><td>功能全、开箱即用、对 Claude 调得最好</td><td>功能全、厂商中立、配置项丰富（声明式）</td><td>极简：短系统提示 + read/write/edit/bash 四个工具；系统提示、工具、压缩、界面都能用扩展替换</td></tr><tr><td>子代理 / MCP / 技能</td><td>都有，生态最成熟</td><td>都有，另有插件系统</td><td>刻意不内置</td></tr><tr><td>权限控制</td><td>最完善</td><td>按 Agent 配置</td><td>基本信任你</td></tr></tbody></table>
-<p>一句话：<strong>Claude Code 是官方精装修，OpenCode 是可以换家具品牌的精装修，pi 是毛坯房加一套好工具箱。</strong></p>
+<p>外壳决定了模型能用哪些工具、能看到多少上下文、能不能派子代理。所以在 Terminal-Bench 这类基准里，同一个模型换个外壳，正确率能差出二十个百分点——外壳不是可有可无的装饰，它是模型能力的另一半。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="二三个代表调教权在谁手里">二、三个代表：调教权在谁手里<a href="https://dnevend.site/blog/terminal-agents#%E4%BA%8C%E4%B8%89%E4%B8%AA%E4%BB%A3%E8%A1%A8%E8%B0%83%E6%95%99%E6%9D%83%E5%9C%A8%E8%B0%81%E6%89%8B%E9%87%8C" class="hash-link" aria-label="二、三个代表：调教权在谁手里的直接链接" title="二、三个代表：调教权在谁手里的直接链接" translate="no">​</a></h2>
+<p>拿我最常用的三个对比：</p>
+<table><thead><tr><th></th><th>Claude Code</th><th>OpenCode</th><th>pi</th></tr></thead><tbody><tr><td>出品</td><td>Anthropic 官方</td><td>开源（anomalyco）</td><td>Mario Zechner 个人项目</td></tr><tr><td>模型</td><td>主要是 Claude</td><td>几乎所有厂商</td><td>多厂商</td></tr><tr><td>哲学</td><td>功能全、开箱即用</td><td>厂商中立、配置项丰富</td><td>极简：短系统提示 + read/write/edit/bash 四个工具</td></tr><tr><td>调教权</td><td>大部分替你定了</td><td>明面可配，选项最多</td><td>全部归你，也全要你自己写</td></tr></tbody></table>
+<p>一句话：<strong>Claude Code 是精装修，OpenCode 是可以换家具品牌的精装修，pi 是毛坯房加一套好工具箱。</strong></p>
+<p>但别把「毛坯房」当贬义。毛坯房的意义在于<strong>逼你自己调教</strong>：系统提示自己写，工具自己接，压缩策略自己定。精装修和毛坯房的差别，不在功能多少，而在<strong>调教权在谁手里</strong>。你愿意学驯马，毛坯房就是最好的马厩；你只想骑，精装修省心。</p>
 <p>有意思的是，pi 的内核还被嵌进了别的产品里（比如 OpenClaw）。它更像一个「Agent 引擎」，而不只是一个终端工具。</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="放到具体场景里比">放到具体场景里比<a href="https://dnevend.site/blog/terminal-agents#%E6%94%BE%E5%88%B0%E5%85%B7%E4%BD%93%E5%9C%BA%E6%99%AF%E9%87%8C%E6%AF%94" class="hash-link" aria-label="放到具体场景里比的直接链接" title="放到具体场景里比的直接链接" translate="no">​</a></h3>
-<table><thead><tr><th>场景</th><th>谁更合适</th><th>原因</th></tr></thead><tbody><tr><td>单轮 token 开销最低</td><td>pi</td><td>系统提示和工具定义最短，每轮的固定成本最小</td></tr><tr><td>重度只用 Claude</td><td>Claude Code</td><td>订阅包月，比按 API 计费划算得多</td></tr><tr><td>多模型混用、按角色控成本</td><td>OpenCode</td><td>每个 Agent 可以单独指定模型</td></tr><tr><td>长任务（几小时）</td><td>Claude Code ≈ OpenCode</td><td>自动压缩、子代理、Todo 都很成熟</td></tr><tr><td>被别的程序调用</td><td>OpenCode</td><td>有常驻服务和 HTTP API</td></tr><tr><td>嵌入自己的产品</td><td>pi</td><td>内核轻，SDK/RPC 友好</td></tr><tr><td>开箱即用、生态</td><td>Claude Code</td><td>社区资源最多</td></tr></tbody></table>
-<p>这里有一个容易被忽略的点：<strong>省 token 和省钱不是一回事。</strong> pi 每轮最省，但如果你按 API 用 Opus 跑一整天，账单未必比 Claude Code 的包月低。看总账，不要只看单轮。</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="三终端-cli-那么多区别在哪">三、终端 CLI 那么多，区别在哪？<a href="https://dnevend.site/blog/terminal-agents#%E4%B8%89%E7%BB%88%E7%AB%AF-cli-%E9%82%A3%E4%B9%88%E5%A4%9A%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA" class="hash-link" aria-label="三、终端 CLI 那么多，区别在哪？的直接链接" title="三、终端 CLI 那么多，区别在哪？的直接链接" translate="no">​</a></h2>
-<p>把视野放大，2026 年主流的 Coding Agent 大致分成四类：</p>
-<ul>
-<li class=""><strong>终端 CLI</strong>：Claude Code、Codex CLI、Gemini CLI、OpenCode、Copilot CLI、Cursor CLI、Amp、Factory Droid、Goose、Aider、Qwen Code、Kimi CLI、Crush、pi……</li>
-<li class=""><strong>IDE 内置</strong>：Cursor、Windsurf、Copilot Agent Mode、Cline / Roo、Zed、Kiro、Trae</li>
-<li class=""><strong>云端异步</strong>：Codex Cloud、Jules、Copilot Coding Agent、Devin，把任务派出去，自己跑完提 PR</li>
-<li class=""><strong>通用个人 Agent</strong>：OpenClaw、Manus、ChatGPT Agent，不只写代码，还管浏览器、文件和消息</li>
-</ul>
-<blockquote>
-<p>这个领域变化极快，名单仅代表写作时（2026 年 10 月）的格局。</p>
-</blockquote>
-<p>光终端 CLI 就有十几个。它们区别大吗？<strong>比看起来小。</strong> AGENTS.md、MCP、技能、子代理、计划模式，现在几乎是标配。真正拉开差距的只有三件事：</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="三选哪个没有你想的那么重要">三、「选哪个」没有你想的那么重要<a href="https://dnevend.site/blog/terminal-agents#%E4%B8%89%E9%80%89%E5%93%AA%E4%B8%AA%E6%B2%A1%E6%9C%89%E4%BD%A0%E6%83%B3%E7%9A%84%E9%82%A3%E4%B9%88%E9%87%8D%E8%A6%81" class="hash-link" aria-label="三、「选哪个」没有你想的那么重要的直接链接" title="三、「选哪个」没有你想的那么重要的直接链接" translate="no">​</a></h2>
+<p>终端 CLI 有十几个：Claude Code、Codex CLI、Gemini CLI、OpenCode、Copilot CLI、Cursor CLI、Amp、Factory Droid、Goose、Aider、Qwen Code、Kimi CLI、Crush、pi……加上 IDE 内置的、云端异步的、管浏览器和消息的通用个人 Agent，名字一大串。</p>
+<p>它们区别大吗？<strong>比广告小，比你以为的大。</strong> 小在功能——AGENTS.md、MCP、技能、子代理、计划模式，现在几乎是标配。大在外壳——同一个模型，换一副外壳，成绩能差二十分。</p>
+<p>所以真正拉开差距的只有三件事：</p>
 <ol>
-<li class=""><strong>模型绑定</strong>：这是决定性因素。官方工具往往为自家模型做过专门调优。</li>
+<li class=""><strong>模型绑定</strong>：官方工具往往为自家模型做过专门调优。但注意，这是因厂而异的事实，不是放之四海的规律——有官方的做得最好，也有第三方外壳跑同一个模型跑得更好。</li>
 <li class=""><strong>收费方式</strong>：订阅包月，还是按 API 用量。</li>
 <li class=""><strong>开放程度</strong>：能不能换模型、改提示词、写扩展。</li>
 </ol>
-<p>据此可以把它们分成两大阵营。</p>
-<p><strong>A. 模型厂商官方：模型和外壳一起调优</strong></p>
-<table><thead><tr><th>工具</th><th>模型</th><th>亮点</th></tr></thead><tbody><tr><td>Claude Code</td><td>Claude</td><td>综合标杆，生态最成熟</td></tr><tr><td>Codex CLI</td><td>GPT 系列</td><td>开源，与 Claude Code 同属第一梯队</td></tr><tr><td>Gemini CLI</td><td>Gemini</td><td>开源，免费额度大，上下文长</td></tr><tr><td>Qwen Code / Kimi CLI</td><td>国产模型</td><td>便宜</td></tr><tr><td>Copilot CLI</td><td>多模型</td><td>与 GitHub 深度集成</td></tr></tbody></table>
-<p><strong>B. 厂商中立：拼的是外壳本身的设计</strong></p>
-<table><thead><tr><th>工具</th><th>定位</th></tr></thead><tbody><tr><td>OpenCode</td><td>开源、多厂商、开箱即用的配置项最多</td></tr><tr><td>Amp</td><td>不让你选模型，替你挑最强组合，效果好但贵</td></tr><tr><td>Factory Droid</td><td>面向企业，基准测试成绩靠前</td></tr><tr><td>Goose</td><td>以 MCP 为核心</td></tr><tr><td>Aider</td><td>老牌、以 git 为中心、偏结对编程</td></tr><tr><td>pi</td><td>极简内核，几乎所有部分都能换，可改造程度最高</td></tr></tbody></table>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="所以哪个好">所以，哪个好？<a href="https://dnevend.site/blog/terminal-agents#%E6%89%80%E4%BB%A5%E5%93%AA%E4%B8%AA%E5%A5%BD" class="hash-link" aria-label="所以，哪个好？的直接链接" title="所以，哪个好？的直接链接" translate="no">​</a></h3>
-<p>没有「最好」，只有「最适合你的约束」：</p>
-<table><thead><tr><th>你的需求</th><th>选它</th></tr></thead><tbody><tr><td>写代码效果最好</td><td>Claude Code 或 Codex CLI，看你订阅了哪家</td></tr><tr><td>免费 / 便宜</td><td>Gemini CLI、Qwen Code</td></tr><tr><td>混用多模型、控成本</td><td>OpenCode</td></tr><tr><td>不想折腾、不在乎钱</td><td>Amp</td></tr><tr><td>自己搭、嵌进产品</td><td>pi</td></tr></tbody></table>
-<p>我的建议是：<strong>一个主力 + 一个备用，就够了。</strong></p>
-<p>每多装一个，就要多维护一套配置、技能和使用习惯。我电脑里那个一年没更新的 cursor-agent，就是「装了试试」的典型遗留物。</p>
-<p>备用工具最好和主力<strong>来自不同的模型家族</strong>。比如主力用 OpenCode 跑 Claude，备用就选 Codex CLI。这样它可以给你「第二意见」：让不同家族的模型交叉审查同一份代码，比同一个模型自己检查自己靠谱得多。</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="四agent-当主力入口是好选择吗">四、Agent 当主力入口，是好选择吗？<a href="https://dnevend.site/blog/terminal-agents#%E5%9B%9Bagent-%E5%BD%93%E4%B8%BB%E5%8A%9B%E5%85%A5%E5%8F%A3%E6%98%AF%E5%A5%BD%E9%80%89%E6%8B%A9%E5%90%97" class="hash-link" aria-label="四、Agent 当主力入口，是好选择吗？的直接链接" title="四、Agent 当主力入口，是好选择吗？的直接链接" translate="no">​</a></h2>
+<p>据此，我的建议是：<strong>一个主力 + 一个备用，就够了。</strong> 每多装一个，就要多维护一套配置、技能和使用习惯。我电脑里那个一年没更新的 cursor-agent，就是「装了试试」的典型遗留物。</p>
+<p>备用工具最好和主力<strong>来自不同的模型家族</strong>。比如主力用 OpenCode 跑 Claude，备用就选 Codex CLI。这样它可以给你「第二意见」：让不同家族的模型交叉审查同一份代码，比同一个模型自己检查自己可靠。但记住——<strong>交叉审查是过滤器，不是验收人</strong>。最终签字，永远是你。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="四该把-agent-当主力入口吗">四、该把 Agent 当主力入口吗？<a href="https://dnevend.site/blog/terminal-agents#%E5%9B%9B%E8%AF%A5%E6%8A%8A-agent-%E5%BD%93%E4%B8%BB%E5%8A%9B%E5%85%A5%E5%8F%A3%E5%90%97" class="hash-link" aria-label="四、该把 Agent 当主力入口吗？的直接链接" title="四、该把 Agent 当主力入口吗？的直接链接" translate="no">​</a></h2>
 <p>我的结论是：<strong>做工程和知识工作，值得；什么事都交给它，不值得。</strong></p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="适合交给-agent-的">适合交给 Agent 的<a href="https://dnevend.site/blog/terminal-agents#%E9%80%82%E5%90%88%E4%BA%A4%E7%BB%99-agent-%E7%9A%84" class="hash-link" aria-label="适合交给 Agent 的的直接链接" title="适合交给 Agent 的的直接链接" translate="no">​</a></h3>
+<p>适合交给它的，是跨文件改动、排查 bug、调研、写脚本、整理资料；是那些<strong>能沉淀的事情</strong>——AGENTS.md、技能、MCP 一旦写好，以后每次都受益；是<strong>有明确验收标准的任务</strong>——测试跑通、命令输出符合预期。</p>
+<p>不适合交给它的，恰恰是那些最「简单」的：</p>
 <ul>
-<li class="">跨文件改动、排查 bug、调研、写脚本、整理资料</li>
-<li class=""><strong>能沉淀的事情</strong>：AGENTS.md、技能、MCP 一旦写好，以后每次都受益，越用越顺手</li>
-<li class=""><strong>有明确验收标准的任务</strong>：测试跑通、命令输出符合预期</li>
+<li class=""><strong>确定性的操作</strong>：<code>git status</code>、跑一个已知命令。直接敲更快，几乎零成本。</li>
+<li class=""><strong>一句话就能问完的问题</strong>：聊天窗口更轻，不用背着几千 token 的工具定义。</li>
+<li class=""><strong>审核与最终判断</strong>：这一步必须是人，最好在 IDE 或 diff 工具里看。</li>
+<li class=""><strong>高风险操作</strong>：生产环境、密钥、删数据。存在提示词注入和误操作的风险，必须有权限拦截。</li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="不适合交给-agent-的">不适合交给 Agent 的<a href="https://dnevend.site/blog/terminal-agents#%E4%B8%8D%E9%80%82%E5%90%88%E4%BA%A4%E7%BB%99-agent-%E7%9A%84" class="hash-link" aria-label="不适合交给 Agent 的的直接链接" title="不适合交给 Agent 的的直接链接" translate="no">​</a></h3>
-<ul>
-<li class=""><strong>确定性的操作</strong>：<code>git status</code>、跑一个已知命令。直接敲更快，而且几乎零成本</li>
-<li class=""><strong>一句话就能问完的问题</strong>：聊天窗口更轻，不用背着几千 token 的工具定义</li>
-<li class=""><strong>审核与最终判断</strong>：这一步必须是人，最好在 IDE 或 diff 工具里看</li>
-<li class=""><strong>高风险操作</strong>：生产环境、密钥、删数据。存在提示词注入和误操作的风险，必须有权限拦截</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="你要付出的代价">你要付出的代价<a href="https://dnevend.site/blog/terminal-agents#%E4%BD%A0%E8%A6%81%E4%BB%98%E5%87%BA%E7%9A%84%E4%BB%A3%E4%BB%B7" class="hash-link" aria-label="你要付出的代价的直接链接" title="你要付出的代价的直接链接" translate="no">​</a></h3>
-<ol>
-<li class=""><strong>成本随回合数膨胀</strong>。每一轮工具调用都会把整个上下文重发一遍。我自己就踩过坑：几个三四个小时、两百多轮的长会话，吃掉了绝大部分的缓存读取费用，上下文涨到将近 50 万 token。<strong>最贵的不是某次输出有多长，而是回合数和上下文体积。</strong></li>
-<li class=""><strong>「完成」不等于正确</strong>。Agent 很擅长自信地说「搞定了」。没有可执行的证据（测试、命令输出），就不能算完成。</li>
-<li class=""><strong>被单一工具绑定</strong>。所有流程都写死在一个工具里，换工具的代价就会很高。</li>
-<li class=""><strong>自身能力退化</strong>。代码全交出去，你对代码库的理解会越来越浅。</li>
-</ol>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="五我现在的用法">五、我现在的用法<a href="https://dnevend.site/blog/terminal-agents#%E4%BA%94%E6%88%91%E7%8E%B0%E5%9C%A8%E7%9A%84%E7%94%A8%E6%B3%95" class="hash-link" aria-label="五、我现在的用法的直接链接" title="五、我现在的用法的直接链接" translate="no">​</a></h2>
-<p>把上面的思考落地，我的工作流是这样的：</p>
-<p><strong>1. 按任务选入口，而不是只有一个入口</strong></p>
-<table><thead><tr><th>任务</th><th>入口</th></tr></thead><tbody><tr><td>确定性命令</td><td>直接用终端</td></tr><tr><td>快速提问</td><td>聊天窗口</td></tr><tr><td>工程任务</td><td>OpenCode（主管 + 小弟）</td></tr><tr><td>批量小任务</td><td>云端异步 Agent</td></tr><tr><td>生活与消息类事务</td><td>OpenClaw</td></tr></tbody></table>
-<p><strong>2. 主管 + 小弟的模型分档</strong></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="五驯马的规矩">五、驯马的规矩<a href="https://dnevend.site/blog/terminal-agents#%E4%BA%94%E9%A9%AF%E9%A9%AC%E7%9A%84%E8%A7%84%E7%9F%A9" class="hash-link" aria-label="五、驯马的规矩的直接链接" title="五、驯马的规矩的直接链接" translate="no">​</a></h2>
+<p>上面这些，都是我用几次翻车换来的。规矩本身不值钱，值钱的是<strong>规矩是怎么来的</strong>。下面每一条，我都把吃过的亏一并写上。</p>
+<p><strong>1. 一个主管 + 一群小弟，贵的脑子只用在刀刃上。</strong></p>
 <p>在 OpenCode 里，我让最强的模型只做「主管」：拆解任务、写简报、做关键决策、审结果。读代码库交给便宜快速的模型，写代码交给性价比高的模型，验收交给<strong>另一个家族</strong>的模型，专门找茬。</p>
-<p>这样贵的模型只花在刀刃上，而且「写的人」和「审的人」不是同一个脑子。</p>
-<p><strong>3. 配置资产与工具解耦</strong></p>
-<p>AGENTS.md、技能、MCP 配置尽量写成通用格式，集中放在一个仓库里，再同步到各个工具。哪天要从 OpenCode 换到别的工具，搬家成本很低。</p>
-<p><strong>4. 用证据说话，会话有预算</strong></p>
-<ul>
-<li class="">每个改动收尾都必须有验证结果。要么通过，要么明确写「已改，未验证，原因是……」。</li>
-<li class="">会话设硬阈值（比如 50 轮或 150k 上下文），到了就写交接、开新会话，不要硬撑。</li>
-<li class="">一个任务一个会话，话题岔开就新开。</li>
-</ul>
+<p>这么排，是因为写的人和审的人不能是同一个脑子——同一个模型自己检查自己，等于让嫌犯写判决书。</p>
+<p><strong>2. 成本随回合数膨胀，会话要有硬预算。</strong></p>
+<p>每一轮工具调用，都会把整个上下文重发一遍。最贵的不是某次输出有多长，而是回合数和上下文体积。</p>
+<p>我踩过的坑很具体：4 个三四个小时、两百多轮的长会话，吃掉了三分之二的缓存读取费用，上下文涨到将近 50 万 token。从那以后我给自己定死：<strong>50 轮或 150k 上下文，先到者收尾</strong>，到了就写交接、开新会话，不硬撑；一个任务一个会话，话题岔开就新开。</p>
+<p><strong>3. 「完成」不等于正确，用证据说话。</strong></p>
+<p>Agent 最擅长的，是自信地说「搞定了」。没有可执行的证据（测试、命令输出），就不能算完成。每个改动收尾，要么通过，要么明确写「已改，未验证，原因是……」。我把这条写进了机器能读的规矩里，也写进了自己脑子里。</p>
+<p><strong>4. 配置资产与工具解耦。</strong></p>
+<p>AGENTS.md、技能、MCP 配置尽量写成通用格式，集中放在一个仓库里，再同步到各个工具。哪天从 OpenCode 换到别的工具，搬家成本很低。（顺带一句：AGENTS.md 现在几乎是各家共识，连 Claude Code 也原生读了——不过它只认 CLAUDE.md 的脾气还在，项目里一旦有个 CLAUDE.md，AGENTS.md 它就不看了。）</p>
+<p><strong>5. 不要把自己养废。</strong></p>
+<p>代码全交出去，你对代码库的理解会越来越浅。驯马的前提，是你自己还得是个会骑马的人。调教它，不是被它替代——是让它替你跑腿，替你记住那些吃亏换来的规矩，好让你能把脑子花在真正需要判断的地方。</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="结语">结语<a href="https://dnevend.site/blog/terminal-agents#%E7%BB%93%E8%AF%AD" class="hash-link" aria-label="结语的直接链接" title="结语的直接链接" translate="no">​</a></h2>
-<p>回到开头的三个问题：</p>
+<p>回到最初那个问错的问题。</p>
 <ul>
 <li class=""><strong>都是 Agent 吗？</strong> 都是「外壳 + 界面」。Agent 是模型和外壳的组合，看懂分层，你才知道该换的是模型还是工具。</li>
-<li class=""><strong>哪个好？</strong> 功能已经趋同，选它的模型、它的收费方式和它的开放程度。一个主力加一个异族备用，足够了。</li>
-<li class=""><strong>该当主力入口吗？</strong> 该，但要守住两条底线：<strong>人负责验收</strong>，<strong>资产不被绑架</strong>。</li>
+<li class=""><strong>哪个好？</strong> 功能已经趋同，选它的模型、收费方式和开放程度。一个主力加一个异族备用，足够了。</li>
+<li class=""><strong>该当主力入口吗？</strong> 该，但要守住两条底线：<strong>人负责验收，资产不被绑架。</strong></li>
 </ul>
-<p>工具会一直换，今天的第一梯队明年可能就不在了。真正能留下来的，是你对这三层的理解、你沉淀下来的配置和技能，以及「没有证据就不算完成」的习惯。</p>]]></content>
+<p>工具会一茬一茬地换，今年的第一梯队，明年未必还在。留得下来的，是你写进 AGENTS.md 的那些吃亏换来的规矩，和「没有证据就不算完成」这条底线。</p>]]></content>
         <author>
             <name>小学后生</name>
             <uri>https://dnevend.github.io</uri>
