@@ -2,12 +2,15 @@
 slug: stoic-printer
 title: 斯多葛打印机
 description: 用 AI 调度起一条流水线：抓取、翻译、排版、打印、朗读。每天清晨九点，一台热敏打印机吐出一页斯多葛。
+image: ./pipeline.png
 date: 2026-10-20
 authors: [Dnevend]
-tags: [共笔, AI, OpenClaw, 英语学习]
+tags: [捉刀, AI, OpenClaw, 英语学习]
 ---
 
 # 斯多葛打印机
+
+[![自动化流程示意图：09:00 由 launchd 拉起，抓取、翻译、生词、配图、打印、朗读，最后落到热敏打印机与 Telegram](./pipeline.png)](./pipeline.png)
 
 书桌一角，近来多了一台旧热敏打印机。二手市场上捡来的，原本是给小饭馆打菜单、给超市打流水的命，如今被我派了个闲差：每天早上九点，自己醒来，吐出一页斯多葛。
 
@@ -96,5 +99,8 @@ later or the conversation we had the other day.
 
 项目开源，想自己攒一台的，请便：[github.com/Dnevend/daily-stoic-printer](https://github.com/Dnevend/daily-stoic-printer)。
 
-![附：程序渲染的小票预览](./receipt.png)
+<!--![附：程序渲染的小票预览](./receipt.png)-->
 
+:::tip
+本文由Claude代为捉刀，我负责提供结构和文笔以及修订。
+:::

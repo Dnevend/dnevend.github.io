@@ -4,9 +4,9 @@
 # 好处：标签 URL 不再被 lodash.kebabCase 自动推导（例如 OpenCode → open-code），
 # 也让 "Claude Code"、"Telegram BOT" 之类的展示名不被 _.capitalize 改写。
 
-共笔:
-  label: 共笔
-  permalink: /共笔
+捉刀:
+  label: 捉刀
+  permalink: /捉刀
 
 AI:
   label: AI
