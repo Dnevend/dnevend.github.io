@@ -13,7 +13,8 @@
         <link href="https://dnevend.site/blog/stoic-printer"/>
         <updated>2026-10-20T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[用 AI 调度起一条流水线：抓取、翻译、排版、打印、朗读。每天清晨九点，一台热敏打印机吐出一页斯多葛。]]></summary>
-        <content type="html"><![CDATA[<p>书桌一角，近来多了一台旧热敏打印机。二手市场上捡来的，原本是给小饭馆打菜单、给超市打流水的命，如今被我派了个闲差：每天早上九点，自己醒来，吐出一页斯多葛。</p>
+        <content type="html"><![CDATA[<p><a href="https://dnevend.site/assets/files/pipeline-e69bfa8dc4f4552026318a577adc164d.png" target="_blank" class=""><img decoding="async" loading="lazy" alt="自动化流程示意图：09:00 由 launchd 拉起，抓取、翻译、生词、配图、打印、朗读，最后落到热敏打印机与 Telegram" src="https://dnevend.site/assets/images/pipeline-e69bfa8dc4f4552026318a577adc164d.png" width="1600" height="900" class="img_ev3q"></a></p>
+<p>书桌一角，近来多了一台旧热敏打印机。二手市场上捡来的，原本是给小饭馆打菜单、给超市打流水的命，如今被我派了个闲差：每天早上九点，自己醒来，吐出一页斯多葛。</p>
 <p>纸上是一篇短文，英文在前，译文在后，挑几个生词，配一幅黑白小图。印完了，电脑再把英文念一遍，送进我的 Telegram。纸在桌上，声音在耳边，一日的功课就算开了头。</p>
 <p>这台机器从头到尾，是我指挥 AI 搭起来的。写下来，一是记它怎样转起来；二是记中途那些坑——坑是 AI 一个个排查、一个个填平的，我只在几个岔路口拍了板。这条路走下来，恰好能说明白一件事：AI 替我们干了什么，又有什么是它替不了的。</p>
 <p>从废纸到成品：</p>
@@ -60,12 +61,12 @@
 <p>我从没指望它给我多漂亮的译文。我要的，是它每天把我按在椅子上：读一段英文，查两个词，想一分钟。聊天框做不到的事，一张纸做到了。</p>
 <p>还有一层，是后来才想到的。热敏纸不耐久，搁上几年，字迹便一点点淡下去，最后只剩一张白纸。斯多葛派常说 memento mori——记住你终有一死。这台打印机每天印出来的，原就是一页会消失的字。正因为会消失，那天早上读它的那一分钟，才显得要紧。</p>
 <p>项目开源，想自己攒一台的，请便：<a href="https://github.com/Dnevend/daily-stoic-printer" target="_blank" rel="noopener noreferrer" class="">github.com/Dnevend/daily-stoic-printer</a>。</p>
-<p><img decoding="async" loading="lazy" alt="附：程序渲染的小票预览" src="https://dnevend.site/assets/images/receipt-a3ada420b3e994ac9a4dbee5c3a4dde2.png" width="576" height="3694" class="img_ev3q"></p>]]></content>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>提示</div><div class="admonitionContent_BuS1"><p>本文由Claude代为捉刀，我负责提供结构和文笔以及修订。</p></div></div>]]></content>
         <author>
             <name>小学后生</name>
             <uri>https://dnevend.github.io</uri>
         </author>
-        <category label="共笔" term="共笔"/>
+        <category label="捉刀" term="捉刀"/>
         <category label="AI" term="AI"/>
         <category label="OpenClaw" term="OpenClaw"/>
         <category label="英语学习" term="英语学习"/>
