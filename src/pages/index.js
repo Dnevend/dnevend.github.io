@@ -28,7 +28,11 @@ function HomepageHeader() {
 
 export default function Home() {
   return (
-    <Layout title="Welcome" description="在战争中学习战争">
+    <Layout
+      title="Welcome"
+      description="在战争中学习战争"
+      wrapperClassName="homepage-wrapper"
+    >
       <HomepageHeader />
       <main>
         <HomepageFeatures />
