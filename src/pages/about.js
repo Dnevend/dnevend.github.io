@@ -1,13 +1,17 @@
 import React from "react";
 import Layout from "@theme/Layout";
+import SocialLinks from "@site/src/components/SocialLinks";
 import styles from "./about.module.css";
+import Jianghu from "../../static/img/about/jianghu.jpg";
+import LeeAo from "../../static/img/about/leeao.jpg";
+import VoyagerGoldenRecords from "../../static/img/about/voyager_golden_records.jpg";
+import YeFu from "../../static/img/about/yefu.jpg";
 
-const links = [
-  { label: "GitHub", href: "https://github.com/Dnevend" },
-  { label: "Twitter", href: "https://twitter.com/Dnevend_09" },
-  { label: "即刻", href: "https://okjk.co/YFO95r" },
-  { label: "留言", href: "https://tally.so/r/nPBJRe" },
-  { label: "RSS", href: "/blog/rss.xml" },
+const gallery = [
+  { src: LeeAo, alt: "李敖黑白肖像" },
+  { src: YeFu, alt: "野夫黑白肖像" },
+  { src: VoyagerGoldenRecords, alt: "旅行者金唱片" },
+  { src: Jianghu, alt: "《江湖》封面" },
 ];
 
 export default function About() {
@@ -19,40 +23,34 @@ export default function About() {
             <span className={styles.eyebrow}>ABOUT</span>
             <h1 className={styles.title}>关于</h1>
             <p className={styles.lead}>
-              我是 Dnevend，一名 Full Stack Developer。这里记录技术、阅读，以及一些还没想清楚的问题。
+              你好👋我是小学後生，现位于浙江湖州，一名全栈开发者。关注技术、人文、区块链及前沿AI应用。
             </p>
+            <SocialLinks className={styles.socials} align="flex-start" />
           </header>
 
           <div className={styles.grid}>
             <section className={styles.bio}>
-              <h2 className={styles.sectionTitle}>这个站点</h2>
+              <h2 className={styles.sectionTitle}>我</h2>
               <p>
-                「小学後生」是我的个人站点，用 Docusaurus 搭建。博客持续更新；Wiki 与
-                Mark 已经归档，只作留存。
+                我喜欢阅读，读过深奥的哲学想要显摆却发现我的脑袋只适合当个普通人，现在喜欢简单纯粹的文字。令我沉迷的作家有李敖、野夫还有匡笑余，我沉醉于他们笔触里的江湖色彩以及他们身上所具有的近乎古人的风范。
               </p>
               <p>
-                写的东西大多围绕前端工程、链上应用与 AI
-                工具，也会记录把日常小问题做成工具的过程。
+                我喜欢运动，情绪低落的时候总得找个出口，曾跑过半马、横渡钱塘江，也骑单车七百多公里自湖州出发经过富春江翻过会稽山跨过剡溪直至舟山岛游历唐诗之路。
               </p>
               <p>
-                如果这里某篇文章对你有用，或者你想聊聊，欢迎随时找我。
+                音乐是上帝赐给人类的礼物，我喜欢听歌，很难想象没有音乐的生活会是多么暗淡。我的耳朵曾流浪在各个年代、语种和地区，现在它找到了娘家平时爱听些粤语歌曲，不过最终我会选择待在江湖边的“秘密後院”里白日看世态炎凉，夜来再把吴钩暗赏。
               </p>
             </section>
 
-            <aside className={styles.panel}>
-              <h2 className={styles.panelTitle}>找到我</h2>
-              <ul className={styles.links}>
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <a className={styles.link} href={link.href}>
-                      <span>{link.label}</span>
-                      <span className={styles.linkArrow} aria-hidden="true">
-                        →
-                      </span>
-                    </a>
-                  </li>
+            <aside className={styles.galleryPanel}>
+              <h2 className={styles.sectionTitle}>它们</h2>
+              <div className={styles.gallery}>
+                {gallery.map(({ src, alt }) => (
+                  <figure key={alt} className={styles.galleryItem}>
+                    <img src={src} alt={alt} loading="lazy" />
+                  </figure>
                 ))}
-              </ul>
+              </div>
             </aside>
           </div>
         </div>
