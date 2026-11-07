@@ -5,12 +5,11 @@ import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import BlogList from "@site/src/components/BlogList";
 import SocialLinks from "@site/src/components/SocialLinks";
-import { TAGLINE } from "@site/src/constants/tagline";
 import styles from "./index.module.css";
 import ZhanXiFuChangLiu from "../../static/img/zxfcl.png";
 import YunWoYiShangLeng from "../../static/img/ywysl.png";
 
-const QUOTE_TEXT = `“${TAGLINE}”`;
+const INTRO_TEXT = "Hi, I'm Dnevend 👋 · 全干开发者";
 
 function useTypewriter(text, speed = 40) {
   const [count, setCount] = React.useState(0);
@@ -49,46 +48,39 @@ function useTypewriter(text, speed = 40) {
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
-  const { visibleText, isTyping } = useTypewriter(QUOTE_TEXT);
+  const { visibleText, isTyping } = useTypewriter(INTRO_TEXT);
 
   return (
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className={styles.heroContent}>
         <div className={styles.heroIntro}>
-          <span className={styles.heroGreetingText}>
-            Hi, I&apos;m Dnevend 👋
+          <span className={styles.heroIntroText}>
+            <span className={styles.heroIntroPlaceholder} aria-hidden="true">
+              {INTRO_TEXT}
+            </span>
+            <span className={styles.heroIntroTyped} aria-hidden="true">
+              {visibleText}
+              {isTyping && <span className={styles.typeCaret} />}
+            </span>
           </span>
-          <span className={styles.heroIntroDot} aria-hidden="true">
-            ·
+          <span
+            className={clsx(
+              styles.heroIntroTail,
+              !isTyping && styles.heroIntroTailVisible,
+            )}
+          >
+            <span className={styles.heroIntroDot} aria-hidden="true">
+              ·
+            </span>
+            <Link to="/about" className={styles.heroLink}>
+              关于我
+              <span aria-hidden="true">→</span>
+            </Link>
           </span>
-          <span className={styles.heroRoleInline}>
-            全干开发者
-          </span>
-          <span className={styles.heroIntroDot} aria-hidden="true">
-            ·
-          </span>
-          <Link to="/about" className={styles.heroLink}>
-            关于我
-            <span aria-hidden="true">→</span>
-          </Link>
+          <span className={styles.srOnly}>Hi, I&apos;m Dnevend，全干开发者。</span>
         </div>
 
         <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
-
-        <div className={styles.heroQuote}>
-          <p className={styles.heroQuoteText} aria-hidden="true">
-            <span className={styles.quotePlaceholder}>{QUOTE_TEXT}</span>
-            <span className={styles.quoteTyped}>
-              {visibleText}
-              {isTyping && <span className={styles.quoteCaret} />}
-            </span>
-          </p>
-          <span className={styles.srOnly}>{QUOTE_TEXT}</span>
-          <Link to="/mark/mind-sentence" className={styles.heroLink}>
-            摘录
-            <span aria-hidden="true">→</span>
-          </Link>
-        </div>
 
         <SocialLinks className={styles.heroSocials} />
       </div>

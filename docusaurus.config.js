@@ -109,7 +109,7 @@ const config = {
             items: [
               { label: 'Overview', to: '/archive' },
               { label: 'Wiki', to: '/docs/intro' },
-              { label: 'Mark', to: '/mark/2024' },
+              { label: 'Mark', to: '/mark/mind-sentence' },
             ],
           },
           { to: '/about', label: 'About', position: 'left' },

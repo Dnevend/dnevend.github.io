@@ -131,13 +131,37 @@
   line-height: 1.6;
 }
 
-.heroGreetingText {
-  color: var(--custom-text-primary);
-  font-weight: 600;
+.heroIntroText {
+  display: grid;
+  justify-items: start;
 }
 
-.heroRoleInline {
-  color: var(--custom-text-secondary);
+.heroIntroPlaceholder,
+.heroIntroTyped {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+}
+
+.heroIntroPlaceholder {
+  visibility: hidden;
+}
+
+.heroIntroTyped {
+  justify-self: start;
+}
+
+.heroIntroTail {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.heroIntroTail.heroIntroTailVisible {
+  opacity: 1;
+  visibility: visible;
 }
 
 .heroIntroDot {
@@ -186,60 +210,17 @@
   }
 }
 
-.heroQuote {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.85rem;
-  max-width: 760px;
-  margin-top: 2rem;
-  padding: 1.5rem 1rem 0;
-  border-top: 1px solid var(--custom-border-color);
-}
-
-.heroQuoteText {
-  display: grid;
-  width: 100%;
-  max-width: 62ch;
-  margin: 0;
-  color: var(--custom-text-secondary);
-  font-family: var(--font-serif);
-  font-size: 0.95rem;
-  font-weight: 400;
-  line-height: 1.85;
-  letter-spacing: 0.01em;
-  text-align: center;
-  justify-items: center;
-  align-items: start;
-}
-
-.quotePlaceholder,
-.quoteTyped {
-  grid-area: 1 / 1;
-  width: 100%;
-  text-align: center;
-}
-
-.quotePlaceholder {
-  visibility: hidden;
-}
-
-.quoteTyped {
-  visibility: visible;
-}
-
-.quoteCaret {
+.typeCaret {
   display: inline-block;
   width: 2px;
   height: 1em;
   margin-left: 0.1em;
   background: var(--ifm-color-primary);
   vertical-align: -0.12em;
-  animation: quoteCaretBlink 0.9s steps(2, start) infinite;
+  animation: typeCaretBlink 0.9s steps(2, start) infinite;
 }
 
-@keyframes quoteCaretBlink {
+@keyframes typeCaretBlink {
   0%,
   45% {
     opacity: 1;
@@ -398,19 +379,12 @@
     display: none;
   }
 
+  .heroIntroTail {
+    gap: 0;
+  }
+
   .heroLink {
     font-size: 0.8rem;
-  }
-
-  .heroQuote {
-    margin-top: 1.75rem;
-    padding-top: 1.25rem;
-  }
-
-  .heroQuoteText {
-    padding: 0 0.25rem;
-    font-size: 0.9rem;
-    line-height: 1.8;
   }
 
   .heroSocials {
@@ -434,7 +408,11 @@
     transition: none;
   }
 
-  .quoteCaret {
+  .heroIntroTail {
+    transition: none;
+  }
+
+  .typeCaret {
     animation: none;
   }
 }
