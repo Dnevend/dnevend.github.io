@@ -91,6 +91,11 @@ const config = {
     ({
       // 站点分享卡片（OpenGraph / Twitter）
       image: 'img/social-card.jpg',
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
+      },
       navbar: {
         title: 'Dnevend',
         // logo: {
