@@ -4,9 +4,38 @@ import Link from "@docusaurus/Link";
 import Head from "@docusaurus/Head";
 import { useBlogPosts } from "@site/src/hooks/useBlogPosts";
 
+function getPostYear(date) {
+  const match = typeof date === "string" ? date.match(/^(\d{4})-\d{2}-\d{2}/) : null;
+  return match ? match[1] : "未知年份";
+}
+
+function formatPostDay(date) {
+  const match =
+    typeof date === "string" ? date.match(/^\d{4}-(\d{2})-(\d{2})/) : null;
+  return match ? `${match[1]}.${match[2]}` : "—";
+}
+
 export default function BlogList() {
   // 数据来自 plugins/blog-home-data 全局数据，构建时与博客插件保持一致
   const posts = useBlogPosts(6);
+
+  // 按年份分组，保持文章原有的时间倒序
+  const yearGroups = React.useMemo(() => {
+    const groups = [];
+    const index = new Map();
+
+    posts.forEach((post) => {
+      const year = getPostYear(post.date);
+      if (!index.has(year)) {
+        const group = { year, posts: [] };
+        index.set(year, group);
+        groups.push(group);
+      }
+      index.get(year).posts.push(post);
+    });
+
+    return groups;
+  }, [posts]);
 
   // 生成结构化数据
   const structuredData = React.useMemo(() => {
@@ -69,40 +98,77 @@ export default function BlogList() {
           </Link>
         </div>
 
-        <div className={styles.blogPosts}>
+        <div className={styles.timeline}>
           {posts.length === 0 ? (
             <div className={styles.emptyState}>
               <p>暂无博客文章</p>
             </div>
           ) : (
-            posts.map((post) => (
-              <article key={post.permalink} className={styles.blogPost}>
-                <Link to={post.permalink} className={styles.blogPostLink}>
-                  <div className={styles.blogPostContent}>
-                    <h3 className={styles.blogPostTitle}>
-                      {post.title || "无标题"}
-                    </h3>
-                    <p className={styles.blogPostDescription}>
-                      {post.description || ""}
-                    </p>
-                    <div className={styles.blogPostMeta}>
-                      <time className={styles.blogPostDate}>
-                        {post.date
-                          ? new Date(post.date).toLocaleDateString("zh-CN")
-                          : "未知日期"}
-                      </time>
-                      <div className={styles.blogPostTags}>
-                        {post.tags &&
-                          post.tags.map((tag, tagIndex) => (
-                            <span key={tagIndex} className={styles.blogPostTag}>
-                              {tag.label || tag}
-                            </span>
-                          ))}
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </article>
+            yearGroups.map(({ year, posts: yearPosts }) => (
+              <section
+                key={year}
+                className={styles.yearGroup}
+                aria-labelledby={`year-${year}`}
+              >
+                <header className={styles.yearMarker}>
+                  <h3 id={`year-${year}`} className={styles.yearLabel}>
+                    {year}
+                  </h3>
+                  <span className={styles.yearCount}>
+                    {yearPosts.length} 篇
+                  </span>
+                </header>
+
+                <div className={styles.yearPosts}>
+                  {yearPosts.map((post) => (
+                    <article key={post.permalink} className={styles.postItem}>
+                      <Link to={post.permalink} className={styles.postLink}>
+                        <time
+                          className={styles.postDate}
+                          dateTime={post.date}
+                          title={
+                            typeof post.date === "string"
+                              ? post.date.slice(0, 10)
+                              : "未知日期"
+                          }
+                        >
+                          {formatPostDay(post.date)}
+                        </time>
+
+                        <div className={styles.postBody}>
+                          <h4 className={styles.postTitle}>
+                            {post.title || "无标题"}
+                          </h4>
+                          {post.description && (
+                            <p className={styles.postDescription}>
+                              {post.description}
+                            </p>
+                          )}
+                          {post.tags && post.tags.length > 0 && (
+                            <div className={styles.postTags}>
+                              {post.tags.map((tag, tagIndex) => (
+                                <span
+                                  key={tagIndex}
+                                  className={styles.postTag}
+                                >
+                                  {tag.label || tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+
+                        <span
+                          className={styles.postArrow}
+                          aria-hidden="true"
+                        >
+                          →
+                        </span>
+                      </Link>
+                    </article>
+                  ))}
+                </div>
+              </section>
             ))
           )}
         </div>
