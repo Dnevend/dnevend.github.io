@@ -25,7 +25,7 @@ tags: [fe-basic, html-guide]
 
 - [Less 编码规范](https://github.com/ecomfe/spec/blob/master/less-code-style.md)
 
-- [现代 CSS 特性](/docs/fe-basic/modern-css/index.mdx)
+- [现代 CSS 特性](/docs/fe-basic/modern-css)
 
 ## Typescript
 
@@ -33,4 +33,4 @@ tags: [fe-basic, html-guide]
 
 ## a11y
 
-- [Web 可访问性](/docs/fe-basic/a11y.md)
+- [Web 可访问性](/docs/fe-basic/a11y)

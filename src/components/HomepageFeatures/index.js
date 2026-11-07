@@ -5,22 +5,22 @@ import Link from '@docusaurus/Link';
 
 const FeatureList = [
   {
-    title: '知识库',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    // description: <>系统性再整理</>,
-    linkTo: '/docs/intro'
-  },
-  {
-    title: '记录',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    // description: <>有营养的信息和内容</>,
-    linkTo: '/mark/2024'
-  },
-  {
     title: '博客',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    // description: <>最美的梨花即将被写出</>,
+    description: <>持续更新的文章与思考</>,
     linkTo: '/blog'
+  },
+  {
+    title: '归档',
+    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    description: <>Wiki 与 Mark 的旧资料</>,
+    linkTo: '/archive'
+  },
+  {
+    title: '友链',
+    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    description: <>朋友们的主页</>,
+    linkTo: '/friend-links'
   },
 ];
 

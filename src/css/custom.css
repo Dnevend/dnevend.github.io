@@ -291,6 +291,46 @@
   }
 }
 
+/* Archived docs notice */
+.archive-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 0 0 2rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-left: 3px solid var(--ifm-color-warning);
+  border-radius: 10px;
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.archive-notice a {
+  color: var(--ifm-color-primary);
+}
+
+.archive-notice__badge {
+  flex: 0 0 auto;
+  margin-top: 0.1rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--ifm-color-warning);
+  color: #1a1a1a;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+[data-theme="dark"] .archive-notice {
+  border-color: rgba(245, 158, 11, 0.22);
+  border-left-color: var(--ifm-color-warning);
+  background: rgba(245, 158, 11, 0.08);
+  color: var(--ifm-color-emphasis-800);
+}
+
 /* Enhanced Main Content */
 main {
   position: relative;

@@ -40,6 +40,8 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path: 'archive/wiki',
+          routeBasePath: 'docs',
           sidebarPath: require.resolve('./sidebars.js'),
         },
         blog: {
@@ -75,7 +77,7 @@ const config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'mark',
-        path: 'mark',
+        path: 'archive/mark',
         routeBasePath: 'mark',
         sidebarPath: require.resolve('./sidebars.mark.js'),
       },
@@ -98,20 +100,18 @@ const config = {
         //   height: 32
         // },
         items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'wikiSidebar',
-            position: 'left',
-            label: 'Wiki',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'markSidebar',
-            label: 'Mark',
-            position: 'left',
-            docsPluginId: 'mark'
-          },
           { to: '/blog', label: 'Blog', position: 'left' },
+          {
+            type: 'dropdown',
+            label: 'Archive',
+            position: 'left',
+            to: '/archive',
+            items: [
+              { label: 'Overview', to: '/archive' },
+              { label: 'Wiki', to: '/docs/intro' },
+              { label: 'Mark', to: '/mark/2024' },
+            ],
+          },
         ],
       },
       footer: {
@@ -120,6 +120,10 @@ const config = {
           {
             title: 'More',
             items: [
+              {
+                label: '归档',
+                to: '/archive',
+              },
               {
                 label: '友链',
                 to: '/friend-links',
