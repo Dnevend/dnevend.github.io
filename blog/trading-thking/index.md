@@ -1,7 +1,7 @@
 ---
 slug: trading-thinking
 title: 多么痛的领悟
-description: 总结一下那些在二级市场不断受到的教训，现在学费交的差不多了，准备夺回属于我的一切
+description: 总结一下那些在加密货币二级市场不断受到的教训
 date: 2025-11-08
 authors: [Dnevend]
 tags: [Crypto, Trading]

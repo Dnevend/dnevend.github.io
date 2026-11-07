@@ -1,7 +1,7 @@
 ---
 slug: tg-payment-guide
-title: Telegram 支付机器人开发小记
-description: 基于Grammy框架的 Telegram Bot 支付机器人（TON、Star）开发小记
+title: Telegram 支付机器人
+description: 基于Grammy框架的 Telegram Bot 支付机器人（TON、Star）开发
 date: 2024-08-01
 authors: [Dnevend]
 tags: [Telegram BOT, Telegram Stars, TON]

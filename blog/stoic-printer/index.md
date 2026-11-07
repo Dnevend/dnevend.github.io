@@ -1,7 +1,7 @@
 ---
 slug: stoic-printer
 title: 斯多葛打印机
-description: 用 AI 调度起一条流水线：抓取、翻译、排版、打印、朗读。每天清晨九点，一台热敏打印机吐出一页斯多葛。
+description: 用 AI 调度起一条流水线，每天清晨九点让打印机吐出一页英语学习文档
 image: ./pipeline.png
 date: 2026-10-20
 authors: [Dnevend]

@@ -1,7 +1,7 @@
 ---
 slug: debug-mobile-web
 title: 移动端调试指南
-description: 前端怎么在移动端进行调试？`chrome://inspect` 和 `whistle` 助你搞定一切
+description: 通过`chrome://inspect` 和 `whistle`对移动设备前端页面进行远程调试
 date: 2024-06-01
 authors: [Dnevend]
 tags: [tech]

@@ -112,6 +112,7 @@ const config = {
               { label: 'Mark', to: '/mark/2024' },
             ],
           },
+          { to: '/about', label: 'About', position: 'left' },
         ],
       },
       footer: {
@@ -123,10 +124,6 @@ const config = {
               {
                 label: '归档',
                 to: '/archive',
-              },
-              {
-                label: '友链',
-                to: '/friend-links',
               },
               {
                 label: '留言',

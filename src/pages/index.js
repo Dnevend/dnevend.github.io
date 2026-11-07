@@ -2,14 +2,11 @@ import React from "react";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import BlogList from "@site/src/components/BlogList";
+import { TAGLINE } from "@site/src/constants/tagline";
 import styles from "./index.module.css";
 import ZhanXiFuChangLiu from "../../static/img/zxfcl.png";
 import YunWoYiShangLeng from "../../static/img/ywysl.png";
-
-const tagline =
-  "你不能搞混两样东西，一是你终将胜利的信念，这是你最输不起的；二是训练自己直面残酷现实，无论现实多残酷。";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -18,7 +15,7 @@ function HomepageHeader() {
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className={styles.heroContent}>
         <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
-        <p className={styles.heroSubtitle}>{tagline}</p>
+        <p className={styles.heroSubtitle}>{TAGLINE}</p>
       </div>
 
       <img src={ZhanXiFuChangLiu} alt="展席俯長流" className={styles.zxfcl} />
@@ -35,7 +32,6 @@ export default function Home() {
     >
       <HomepageHeader />
       <main>
-        <HomepageFeatures />
         <BlogList />
         <img src={YunWoYiShangLeng} alt="雲臥衣裳冷" className={styles.ywysl} />
       </main>
