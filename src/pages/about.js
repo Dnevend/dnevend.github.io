@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./about.module.css";
 
 const links = [
@@ -12,26 +11,13 @@ const links = [
 ];
 
 export default function About() {
-  const avatar = useBaseUrl("/img/avatar.webp");
-
   return (
     <Layout title="关于" description="关于 Dnevend 与小学後生">
       <main className={styles.about}>
         <div className={styles.inner}>
           <header className={styles.header}>
-            <div className={styles.identity}>
-              <img
-                src={avatar}
-                alt="Dnevend"
-                className={styles.avatar}
-                width="88"
-                height="88"
-              />
-              <div>
-                <span className={styles.eyebrow}>ABOUT</span>
-                <h1 className={styles.title}>关于</h1>
-              </div>
-            </div>
+            <span className={styles.eyebrow}>ABOUT</span>
+            <h1 className={styles.title}>关于</h1>
             <p className={styles.lead}>
               我是 Dnevend，一名 Full Stack Developer。这里记录技术、阅读，以及一些还没想清楚的问题。
             </p>
