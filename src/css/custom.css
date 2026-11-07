@@ -4,6 +4,17 @@
  * work well for content-centric websites.
  */
 
+/* Self-hosted fallback subset of Noto Serif SC (SIL OFL).
+   Only used when no native Chinese serif font is available.
+   Source and regeneration notes: /fonts/README.md */
+@font-face {
+  font-family: "Site Serif";
+  src: url("/fonts/noto-serif-sc-subset.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+}
+
 /* Enhanced Design System Variables */
 :root {
   /* Primary Colors - Sophisticated Green Palette */
@@ -32,6 +43,9 @@
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --ifm-font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
+  --font-serif: Kai, "Songti SC", STZhongsong, SimSun, STSong,
+    "Noto Serif SC", "Noto Serif CJK SC", "Source Han Serif SC",
+    "Site Serif", serif;
   --ifm-font-size-base: 16px;
   --ifm-font-weight-semibold: 600;
   --ifm-font-weight-normal: 400;
@@ -627,7 +641,7 @@ hr::before {
   max-width: 48ch;
   margin: 0;
   color: var(--custom-text-primary);
-  font-family: var(--custom-font, "Songti SC", "Noto Serif SC", serif);
+  font-family: var(--font-serif);
   font-size: 1.05rem;
   line-height: 1.95;
   letter-spacing: 0.01em;
