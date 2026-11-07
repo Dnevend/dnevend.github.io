@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import Layout from "@theme/Layout";
 import SocialLinks from "@site/src/components/SocialLinks";
 import styles from "./about.module.css";
@@ -8,13 +9,24 @@ import VoyagerGoldenRecords from "../../static/img/about/voyager_golden_records.
 import YeFu from "../../static/img/about/yefu.jpg";
 
 const gallery = [
-  { src: LeeAo, alt: "李敖黑白肖像" },
-  { src: YeFu, alt: "野夫黑白肖像" },
-  { src: VoyagerGoldenRecords, alt: "旅行者金唱片" },
-  { src: Jianghu, alt: "《江湖》封面" },
+  { key: "leeao", src: LeeAo, alt: "李敖黑白肖像" },
+  { key: "yefu", src: YeFu, alt: "野夫黑白肖像" },
+  { key: "voyager", src: VoyagerGoldenRecords, alt: "旅行者金唱片" },
+  { key: "jianghu", src: Jianghu, alt: "《江湖边》封面" },
 ];
 
 export default function About() {
+  const [activePhoto, setActivePhoto] = React.useState(null);
+
+  const photoProps = (key) => ({
+    className: clsx(
+      styles.photoTrigger,
+      activePhoto === key && styles.photoTriggerActive,
+    ),
+    onMouseEnter: () => setActivePhoto(key),
+    onMouseLeave: () => setActivePhoto(null),
+  });
+
   return (
     <Layout title="关于" description="关于 Dnevend 与小学後生">
       <main className={styles.about}>
@@ -32,21 +44,34 @@ export default function About() {
             <section className={styles.bio}>
               <h2 className={styles.sectionTitle}>我</h2>
               <p>
-                我喜欢阅读，读过深奥的哲学想要显摆却发现我的脑袋只适合当个普通人，现在喜欢简单纯粹的文字。令我沉迷的作家有李敖、野夫还有匡笑余，我沉醉于他们笔触里的江湖色彩以及他们身上所具有的近乎古人的风范。
+                我喜欢阅读，读过深奥的哲学想要显摆却发现我的脑袋只适合当个普通人，现在喜欢简单纯粹的文字。令我沉迷的作家有<span {...photoProps("leeao")}>李敖</span>、<span {...photoProps("yefu")}>野夫</span>还有匡笑余，我沉醉于他们笔触里的江湖色彩以及他们身上所具有的近乎古人的风范。
               </p>
               <p>
                 我喜欢运动，情绪低落的时候总得找个出口，曾跑过半马、横渡钱塘江，也骑单车七百多公里自湖州出发经过富春江翻过会稽山跨过剡溪直至舟山岛游历唐诗之路。
               </p>
               <p>
-                音乐是上帝赐给人类的礼物，我喜欢听歌，很难想象没有音乐的生活会是多么暗淡。我的耳朵曾流浪在各个年代、语种和地区，现在它找到了娘家平时爱听些粤语歌曲，不过最终我会选择待在江湖边的“秘密後院”里白日看世态炎凉，夜来再把吴钩暗赏。
+                音乐是上帝赐给人类的礼物，我喜欢听歌，很难想象没有音乐的生活会是多么暗淡。我的耳朵曾流浪在各个年代、语种和地区，现在它找到了娘家平时爱听些粤语歌曲，不过最终我会选择待在江湖边的“<span {...photoProps("jianghu")}>秘密後院</span>”里白日看世态炎凉，夜来再把吴钩暗赏。
               </p>
             </section>
 
             <aside className={styles.galleryPanel}>
               <h2 className={styles.sectionTitle}>它们</h2>
-              <div className={styles.gallery}>
-                {gallery.map(({ src, alt }) => (
-                  <figure key={alt} className={styles.galleryItem}>
+              <div
+                className={clsx(
+                  styles.gallery,
+                  activePhoto && styles.galleryDimmed,
+                )}
+              >
+                {gallery.map(({ key, src, alt }) => (
+                  <figure
+                    key={key}
+                    className={clsx(
+                      styles.galleryItem,
+                      activePhoto === key && styles.galleryItemActive,
+                    )}
+                    onMouseEnter={() => setActivePhoto(key)}
+                    onMouseLeave={() => setActivePhoto(null)}
+                  >
                     <img src={src} alt={alt} loading="lazy" />
                   </figure>
                 ))}

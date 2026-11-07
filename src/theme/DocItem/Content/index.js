@@ -13,8 +13,7 @@ export default function DocItemContentWrapper(props) {
         <aside className="archive-notice" role="note">
           <span className="archive-notice__badge">已归档</span>
           <span>
-            此页面已停止维护，部分内容可能过时。最新内容请见{" "}
-            <Link to="/blog">博客</Link>。
+            部分页面已停止维护内容可能过时。
           </span>
         </aside>
       )}

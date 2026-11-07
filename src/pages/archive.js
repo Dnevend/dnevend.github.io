@@ -8,14 +8,14 @@ const sections = [
     kicker: "WIKI",
     title: "知识库",
     description:
-      "前端、区块链、DevOps、Git 等主题的旧笔记，内容主要停留在 2024 年。",
+      "前端工程、区块链、DevOps、Git 等主题的旧笔记，大模型来临前的古法手艺。",
     to: "/docs/intro",
   },
   {
     kicker: "MARK",
     title: "记录",
-    description: "阅读摘录、链接收藏与一些零散想法，最后更新于 2025 年。",
-    to: "/mark/2024",
+    description: "阅读摘录、链接收藏与一些零散想法。",
+    to: "/mark/mind-sentence",
   },
 ];
 
@@ -28,8 +28,7 @@ export default function Archive() {
             <span className={styles.eyebrow}>ARCHIVE</span>
             <h1 className={styles.title}>归档</h1>
             <p className={styles.lead}>
-              这些内容已停止维护，仅作留存，部分信息可能已经过时。最新文章请见{" "}
-              <Link to="/blog">博客</Link>。
+              归档留存送给AI前的时代，部分内容大概率已经过时或已停止维护。
             </p>
           </header>
 
