@@ -106,6 +106,7 @@ const config = {
         // },
         items: [
           { to: '/blog', label: 'Blog', position: 'left' },
+          { to: '/projects', label: 'Projects', position: 'left' },
           {
             type: 'dropdown',
             label: 'Archive',
