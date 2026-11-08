@@ -200,7 +200,9 @@ export default function Projects() {
                 {yearRange && ` · ${yearRange}`}
               </span>
             </div>
-            <h1 className={styles.title}>项目</h1>
+            <h1 className={styles.title} data-serif="true">
+              项目
+            </h1>
             <p className={styles.lead}>
               一些正在实现的突发奇想，或者已经不再折腾的东西。
             </p>
@@ -241,7 +243,9 @@ export default function Projects() {
                     </div>
 
                     <div className={styles.body}>
-                      <h2 className={styles.projectTitle}>{project.title}</h2>
+                      <h2 className={styles.projectTitle} data-serif="true">
+                        {project.title}
+                      </h2>
                       <p className={styles.description}>{project.description}</p>
 
                       {project.tags?.length > 0 && (
@@ -353,7 +357,11 @@ export default function Projects() {
 
               <div className={styles.dialogBody}>
                 <div className={styles.dialogHeader}>
-                  <h2 id="project-dialog-title" className={styles.dialogTitle}>
+                  <h2
+                    id="project-dialog-title"
+                    className={styles.dialogTitle}
+                    data-serif="true"
+                  >
                     {activeProject.title}
                   </h2>
 

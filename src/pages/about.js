@@ -33,7 +33,9 @@ export default function About() {
         <div className={styles.inner}>
           <header className={styles.header}>
             <span className={styles.eyebrow}>ABOUT</span>
-            <h1 className={styles.title}>关于</h1>
+            <h1 className={styles.title} data-serif="true">
+              关于
+            </h1>
             <p className={styles.lead}>
               你好👋我是小学後生，现位于浙江湖州，一名全栈开发者。关注技术、人文、区块链及前沿AI应用。
             </p>

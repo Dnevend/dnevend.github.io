@@ -108,7 +108,11 @@ export default function BlogList() {
                 aria-labelledby={`year-${year}`}
               >
                 <header className={styles.yearMarker}>
-                  <h3 id={`year-${year}`} className={styles.yearLabel}>
+                  <h3
+                    id={`year-${year}`}
+                    className={styles.yearLabel}
+                    data-serif="true"
+                  >
                     {year}
                   </h3>
                   <span className={styles.yearCount}>

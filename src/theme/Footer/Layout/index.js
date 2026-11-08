@@ -16,7 +16,7 @@ export default function FooterLayout({ style, links, logo, copyright }) {
       <div className="container">
         <div className="footer__top">
           <div className="footer__quote">
-            <p className="footer__quote-text">
+            <p className="footer__quote-text" data-serif="true">
               {TAGLINE}
               <Link to="/mark/mind-sentence" className="footer__quote-link">
                 摘录

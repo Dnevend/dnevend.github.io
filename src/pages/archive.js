@@ -26,7 +26,9 @@ export default function Archive() {
         <div className={styles.inner}>
           <header className={styles.header}>
             <span className={styles.eyebrow}>ARCHIVE</span>
-            <h1 className={styles.title}>归档</h1>
+            <h1 className={styles.title} data-serif="true">
+              归档
+            </h1>
             <p className={styles.lead}>
               归档留存送给AI前的时代，部分内容大概率已经过时或已停止维护。
             </p>
@@ -40,7 +42,9 @@ export default function Archive() {
                 className={styles.card}
               >
                 <span className={styles.cardKicker}>{section.kicker}</span>
-                <h2 className={styles.cardTitle}>{section.title}</h2>
+                <h2 className={styles.cardTitle} data-serif="true">
+                  {section.title}
+                </h2>
                 <p className={styles.cardDescription}>{section.description}</p>
                 <span className={styles.cardArrow} aria-hidden="true">
                   →

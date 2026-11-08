@@ -86,7 +86,9 @@ function HomepageHeader() {
           <span className={styles.srOnly}>Hi, I&apos;m Dnevend，全干开发者。</span>
         </div>
 
-        <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
+        <h1 className={styles.heroTitle} data-serif="true">
+          {siteConfig.title}
+        </h1>
 
         <SocialLinks className={styles.heroSocials} />
       </div>

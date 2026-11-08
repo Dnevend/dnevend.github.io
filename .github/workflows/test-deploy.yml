@@ -22,3 +22,10 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Test build website
         run: yarn build
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Verify serif font coverage
+        run: |
+          python -m pip install --quiet fonttools brotli
+          python scripts/serif_chars.py --verify-font
