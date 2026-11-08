@@ -67,8 +67,12 @@ jobs:
 
           # GitHub Pages 发布有几十秒延迟，确认新版本生效后再清缓存
           published=0
+          page=/tmp/dnevend-home.html
           for i in $(seq 1 20); do
-            if curl -fsS --max-time 15 "https://dnevend.site/?__deploy=${RANDOM}${RANDOM}" | grep -q "$MAIN_JS"; then
+            rm -f "$page"
+            # 先落盘再 grep：grep -q 会提前关管道，直接管道给 curl 会报 broken pipe
+            if curl -fsS --max-time 15 "https://dnevend.site/?__deploy=${RANDOM}${RANDOM}" -o "$page" \
+              && grep -q "$MAIN_JS" "$page"; then
               published=1
               echo "GitHub Pages 已发布：$MAIN_JS"
               break
