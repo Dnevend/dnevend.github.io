@@ -113,6 +113,12 @@
   box-shadow: var(--ifm-global-shadow-tl);
 }
 
+.projectActive .projectCard {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 2px var(--ifm-color-primary),
+    var(--ifm-global-shadow-tl);
+}
+
 .media {
   position: relative;
   aspect-ratio: 16 / 10;
@@ -280,24 +286,51 @@
 }
 
 .dialog[open] {
-  animation: dialogIn 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: dialogIn 0.42s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .dialog::backdrop {
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  animation: backdropIn 0.35s ease;
 }
 
 @keyframes dialogIn {
   from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.98);
+    opacity: 0.2;
+    transform: translate(
+        var(--dialog-from-x, 0px),
+        var(--dialog-from-y, 0px)
+      )
+      scale(var(--dialog-from-scale, 0.9));
   }
 
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes backdropIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes imageIn {
+  from {
+    opacity: 0.4;
+    transform: scale(1.015);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -346,6 +379,76 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.dialogImage {
+  animation: imageIn 0.35s ease;
+}
+
+.carouselButton {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.2s ease;
+}
+
+.carouselButton:hover {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.carouselPrevious {
+  left: 0.9rem;
+}
+
+.carouselNext {
+  right: 0.9rem;
+}
+
+.carouselDots {
+  position: absolute;
+  bottom: 3.7rem;
+  left: 50%;
+  z-index: 4;
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28);
+  transform: translateX(-50%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.carouselDot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.carouselDotActive {
+  background: #fff;
+  transform: scale(1.2);
 }
 
 .dialogMedia .imageMeta {
@@ -487,6 +590,24 @@
   .dialogTitle {
     font-size: 1.65rem;
   }
+
+  .carouselButton {
+    width: 34px;
+    height: 34px;
+    font-size: 1.3rem;
+  }
+
+  .carouselPrevious {
+    left: 0.6rem;
+  }
+
+  .carouselNext {
+    right: 0.6rem;
+  }
+
+  .carouselDots {
+    bottom: 3.4rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -494,7 +615,11 @@
   .media img,
   .projectTitle,
   .dialogLink,
-  .dialog {
+  .dialog,
+  .dialogImage,
+  .dialog::backdrop,
+  .carouselButton,
+  .carouselDot {
     animation: none;
     transition: none;
   }

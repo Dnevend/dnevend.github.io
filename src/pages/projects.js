@@ -31,6 +31,8 @@ function ProjectImageMeta({ project }) {
 
 export default function Projects() {
   const [activeProject, setActiveProject] = React.useState(null);
+  const [activeImageIndex, setActiveImageIndex] = React.useState(0);
+  const [dialogOrigin, setDialogOrigin] = React.useState(null);
   const dialogRef = React.useRef(null);
   const triggerRef = React.useRef(null);
 
@@ -40,6 +42,13 @@ export default function Projects() {
   const yearRange = years.length
     ? `${Math.min(...years)} — ${Math.max(...years)}`
     : "";
+
+  const galleryImages = activeProject
+    ? activeProject.gallery?.length
+      ? activeProject.gallery
+      : [{ src: activeProject.image, alt: activeProject.imageAlt }]
+    : [];
+  const currentImage = galleryImages[activeImageIndex] ?? galleryImages[0];
 
   React.useEffect(() => {
     if (!activeProject) return undefined;
@@ -56,6 +65,18 @@ export default function Projects() {
   }, [activeProject]);
 
   const openProject = (project, event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const dialogWidth =
+      window.innerWidth > 560
+        ? Math.min(760, window.innerWidth - 32)
+        : window.innerWidth - 16;
+
+    setDialogOrigin({
+      x: rect.left + rect.width / 2 - window.innerWidth / 2,
+      y: rect.top + rect.height / 2 - window.innerHeight / 2,
+      scale: Math.max(0.15, Math.min(0.95, rect.width / dialogWidth)),
+    });
+    setActiveImageIndex(0);
     triggerRef.current = event.currentTarget;
     setActiveProject(project);
   };
@@ -71,6 +92,27 @@ export default function Projects() {
 
   const handleDialogClick = (event) => {
     if (event.target === event.currentTarget) closeProject();
+  };
+
+  const showImage = (index) => {
+    if (!galleryImages.length) return;
+    setActiveImageIndex(
+      (index + galleryImages.length) % galleryImages.length,
+    );
+  };
+
+  const handleDialogKeyDown = (event) => {
+    if (galleryImages.length < 2) return;
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      showImage(activeImageIndex - 1);
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      showImage(activeImageIndex + 1);
+    }
   };
 
   return (
@@ -96,12 +138,19 @@ export default function Projects() {
           ) : (
             <div className={styles.list}>
               {projects.map((project, index) => (
-                <article key={project.title} className={styles.project}>
+                <article
+                  key={project.title}
+                  className={clsx(
+                    styles.project,
+                    activeProject === project && styles.projectActive,
+                  )}
+                >
                   <button
                     type="button"
                     className={styles.cardButton}
                     aria-label={`查看项目详情：${project.title}`}
                     aria-haspopup="dialog"
+                    aria-expanded={activeProject === project}
                     onClick={(event) => openProject(project, event)}
                   />
 
@@ -144,8 +193,18 @@ export default function Projects() {
             ref={dialogRef}
             className={styles.dialog}
             aria-labelledby="project-dialog-title"
+            style={
+              dialogOrigin
+                ? {
+                    "--dialog-from-x": `${dialogOrigin.x}px`,
+                    "--dialog-from-y": `${dialogOrigin.y}px`,
+                    "--dialog-from-scale": `${dialogOrigin.scale}`,
+                  }
+                : undefined
+            }
             onClick={handleDialogClick}
             onClose={handleDialogClose}
+            onKeyDown={handleDialogKeyDown}
           >
             <button
               type="button"
@@ -160,10 +219,63 @@ export default function Projects() {
             <div className={styles.dialogScroll}>
               <div className={styles.dialogMedia}>
                 <img
-                  src={activeProject.image}
-                  alt={activeProject.imageAlt}
+                  key={currentImage.src}
+                  src={currentImage.src}
+                  alt={currentImage.alt}
+                  className={styles.dialogImage}
                 />
                 <ProjectImageMeta project={activeProject} />
+
+                {galleryImages.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      className={clsx(
+                        styles.carouselButton,
+                        styles.carouselPrevious,
+                      )}
+                      aria-label="上一张图片"
+                      onClick={() => showImage(activeImageIndex - 1)}
+                    >
+                      ‹
+                    </button>
+                    <button
+                      type="button"
+                      className={clsx(
+                        styles.carouselButton,
+                        styles.carouselNext,
+                      )}
+                      aria-label="下一张图片"
+                      onClick={() => showImage(activeImageIndex + 1)}
+                    >
+                      ›
+                    </button>
+                    <div
+                      className={styles.carouselDots}
+                      role="group"
+                      aria-label="切换项目图片"
+                    >
+                      {galleryImages.map((image, imageIndex) => (
+                        <button
+                          key={image.src}
+                          type="button"
+                          className={clsx(
+                            styles.carouselDot,
+                            imageIndex === activeImageIndex &&
+                              styles.carouselDotActive,
+                          )}
+                          aria-label={`查看第 ${imageIndex + 1} 张图片`}
+                          aria-current={
+                            imageIndex === activeImageIndex
+                              ? "true"
+                              : undefined
+                          }
+                          onClick={() => setActiveImageIndex(imageIndex)}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
 
               <div className={styles.dialogBody}>
