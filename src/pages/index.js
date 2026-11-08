@@ -11,7 +11,8 @@ import YunWoYiShangLeng from "../../static/img/ywysl.png";
 
 const INTRO_TEXT = "Hi, I'm Dnevend 👋 · 全干开发者";
 
-function useTypewriter(text, speed = 40) {
+function useTypewriter(text, speed = 70) {
+  const characters = React.useMemo(() => Array.from(text), [text]);
   const [count, setCount] = React.useState(0);
 
   React.useEffect(() => {
@@ -20,7 +21,7 @@ function useTypewriter(text, speed = 40) {
     )?.matches;
 
     if (prefersReducedMotion) {
-      setCount(text.length);
+      setCount(characters.length);
       return undefined;
     }
 
@@ -31,18 +32,18 @@ function useTypewriter(text, speed = 40) {
     const tick = () => {
       index += 1;
       setCount(index);
-      if (index < text.length) {
+      if (index < characters.length) {
         timer = window.setTimeout(tick, speed);
       }
     };
 
     timer = window.setTimeout(tick, 350);
     return () => window.clearTimeout(timer);
-  }, [text, speed]);
+  }, [characters, speed]);
 
   return {
-    visibleText: text.slice(0, count),
-    isTyping: count < text.length,
+    visibleText: characters.slice(0, count).join(""),
+    isTyping: count < characters.length,
   };
 }
 
@@ -68,11 +69,16 @@ function HomepageHeader() {
               styles.heroIntroTail,
               !isTyping && styles.heroIntroTailVisible,
             )}
+            aria-hidden={isTyping}
           >
             <span className={styles.heroIntroDot} aria-hidden="true">
               ·
             </span>
-            <Link to="/about" className={styles.heroLink}>
+            <Link
+              to="/about"
+              className={styles.heroLink}
+              tabIndex={isTyping ? -1 : undefined}
+            >
               关于我
               <span aria-hidden="true">→</span>
             </Link>

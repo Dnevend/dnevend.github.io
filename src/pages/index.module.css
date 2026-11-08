@@ -155,13 +155,16 @@
   align-items: center;
   gap: 0.6rem;
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease;
+  pointer-events: none;
+  transform: translateX(-6px);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
 }
 
 .heroIntroTail.heroIntroTailVisible {
   opacity: 1;
-  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
 }
 
 .heroIntroDot {
