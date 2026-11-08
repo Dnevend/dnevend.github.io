@@ -7,6 +7,12 @@ import AttentionUnblurred from "../../static/img/projects/attention-unblurred.we
 import SSCHome from '../../static/img/projects/ssc-home.png';
 import SSCDetail from '../../static/img/projects/ssc-detail.png';
 import SSCData from '../../static/img/projects/ssc-data.png';
+import ClassyGit from '../../static/img/projects/classy-home.png';
+import ClassyGitUser from '../../static/img/projects/classy-user.png';
+import ClassyGitRepo from '../../static/img/projects/classy-repo.png';
+import ClassyGitGists from '../../static/img/projects/classy-gists.png';
+import ClassyGitOutline from '../../static/img/projects/classy-outline.png';
+import ClassyGitArticle from '../../static/img/projects/classy-article.png';
 
 // 项目数据：新增项目时复制一个对象即可。
 // status 只使用 "active"（活跃）或 "ended"（结束）。
@@ -30,7 +36,7 @@ export const projects = [
   {
     title: "斯多葛打印机",
     description:
-      "每天抓取斯多葛相关文章，定时让热敏打印机输出一篇对应英语学习文档，同时合成音频推送至手机。",
+      "每天抓取斯多葛主义相关文章，定时让热敏打印机输出一篇对应英语学习文档，同时合成音频推送至手机。",
     image: StoicPipeline,
     imageAlt: "斯多葛打印机运行流程",
     gallery: [
@@ -42,6 +48,24 @@ export const projects = [
     status: "active",
     year: "2026",
     tags: ["AI", "自动化", "硬件"],
+  },
+  {
+    title: "ClassyGithub",
+    description:
+      "无需部署的多主题个人主页、随笔记录、博客平台。利用 GitHub 公开接口并将 Gists 作为博客内容载体。使用 Hono 框架代理接口并部署在 Cloudflare 边缘服务器，同时解决了GitHub官方接口请求频率限制。",
+    image: ClassyGit,
+    imageAlt: "ClassyGithub 入口",
+    gallery: [
+      { src: ClassyGitUser, alt: "个人主页" },
+      { src: ClassyGitRepo, alt: "仓库详情页" },
+      { src: ClassyGitOutline, alt: "Gists 列表页" },
+      { src: ClassyGitGists, alt: "Gists 详细详细列表页" },
+      { src: ClassyGitArticle, alt: "Gists 文章内容页" },
+    ],
+    href: "https://github.com/Dnevend/classy-github",
+    status: "ended",
+    year: "2024",
+    tags: ["ClassyGithub", "Blog"],
   },
   {
     title: "X-Comfort-Browser",
