@@ -16,11 +16,13 @@ export default function FooterLayout({ style, links, logo, copyright }) {
       <div className="container">
         <div className="footer__top">
           <div className="footer__quote">
-            <p className="footer__quote-text">{TAGLINE}</p>
-            <Link to="/mark/mind-sentence" className="footer__quote-link">
-              摘录
-              <span aria-hidden="true">→</span>
-            </Link>
+            <p className="footer__quote-text">
+              {TAGLINE}
+              <Link to="/mark/mind-sentence" className="footer__quote-link">
+                摘录
+                <span aria-hidden="true">→</span>
+              </Link>
+            </p>
           </div>
           {links && <div className="footer__nav">{links}</div>}
         </div>
