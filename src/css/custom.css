@@ -640,7 +640,8 @@ hr::before {
 .footer__quote-text {
   max-width: 48ch;
   margin: 0;
-  color: var(--custom-text-primary);
+  color: var(--custom-text-secondary);
+  opacity: 0.9;
   font-family: var(--font-serif);
   font-size: 1.05rem;
   line-height: 1.95;
