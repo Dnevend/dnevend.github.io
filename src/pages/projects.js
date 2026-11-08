@@ -202,7 +202,7 @@ export default function Projects() {
             </div>
             <h1 className={styles.title}>项目</h1>
             <p className={styles.lead}>
-              一些正在做、已经做完，或者还在折腾的东西。
+              一些正在实现的突发奇想，或者已经不再折腾的东西。
             </p>
           </header>
 
