@@ -66,13 +66,13 @@ w2 start
 
 > 当代理工具拦截 HTTPS 请求时，它会充当客户端和服务器之间的中间人（MITM），并生成一个伪造的证书来替换原有的服务器证书。如果客户端没有信任这个伪造的证书，就会出现证书错误。
 
-![qrcode](./qrcode.png)
+![qrcode](./qrcode.webp)
 
-![network](./network.png)
+![network](./network.webp)
 
 ### 原理&流程
 
-![principle](./principle.png)
+![principle](./principle.webp)
 
 ### 常用规则
 

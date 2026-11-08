@@ -64,10 +64,6 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-        gtag: {
-          trackingID: 'G-JWBWXN9RCT',
-          anonymizeIP: true,
-        },
       }),
     ],
   ],
@@ -90,7 +86,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // 站点分享卡片（OpenGraph / Twitter）
-      image: 'img/social-card.jpg',
+      image: 'img/social-card.webp',
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: false,

@@ -10,6 +10,11 @@ on:
 permissions:
   contents: write
 
+env:
+  # 配置后才会执行「等待 Pages 发布 + 清理 Cloudflare 缓存」这一步
+  CF_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+  CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
 jobs:
   deploy:
     name: Deploy to GitHub Pages
@@ -20,18 +25,22 @@ jobs:
         with:
           node-version: 22
           cache: yarn
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-      - name: Build website
-        run: yarn build
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Install python helpers
+        # Pillow: 构建前的图片压缩；fonttools/brotli: 字体子集校验
+        run: python -m pip install --quiet pillow fonttools brotli
+
+      - name: Build website
+        run: yarn build
+
       - name: Verify serif font coverage
-        run: |
-          python -m pip install --quiet fonttools brotli
-          python scripts/serif_chars.py --verify-font
+        run: python scripts/serif_chars.py --verify-font
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
@@ -48,3 +57,34 @@ jobs:
           # You can swap them out with your own user credentials.
           user_name: github-actions[bot]
           user_email: 41898282+github-actions[bot]@users.noreply.github.com
+
+      # Cloudflare 缓存了 HTML 之后，部署完必须清一次，否则要等 TTL 过期
+      - name: Purge Cloudflare cache
+        if: ${{ env.CF_ZONE_ID != '' && env.CF_API_TOKEN != '' }}
+        run: |
+          set -euo pipefail
+          MAIN_JS=$(basename "$(ls build/assets/js/main.*.js | head -1)")
+
+          # GitHub Pages 发布有几十秒延迟，确认新版本生效后再清缓存
+          published=0
+          for i in $(seq 1 20); do
+            if curl -fsS --max-time 15 "https://dnevend.site/?__deploy=${RANDOM}${RANDOM}" | grep -q "$MAIN_JS"; then
+              published=1
+              echo "GitHub Pages 已发布：$MAIN_JS"
+              break
+            fi
+            echo "等待 GitHub Pages 发布… ($i/20)"
+            sleep 10
+          done
+
+          if [ "$published" -ne 1 ]; then
+            echo "::error::等待 200s 仍未看到新版本，跳过清缓存以免把旧 HTML 重新缓存"
+            exit 1
+          fi
+
+          curl -fsS -X POST "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
+            -H "Authorization: Bearer ${CF_API_TOKEN}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}' \
+            | grep -q '"success":true'
+          echo "Cloudflare 缓存已清除"

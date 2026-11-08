@@ -2,7 +2,7 @@
 slug: stoic-printer
 title: 斯多葛打印机
 description: 用 AI 调度起一条流水线，每天清晨九点让打印机吐出一页英语学习文档
-image: ./pipeline.png
+image: ./pipeline.webp
 date: 2026-10-20
 authors: [Dnevend]
 tags: [捉刀, AI, OpenClaw, 英语学习]
@@ -10,7 +10,7 @@ tags: [捉刀, AI, OpenClaw, 英语学习]
 
 # 斯多葛打印机
 
-[![自动化流程示意图：09:00 由 launchd 拉起，抓取、翻译、生词、配图、打印、朗读，最后落到热敏打印机与 Telegram](./pipeline.png)](./pipeline.png)
+[![自动化流程示意图：09:00 由 launchd 拉起，抓取、翻译、生词、配图、打印、朗读，最后落到热敏打印机与 Telegram](./pipeline.webp)](./pipeline.webp)
 
 书桌一角，近来多了一台旧热敏打印机。二手市场上捡来的，原本是给小饭馆打菜单、给超市打流水的命，如今被我派了个闲差：每天早上九点，自己醒来，吐出一页斯多葛。
 

@@ -6,8 +6,8 @@ import Link from "@docusaurus/Link";
 import BlogList from "@site/src/components/BlogList";
 import SocialLinks from "@site/src/components/SocialLinks";
 import styles from "./index.module.css";
-import ZhanXiFuChangLiu from "../../static/img/zxfcl.png";
-import YunWoYiShangLeng from "../../static/img/ywysl.png";
+import ZhanXiFuChangLiu from "../../static/img/zxfcl.webp";
+import YunWoYiShangLeng from "../../static/img/ywysl.webp";
 
 const INTRO_TEXT = "Hi, I'm Dnevend 👋 · 全干开发者";
 

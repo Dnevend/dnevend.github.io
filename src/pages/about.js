@@ -3,10 +3,10 @@ import clsx from "clsx";
 import Layout from "@theme/Layout";
 import SocialLinks from "@site/src/components/SocialLinks";
 import styles from "./about.module.css";
-import Jianghu from "../../static/img/about/jianghu.jpg";
-import LeeAo from "../../static/img/about/leeao.jpg";
+import Jianghu from "../../static/img/about/jianghu.webp";
+import LeeAo from "../../static/img/about/leeao.webp";
 import VoyagerGoldenRecords from "../../static/img/about/voyager_golden_records.jpg";
-import YeFu from "../../static/img/about/yefu.jpg";
+import YeFu from "../../static/img/about/yefu.webp";
 
 const gallery = [
   { key: "leeao", src: LeeAo, alt: "李敖黑白肖像" },

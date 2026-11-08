@@ -1,18 +1,18 @@
 import StoicPrinter from "../../static/img/projects/stoic-printer.webp";
 import StoicPrinterSecond from "../../static/img/projects/stoic-printer-2.webp";
-import StoicPipeline from "../../static/img/projects/stoic-pipeline.png";
-import AttentionWebsite from "../../static/img/projects/attention-website.png";
-import AttentionExtension from "../../static/img/projects/attention-extension.png";
+import StoicPipeline from "../../static/img/projects/stoic-pipeline.webp";
+import AttentionWebsite from "../../static/img/projects/attention-website.webp";
+import AttentionExtension from "../../static/img/projects/attention-extension.webp";
 import AttentionUnblurred from "../../static/img/projects/attention-unblurred.webp";
-import SSCHome from '../../static/img/projects/ssc-home.png';
-import SSCDetail from '../../static/img/projects/ssc-detail.png';
-import SSCData from '../../static/img/projects/ssc-data.png';
-import ClassyGit from '../../static/img/projects/classy-home.png';
-import ClassyGitUser from '../../static/img/projects/classy-user.png';
-import ClassyGitRepo from '../../static/img/projects/classy-repo.png';
-import ClassyGitGists from '../../static/img/projects/classy-gists.png';
+import SSCHome from '../../static/img/projects/ssc-home.webp';
+import SSCDetail from '../../static/img/projects/ssc-detail.webp';
+import SSCData from '../../static/img/projects/ssc-data.webp';
+import ClassyGit from '../../static/img/projects/classy-home.webp';
+import ClassyGitUser from '../../static/img/projects/classy-user.webp';
+import ClassyGitRepo from '../../static/img/projects/classy-repo.webp';
+import ClassyGitGists from '../../static/img/projects/classy-gists.webp';
 import ClassyGitOutline from '../../static/img/projects/classy-outline.png';
-import ClassyGitArticle from '../../static/img/projects/classy-article.png';
+import ClassyGitArticle from '../../static/img/projects/classy-article.webp';
 
 // 项目数据：新增项目时复制一个对象即可。
 // status 只使用 "active"（活跃）或 "ended"（结束）。
