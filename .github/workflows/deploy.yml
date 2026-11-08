@@ -10,11 +10,6 @@ on:
 permissions:
   contents: write
 
-env:
-  # 配置后才会执行「等待 Pages 发布 + 清理 Cloudflare 缓存」这一步
-  CF_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
-  CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-
 jobs:
   deploy:
     name: Deploy to GitHub Pages
@@ -58,37 +53,23 @@ jobs:
           user_name: github-actions[bot]
           user_email: 41898282+github-actions[bot]@users.noreply.github.com
 
-      # Cloudflare 缓存了 HTML 之后，部署完必须清一次，否则要等 TTL 过期
-      - name: Purge Cloudflare cache
-        if: ${{ env.CF_ZONE_ID != '' && env.CF_API_TOKEN != '' }}
+      # 站点由东京 VPS 直接服务：VPS 每 2 分钟从 gh-pages 拉一次
+      - name: Wait for Tokyo origin sync
         run: |
           set -euo pipefail
-          MAIN_JS=$(basename "$(ls build/assets/js/main.*.js | head -1)")
-
-          # GitHub Pages 发布有几十秒延迟，确认新版本生效后再清缓存
-          published=0
+          MAIN_JS=$(basename "$(find build/assets/js -maxdepth 1 -name 'main.*.js' | head -1)")
           page=/tmp/dnevend-home.html
+
           for i in $(seq 1 20); do
             rm -f "$page"
-            # 先落盘再 grep：grep -q 会提前关管道，直接管道给 curl 会报 broken pipe
             if curl -fsS --max-time 15 "https://dnevend.site/?__deploy=${RANDOM}${RANDOM}" -o "$page" \
               && grep -q "$MAIN_JS" "$page"; then
-              published=1
-              echo "GitHub Pages 已发布：$MAIN_JS"
-              break
+              echo "东京源站已同步：$MAIN_JS"
+              exit 0
             fi
-            echo "等待 GitHub Pages 发布… ($i/20)"
-            sleep 10
+            echo "等待东京源站同步… ($i/20)"
+            sleep 15
           done
 
-          if [ "$published" -ne 1 ]; then
-            echo "::error::等待 200s 仍未看到新版本，跳过清缓存以免把旧 HTML 重新缓存"
-            exit 1
-          fi
-
-          curl -fsS -X POST "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
-            -H "Authorization: Bearer ${CF_API_TOKEN}" \
-            -H "Content-Type: application/json" \
-            --data '{"purge_everything":true}' \
-            | grep -q '"success":true'
-          echo "Cloudflare 缓存已清除"
+          echo "::error::5 分钟内源站仍是旧版本，检查 VPS 上的 dnevend-sync.timer"
+          exit 1
