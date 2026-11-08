@@ -103,13 +103,13 @@
         <link href="https://dnevend.site/blog/attention-and-extension"/>
         <updated>2024-10-28T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[如何在推特上冲浪时减少噪音及注意力分散，由此为开端开发一款浏览器插件]]></summary>
-        <content type="html"><![CDATA[<blockquote>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" src="https://dnevend.site/assets/images/cover-742e56959b0b74e40936ad947048c181.png" width="1400" height="560" class="img_ev3q"></p>
+<blockquote>
 <p>  “观察自己发现，其实不是注意力不集中，而是注意力非常容易集中，比如一个小红点，一条信息，都会让自己从放空的状态中跳出来，进入到具体的事物中去。
 或许问题不该是如何集中注意力，而是想办法把环境中容易吸引注意力的事物挪掉。
 更深处的原因，则是这些自己对于「存在」的焦虑，所以任何社交媒体/工具的反馈，总是能第一时间得到自己关注及行动，以便再次确认自己「存在」且「有价值」。”
 —— 产品沉思录 Vol.029</p>
 </blockquote>
-<p><img decoding="async" loading="lazy" src="https://dnevend.site/assets/images/cover-742e56959b0b74e40936ad947048c181.png" width="1400" height="560" class="img_ev3q"></p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="86" src="//music.163.com/outchain/player?type=2&amp;id=1996073639&amp;auto=1&amp;height=66"></iframe>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="前言">前言<a href="https://dnevend.site/blog/attention-and-extension#%E5%89%8D%E8%A8%80" class="hash-link" aria-label="前言的直接链接" title="前言的直接链接" translate="no">​</a></h2>
 <p>  信息成瘾和注意力的夺取，在互联网平台和用户两者之间形成了相互同构的力量：
@@ -275,11 +275,11 @@
         <link href="https://dnevend.site/blog/parallax-scrolling-effect"/>
         <updated>2024-07-01T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[视差滚动是一种在网页设计和视频游戏中常见的视觉效果技术，它通过在不同速度上移动页面或屏幕上的多层图像，创造出深度感和动感]]></summary>
-        <content type="html"><![CDATA[<blockquote>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" alt="parallax-scroll" src="https://dnevend.site/assets/images/example-ae58559a65e487d276badc0682cdf2d3.gif" width="1510" height="790" class="img_ev3q"></p>
+<blockquote>
 <p>视差滚动是一种在网页设计和视频游戏中常见的视觉效果技术，它通过在不同速度上移动页面或屏幕上的多层图像，创造出深度感和动感。
 这种效果通过前景、中景和背景以不同的速度移动来实现，使得近处的对象看起来移动得更快，而远处的对象移动得较慢。</p>
 </blockquote>
-<p><img decoding="async" loading="lazy" alt="parallax-scroll" src="https://dnevend.site/assets/images/example-ae58559a65e487d276badc0682cdf2d3.gif" width="1510" height="790" class="img_ev3q"></p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="实现方式">实现方式<a href="https://dnevend.site/blog/parallax-scrolling-effect#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F" class="hash-link" aria-label="实现方式的直接链接" title="实现方式的直接链接" translate="no">​</a></h2>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1background-attachment">1、background-attachment<a href="https://dnevend.site/blog/parallax-scrolling-effect#1background-attachment" class="hash-link" aria-label="1、background-attachment的直接链接" title="1、background-attachment的直接链接" translate="no">​</a></h3>
 <p>通过配置该 CSS 属性值为<code>fixed</code>可以达到背景图像的位置相对于视口固定，其他元素正常滚动的效果。但该方法的视觉表现单一，没有纵深，缺少动感。</p>
