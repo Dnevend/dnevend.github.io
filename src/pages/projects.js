@@ -10,6 +10,78 @@ const statusLabels = {
   ended: "结束",
 };
 
+function CloseIcon() {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      width="16"
+      height="16"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M3.5 3.5 12.5 12.5M12.5 3.5 3.5 12.5"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function ChevronIcon({ direction = "right" }) {
+  const d = direction === "left" ? "M14.5 5 8.5 12l6 7" : "M9.5 5l6 7-6 7";
+
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d={d}
+        stroke="rgba(0, 0, 0, 0.45)"
+        strokeWidth="3.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d={d}
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function LinkArrowIcon({ external }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      width="15"
+      height="15"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d={
+          external
+            ? "M4.5 11.5 11.5 4.5M6 4.5h5.5V10"
+            : "M3.5 8h9M8.5 4l4 4-4 4"
+        }
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function ProjectImageMeta({ project }) {
   const isActive = project.status === "active";
 
@@ -49,6 +121,7 @@ export default function Projects() {
       : [{ src: activeProject.image, alt: activeProject.imageAlt }]
     : [];
   const currentImage = galleryImages[activeImageIndex] ?? galleryImages[0];
+  const isExternalLink = activeProject?.href?.startsWith("http") ?? false;
 
   React.useEffect(() => {
     if (!activeProject) return undefined;
@@ -213,7 +286,7 @@ export default function Projects() {
               onClick={closeProject}
               autoFocus
             >
-              ×
+              <CloseIcon />
             </button>
 
             <div className={styles.dialogScroll}>
@@ -237,7 +310,7 @@ export default function Projects() {
                       aria-label="上一张图片"
                       onClick={() => showImage(activeImageIndex - 1)}
                     >
-                      ‹
+                      <ChevronIcon direction="left" />
                     </button>
                     <button
                       type="button"
@@ -248,7 +321,7 @@ export default function Projects() {
                       aria-label="下一张图片"
                       onClick={() => showImage(activeImageIndex + 1)}
                     >
-                      ›
+                      <ChevronIcon direction="right" />
                     </button>
                     <div
                       className={styles.carouselDots}
@@ -279,9 +352,27 @@ export default function Projects() {
               </div>
 
               <div className={styles.dialogBody}>
-                <h2 id="project-dialog-title" className={styles.dialogTitle}>
-                  {activeProject.title}
-                </h2>
+                <div className={styles.dialogHeader}>
+                  <h2 id="project-dialog-title" className={styles.dialogTitle}>
+                    {activeProject.title}
+                  </h2>
+
+                  <Link
+                    to={activeProject.href}
+                    className={styles.dialogLink}
+                    data-external={isExternalLink || undefined}
+                    aria-label={
+                      isExternalLink ? "访问项目（在新窗口打开）" : "访问项目"
+                    }
+                    {...(isExternalLink
+                      ? { target: "_blank", rel: "noreferrer" }
+                      : {})}
+                  >
+                    <span>访问项目</span>
+                    <LinkArrowIcon external={isExternalLink} />
+                  </Link>
+                </div>
+
                 <p className={styles.dialogDescription}>
                   {activeProject.description}
                 </p>
@@ -295,19 +386,6 @@ export default function Projects() {
                     ))}
                   </div>
                 )}
-
-                <Link
-                  to={activeProject.href}
-                  className={styles.dialogLink}
-                  {...(activeProject.href.startsWith("http")
-                    ? { target: "_blank", rel: "noreferrer" }
-                    : {})}
-                >
-                  访问项目
-                  <span aria-hidden="true">
-                    {activeProject.href.startsWith("http") ? "↗" : "→"}
-                  </span>
-                </Link>
               </div>
             </div>
           </dialog>
