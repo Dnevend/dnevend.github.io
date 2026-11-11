@@ -580,21 +580,60 @@ hr::before {
   color: var(--ifm-color-primary);
 }
 
-/* Enhanced Footer */
+/* Glass Footer — frosted surface matching the navbar, over a soft ambient wash */
 .footer {
-  --footer-glow: rgba(26, 92, 58, 0.06);
+  --footer-glass-bg: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.62),
+    rgba(255, 255, 255, 0.38)
+  );
+  --footer-glass-border: rgba(255, 255, 255, 0.6);
+  --footer-glass-shadow: 0 -8px 32px rgba(15, 23, 42, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  --footer-ambient-primary: rgba(26, 92, 58, 0.24);
+  --footer-ambient-accent: rgba(45, 212, 191, 0.18);
+  --footer-ambient-base: var(--custom-background-light);
+
   position: relative;
-  padding: 4rem 0 2rem;
-  border-top: 1px solid var(--custom-border-color);
-  background: radial-gradient(
-      circle at 12% 0%,
-      var(--footer-glow),
-      transparent 38%
-    ),
-    var(--custom-background-light);
+  isolation: isolate;
+  padding: 0;
+  border-top: none;
+  background: transparent;
+  overflow: hidden;
 }
 
-.footer::before {
+/* Colored light behind the glass so the blur has something real to frost */
+.footer__ambient {
+  position: absolute;
+  inset: -80px -15%;
+  z-index: 0;
+  background: radial-gradient(
+      60% 90% at 8% 100%,
+      var(--footer-ambient-primary),
+      transparent 70%
+    ),
+    radial-gradient(
+      55% 80% at 92% 100%,
+      var(--footer-ambient-accent),
+      transparent 70%
+    ),
+    var(--footer-ambient-base);
+  filter: blur(60px) saturate(120%);
+  pointer-events: none;
+}
+
+.footer__glass {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 0 2rem;
+  background: var(--footer-glass-bg);
+  border-top: 1px solid var(--footer-glass-border);
+  box-shadow: var(--footer-glass-shadow);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+
+.footer__glass::before {
   content: "";
   position: absolute;
   top: -1px;
@@ -607,7 +646,8 @@ hr::before {
     var(--ifm-color-primary),
     transparent
   );
-  opacity: 0.5;
+  opacity: 0.35;
+  pointer-events: none;
   transform: translateX(-50%);
 }
 
@@ -757,7 +797,39 @@ hr::before {
 }
 
 [data-theme="dark"] .footer {
-  --footer-glow: rgba(45, 212, 191, 0.08);
+  --footer-glass-bg: linear-gradient(
+    135deg,
+    rgba(24, 24, 27, 0.58),
+    rgba(17, 17, 17, 0.36)
+  );
+  --footer-glass-border: rgba(255, 255, 255, 0.08);
+  --footer-glass-shadow: 0 -8px 32px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --footer-ambient-primary: rgba(45, 212, 191, 0.16);
+  --footer-ambient-accent: rgba(26, 92, 58, 0.24);
+  --footer-ambient-base: var(--custom-background-light);
+}
+
+/* Fallback when backdrop-filter is unavailable or transparency is reduced */
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .footer__glass {
+    background: var(--custom-background-light);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .footer__glass {
+    background: var(--custom-background-light);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .footer__ambient {
+    filter: none;
+    opacity: 0.45;
+  }
 }
 
 @media (max-width: 996px) {
@@ -772,7 +844,7 @@ hr::before {
 }
 
 @media (max-width: 768px) {
-  .footer {
+  .footer__glass {
     padding: 3rem 0 1.5rem;
   }
 

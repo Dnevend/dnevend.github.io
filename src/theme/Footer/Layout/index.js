@@ -13,26 +13,29 @@ export default function FooterLayout({ style, links, logo, copyright }) {
         { "footer--dark": style === "dark" },
       )}
     >
-      <div className="container">
-        <div className="footer__top">
-          <div className="footer__quote">
-            <p className="footer__quote-text" data-serif="true">
-              {TAGLINE}
-              <Link to="/mark/mind-sentence" className="footer__quote-link">
-                摘录
-                <span aria-hidden="true">→</span>
-              </Link>
-            </p>
+      <div className="footer__ambient" aria-hidden="true" />
+      <div className="footer__glass">
+        <div className="container">
+          <div className="footer__top">
+            <div className="footer__quote">
+              <p className="footer__quote-text" data-serif="true">
+                {TAGLINE}
+                <Link to="/mark/mind-sentence" className="footer__quote-link">
+                  摘录
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </p>
+            </div>
+            {links && <div className="footer__nav">{links}</div>}
           </div>
-          {links && <div className="footer__nav">{links}</div>}
-        </div>
 
-        {(logo || copyright) && (
-          <div className="footer__bottom">
-            {logo && <div className="margin-bottom--sm">{logo}</div>}
-            {copyright}
-          </div>
-        )}
+          {(logo || copyright) && (
+            <div className="footer__bottom">
+              {logo && <div className="margin-bottom--sm">{logo}</div>}
+              {copyright}
+            </div>
+          )}
+        </div>
       </div>
     </footer>
   );
