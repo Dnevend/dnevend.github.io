@@ -194,7 +194,7 @@
 
 .navbar-scrolled .navbar__inner {
   max-width: 1140px;
-  min-height: 46px;
+  min-height: 50px;
   margin: 7px auto;
   border-color: var(--navbar-glass-border);
   border-radius: 18px;
@@ -243,6 +243,106 @@
   color: var(--ifm-color-primary) !important;
   background: var(--navbar-link-hover-bg);
 }
+
+.navbar__link:focus-visible,
+.navbar-sidebar .menu__link:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+/* Hover label reel: English at rest, Chinese rolls in on hover.
+   The reel clips one row at a time like a small slot machine. */
+.nav-reel {
+  display: inline-flex;
+  flex-direction: column;
+  height: 1.5em;
+  overflow: hidden;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+/* Center the visible row inside the hover pill on desktop */
+.navbar__items .nav-reel {
+  align-items: center;
+}
+
+.nav-reel__item {
+  display: block;
+  height: 1.5em;
+  line-height: 1.5;
+  white-space: nowrap;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.nav-reel__zh {
+  letter-spacing: 0.04em;
+}
+
+.navbar__link:hover .nav-reel__item,
+.navbar__link:focus-visible .nav-reel__item,
+.dropdown__link:hover .nav-reel__item,
+.dropdown__link:focus-visible .nav-reel__item,
+.dropdown:hover > .navbar__link .nav-reel__item,
+.dropdown--show > .navbar__link .nav-reel__item {
+  transform: translateY(-100%);
+}
+
+.navbar__link:hover .nav-reel,
+.navbar__link:focus-visible .nav-reel,
+.dropdown__link:hover .nav-reel,
+.dropdown__link:focus-visible .nav-reel {
+  animation: nav-reel-roll 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes nav-reel-roll {
+  0% {
+    filter: blur(0);
+  }
+
+  35% {
+    filter: blur(0.7px);
+  }
+
+  100% {
+    filter: blur(0);
+  }
+}
+
+/* No hover available: show the Chinese row by default (phones, tablets) */
+@media (max-width: 996px), (hover: none) {
+  .nav-reel__item {
+    transform: translateY(-100%);
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-reel__item {
+    transition: none;
+  }
+
+  .navbar__link:hover .nav-reel,
+  .navbar__link:focus-visible .nav-reel,
+  .dropdown__link:hover .nav-reel,
+  .dropdown__link:focus-visible .nav-reel {
+    animation: none;
+  }
+}
+
+/* Keep the Archive caret aligned with the English label */
+.navbar__item.dropdown > .navbar__link {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navbar__item.dropdown > .navbar__link::after {
+  top: 0;
+  transform: none;
+}
+
+/* Dropdown submenu keeps the default width; labels use the same reel */
 
 .navbar__logo {
   transition: var(--custom-transition-smooth);
@@ -330,6 +430,12 @@
 
   .navbar__toggle {
     margin-right: 0;
+  }
+
+  /* Keep mobile nav rows at a comfortable touch target height */
+  .navbar-sidebar .menu__link {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
   }
 }
 

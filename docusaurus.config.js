@@ -101,20 +101,21 @@ const config = {
         //   height: 32
         // },
         items: [
-          { to: '/blog', label: 'Blog', position: 'left' },
-          { to: '/projects', label: 'Projects', position: 'left' },
+          { to: '/blog', label: 'Blog', zh: '文章', position: 'left' },
+          { to: '/projects', label: 'Projects', zh: '项目', position: 'left' },
           {
             type: 'dropdown',
             label: 'Archive',
+            zh: '归档',
             position: 'left',
             to: '/archive',
             items: [
-              { label: 'Overview', to: '/archive' },
-              { label: 'Wiki', to: '/docs/intro' },
-              { label: 'Mark', to: '/mark/mind-sentence' },
+              { label: 'Overview', zh: '总览', to: '/archive' },
+              { label: 'Wiki', zh: '知识库', to: '/docs/intro' },
+              { label: 'Mark', zh: '记录', to: '/mark/mind-sentence' },
             ],
           },
-          { to: '/about', label: 'About', position: 'left' },
+          { to: '/about', label: 'About', zh: '关于我', position: 'left' },
         ],
       },
       footer: {
