@@ -62,7 +62,7 @@ export default function BlogList() {
           "name": "小学後生",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://dnevend.site/img/logo.svg"
+            "url": "https://dnevend.site/img/logo.png"
           }
         },
         "keywords": post.tags?.map((tag) => tag.label).join(", ") || "",

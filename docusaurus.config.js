@@ -93,13 +93,13 @@ const config = {
         respectPrefersColorScheme: false,
       },
       navbar: {
-        title: 'Dnevend',
-        // logo: {
-        //   alt: 'Avatar',
-        //   src: 'img/avatar.webp',
-        //   width: 32,
-        //   height: 32
-        // },
+        // title: 'Dnevend',
+        logo: {
+          alt: '小学後生',
+          src: 'img/logo.png',
+          width: 32,
+          height: 32,
+        },
         items: [
           { to: '/blog', label: 'Blog', zh: '文章', position: 'left' },
           { to: '/projects', label: 'Projects', zh: '项目', position: 'left' },
