@@ -155,13 +155,35 @@ a.photoTrigger:focus-visible {
   transition: opacity 0.35s ease, filter 0.35s ease, transform 0.45s ease;
 }
 
-.gallery:hover .galleryItem:not(:hover) img,
+.galleryCaption {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.85rem;
+  background: rgba(10, 16, 13, 0.68);
+  backdrop-filter: blur(1.5px);
+  color: #f6f3e9;
+  font-family: var(--font-serif);
+  font-size: 0.7rem;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-wrap: balance;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
 .galleryDimmed .galleryItem:not(.galleryItemActive) img {
   opacity: 0.5;
   filter: saturate(0.5) brightness(0.68);
 }
 
-.galleryItem:hover,
 .galleryItemActive {
   border-color: var(--ifm-color-primary);
   box-shadow: 0 0 0 2px var(--ifm-color-primary),
@@ -169,11 +191,40 @@ a.photoTrigger:focus-visible {
   transform: translateY(-3px);
 }
 
-.galleryItem:hover img,
 .galleryItemActive img {
   opacity: 1;
   filter: saturate(1.05) brightness(1.06);
   transform: scale(1.05);
+}
+
+.galleryItemActive .galleryCaption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: hover) {
+  .gallery:hover .galleryItem:not(:hover) img {
+    opacity: 0.5;
+    filter: saturate(0.5) brightness(0.68);
+  }
+
+  .galleryItem:hover {
+    border-color: var(--ifm-color-primary);
+    box-shadow: 0 0 0 2px var(--ifm-color-primary),
+      0 10px 24px rgba(15, 23, 42, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .galleryItem:hover img {
+    opacity: 1;
+    filter: saturate(1.05) brightness(1.06);
+    transform: scale(1.05);
+  }
+
+  .galleryItem:hover .galleryCaption {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
@@ -200,17 +251,26 @@ a.photoTrigger:focus-visible {
 }
 
 @media (hover: none) {
-  .galleryItem img,
-  .gallery:hover .galleryItem:not(:hover) img,
-  .galleryDimmed .galleryItem:not(.galleryItemActive) img {
+  .galleryItem img {
     opacity: 0.95;
     filter: saturate(0.9) brightness(0.98);
+  }
+
+  .galleryDimmed .galleryItem:not(.galleryItemActive) img {
+    opacity: 0.5;
+    filter: saturate(0.5) brightness(0.68);
+  }
+
+  .galleryItemActive img {
+    opacity: 1;
+    filter: saturate(1.05) brightness(1.06);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .galleryItem,
   .galleryItem img,
+  .galleryCaption,
   .photoTrigger {
     transition: none;
   }

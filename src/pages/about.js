@@ -5,18 +5,78 @@ import SocialLinks from "@site/src/components/SocialLinks";
 import styles from "./about.module.css";
 import Jianghu from "../../static/img/about/jianghu.webp";
 import LeeAo from "../../static/img/about/leeao.webp";
-import VoyagerGoldenRecords from "../../static/img/about/voyager_golden_records.jpg";
+import VoyagerGoldenRecords from "../../static/img/about/voyager_plaque.webp";
 import YeFu from "../../static/img/about/yefu.webp";
 
 const gallery = [
-  { key: "leeao", src: LeeAo, alt: "李敖黑白肖像" },
-  { key: "yefu", src: YeFu, alt: "野夫黑白肖像" },
-  { key: "voyager", src: VoyagerGoldenRecords, alt: "旅行者金唱片" },
-  { key: "jianghu", src: Jianghu, alt: "《江湖边》封面" },
+  {
+    key: "leeao",
+    src: LeeAo,
+    alt: "李敖黑白肖像",
+    caption: "樽前作剧莫相笑，我死诸君思此狂。",
+  },
+  {
+    key: "yefu",
+    src: YeFu,
+    alt: "野夫黑白肖像",
+    caption: "野夫路见不平事，磨损胸中万古刀。",
+  },
+  {
+    key: "voyager",
+    src: VoyagerGoldenRecords,
+    alt: "旅行者金唱片",
+    caption: "Dark was the night.",
+  },
+  {
+    key: "jianghu",
+    src: Jianghu,
+    alt: "《江湖边》封面",
+    caption: "卑微的唱道者涉世而来，不惊波澜，不兴水波，只唱些道心人情。",
+  },
 ];
+
+const isHoverDevice = () =>
+  typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches;
 
 export default function About() {
   const [activePhoto, setActivePhoto] = React.useState(null);
+  const revealedByTouch = React.useRef(null);
+
+  React.useEffect(() => {
+    const clearOnOutsideClick = (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      if (
+        target.closest("[data-gallery-item], [data-photo-trigger]")
+      ) {
+        return;
+      }
+      revealedByTouch.current = null;
+      setActivePhoto(null);
+    };
+
+    document.addEventListener("click", clearOnOutsideClick);
+    return () => document.removeEventListener("click", clearOnOutsideClick);
+  }, []);
+
+  const revealOnTouch = (key) => {
+    setActivePhoto(key);
+
+    const figure = document.querySelector(`[data-gallery-item="${key}"]`);
+    if (!figure) return;
+
+    const rect = figure.getBoundingClientRect();
+    const isInView = rect.top >= 0 && rect.bottom <= window.innerHeight;
+    if (isInView) return;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    figure.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "center",
+    });
+  };
 
   const photoProps = (key) => ({
     className: clsx(
@@ -29,9 +89,17 @@ export default function About() {
 
   const photoLinkProps = (key, href) => ({
     ...photoProps(key),
+    "data-photo-trigger": key,
     href,
     target: "_blank",
     rel: "noopener noreferrer",
+    onClick: (event) => {
+      if (isHoverDevice()) return;
+      if (revealedByTouch.current === key) return;
+      event.preventDefault();
+      revealedByTouch.current = key;
+      revealOnTouch(key);
+    },
   });
 
   return (
@@ -101,17 +169,25 @@ export default function About() {
                   activePhoto && styles.galleryDimmed,
                 )}
               >
-                {gallery.map(({ key, src, alt }) => (
+                {gallery.map(({ key, src, alt, caption }) => (
                   <figure
                     key={key}
+                    data-gallery-item={key}
                     className={clsx(
                       styles.galleryItem,
                       activePhoto === key && styles.galleryItemActive,
                     )}
                     onMouseEnter={() => setActivePhoto(key)}
                     onMouseLeave={() => setActivePhoto(null)}
+                    onClick={() => {
+                      revealedByTouch.current = null;
+                      revealOnTouch(key);
+                    }}
                   >
                     <img src={src} alt={alt} loading="lazy" />
+                    <figcaption className={styles.galleryCaption}>
+                      {caption}
+                    </figcaption>
                   </figure>
                 ))}
               </div>
