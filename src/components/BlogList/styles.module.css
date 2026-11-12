@@ -3,7 +3,8 @@
 .blogList {
   --list-hover-bg: rgba(26, 92, 58, 0.055);
   --list-accent-soft: rgba(26, 92, 58, 0.1);
-  --list-accent-border: rgba(26, 92, 58, 0.32);
+  --list-leader: #e2e5e9;
+  --list-year: #a6acb6;
 
   padding: 5rem 0;
   max-width: 1100px;
@@ -16,71 +17,70 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2.25rem;
   padding: 0 2rem;
 }
 
 .blogListTitle {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.7rem;
   margin: 0;
-  font-size: clamp(2rem, 4vw, 2.6rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  font-size: clamp(1.6rem, 3vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   color: var(--ifm-color-emphasis-900);
 }
 
 .blogListTitle::before {
   content: "";
   flex: 0 0 auto;
-  width: 0.55rem;
-  height: 0.55rem;
+  width: 0.45rem;
+  height: 0.45rem;
   border-radius: 50%;
   background: var(--ifm-color-primary);
-  box-shadow: 0 0 0 6px var(--list-accent-soft);
+  box-shadow: 0 0 0 5px var(--list-accent-soft);
 }
 
 .timeline {
   display: flex;
   flex-direction: column;
-  gap: 3.25rem;
+  gap: 1.25rem;
   padding: 0 2rem;
 }
 
 .yearGroup {
   display: grid;
-  grid-template-columns: 8.5rem minmax(0, 1fr);
-  gap: 2rem;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: 1.5rem;
   align-items: start;
 }
 
 .yearMarker {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
-  padding-top: 0.35rem;
+  align-items: flex-end;
+  margin: 0.85rem 0;
 }
 
 .yearLabel {
   margin: 0;
   font-family: var(--font-serif);
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
   line-height: 1;
   letter-spacing: 0.01em;
-  color: var(--ifm-color-emphasis-900);
+  color: var(--list-year);
   font-variant-numeric: tabular-nums;
 }
 
 .yearLabel::after {
   content: "";
   display: block;
-  width: 2.25rem;
+  width: 1.75rem;
   height: 2px;
-  margin-top: 0.85rem;
+  margin-top: 0.6rem;
   border-radius: 2px;
   background: linear-gradient(
     90deg,
@@ -89,35 +89,18 @@
   );
 }
 
-.yearCount {
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  color: var(--ifm-color-emphasis-500);
-}
-
 .yearPosts {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid var(--ifm-color-emphasis-200);
-}
-
-.postItem {
-  border-bottom: 1px solid var(--ifm-color-emphasis-100);
-}
-
-.postItem:last-child {
-  border-bottom: none;
 }
 
 .postLink {
   position: relative;
-  display: grid;
-  grid-template-columns: 4.5rem minmax(0, 1fr) 2rem;
-  align-items: start;
-  gap: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
   margin: 0 -0.75rem;
-  padding: 1.35rem 0.9rem;
+  padding: 0.95rem 0.9rem;
   border-radius: 12px;
   color: inherit;
   text-decoration: none;
@@ -128,8 +111,8 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 1.35rem;
-  bottom: 1.35rem;
+  top: 0.8rem;
+  bottom: 0.8rem;
   width: 2px;
   border-radius: 2px;
   background: var(--ifm-color-primary);
@@ -156,124 +139,116 @@
   text-decoration: none;
 }
 
-.postDate {
-  padding-top: 0.2rem;
-  font-family: var(--ifm-font-family-monospace);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  color: var(--ifm-color-emphasis-500);
-  white-space: nowrap;
-  transition: color 0.25s ease;
-}
-
-.postDate::before {
-  content: "";
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  margin-right: 0.5rem;
-  border-radius: 50%;
-  background: var(--ifm-color-emphasis-300);
-  vertical-align: 0.1em;
-  transition: background 0.25s ease, box-shadow 0.25s ease;
-}
-
-.postLink:hover .postDate {
-  color: var(--ifm-color-primary);
-}
-
-.postLink:hover .postDate::before {
-  background: var(--ifm-color-primary);
-  box-shadow: 0 0 0 4px var(--list-accent-soft);
-}
-
-.postBody {
-  min-width: 0;
-}
-
 .postTitle {
-  margin: 0 0 0.35rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 1.45;
-  letter-spacing: -0.01em;
-  color: var(--ifm-color-emphasis-900);
+  flex: 0 1 auto;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  font-size: 1.02rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: var(--custom-text-secondary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
   transition: color 0.25s ease, transform 0.25s ease;
 }
 
-.postLink:hover .postTitle {
+.postLink:hover .postTitle,
+.postLink:focus-visible .postTitle {
   color: var(--ifm-color-primary);
   transform: translateX(3px);
 }
 
-.postDescription {
-  display: -webkit-box;
-  margin: 0;
-  max-width: 66ch;
+.postLeader {
+  flex: 1 1 2rem;
+  min-width: 1.5rem;
+  height: 0;
+  border-top: 1px dashed var(--list-leader);
+  transform: translateY(0.15em);
+}
+
+.postRight {
+  position: relative;
+  flex: 0 0 auto;
+  width: 6.25rem;
+  height: 1.5em;
   overflow: hidden;
-  font-size: 0.925rem;
-  line-height: 1.7;
-  color: var(--ifm-color-emphasis-600);
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  transition: color 0.25s ease;
+  transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.postLink:hover .postDescription {
-  color: var(--ifm-color-emphasis-700);
-}
-
-.postTags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: 0.65rem;
-}
-
-.postTag {
+.postMeta {
+  position: absolute;
+  top: 50%;
+  right: 0;
   display: inline-flex;
   align-items: center;
-  padding: 0.1rem 0.55rem;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--ifm-color-emphasis-600);
-  font-size: 0.68rem;
+  gap: 0.4rem;
+  color: var(--custom-text-secondary);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.7rem;
   font-weight: 500;
-  line-height: 1.6;
-  letter-spacing: 0.02em;
-  transition: border-color 0.25s ease, color 0.25s ease,
-    background 0.25s ease;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  transform: translateY(-50%);
+  transition: opacity 0.12s ease;
 }
 
-.postLink:hover .postTag {
-  border-color: var(--list-accent-border);
-  background: var(--list-hover-bg);
-  color: var(--ifm-color-primary);
+.postMetaSep {
+  opacity: 0.45;
 }
 
 .postArrow {
-  align-self: center;
-  justify-self: end;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  color: var(--ifm-color-primary);
   font-size: 1.05rem;
   line-height: 1;
-  color: var(--ifm-color-primary);
   opacity: 0;
-  transform: translateX(-6px);
+  transform: translateY(-50%) translateX(-6px);
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.postLink:hover .postArrow,
+.postLink:hover .postRight {
+  width: 1.05rem;
+}
+
+.postLink:hover .postMeta {
+  opacity: 0;
+}
+
+.postLink:hover .postArrow {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.postLink:focus-visible .postRight {
+  width: 1.05rem;
+}
+
+.postLink:focus-visible .postMeta {
+  opacity: 0;
+}
+
 .postLink:focus-visible .postArrow {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(-50%) translateX(0);
 }
 
 @media (hover: none) {
-  .postArrow {
-    opacity: 0.4;
-    transform: none;
+  .postLink:hover .postRight {
+    width: 6.25rem;
+  }
+
+  .postLink:hover .postMeta {
+    opacity: 1;
+  }
+
+  .postLink:hover .postArrow {
+    display: none;
   }
 }
 
@@ -281,13 +256,13 @@
 [data-theme="dark"] .blogList {
   --list-hover-bg: rgba(45, 212, 191, 0.07);
   --list-accent-soft: rgba(45, 212, 191, 0.14);
-  --list-accent-border: rgba(45, 212, 191, 0.35);
+  --list-leader: rgba(255, 255, 255, 0.14);
+  --list-year: rgba(255, 255, 255, 0.42);
 }
 
 /* Empty state */
 .emptyState {
   padding: 3rem 2rem;
-  border-top: 1px solid var(--ifm-color-emphasis-200);
   color: var(--ifm-color-emphasis-600);
   text-align: center;
 }
@@ -300,7 +275,7 @@
 /* Responsive */
 @media (max-width: 1024px) {
   .blogList {
-    padding: 4rem 0;
+    padding: 5rem 0;
     max-width: 100%;
   }
 
@@ -310,104 +285,86 @@
 
   .timeline {
     padding: 0 1.5rem;
-    gap: 2.75rem;
+    gap: 2.25rem;
   }
 
   .yearGroup {
-    grid-template-columns: 7rem minmax(0, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: 1.25rem;
   }
 
   .yearLabel {
-    font-size: 2.15rem;
-  }
-
-  .postLink {
-    grid-template-columns: 4rem minmax(0, 1fr) 1.75rem;
-    gap: 1.1rem;
+    font-size: 1.6rem;
   }
 }
 
 @media (max-width: 768px) {
   .blogList {
-    padding: 3rem 0;
+    padding: 5rem 0;
   }
 
   .blogListHeader {
     gap: 1rem;
-    margin-bottom: 2.25rem;
+    margin-bottom: 1.75rem;
     padding: 0 1.25rem;
   }
 
   .blogListTitle {
-    gap: 0.7rem;
-    font-size: 1.85rem;
+    gap: 0.55rem;
+    font-size: 1.55rem;
   }
 
   .blogListTitle::before {
-    width: 0.45rem;
-    height: 0.45rem;
+    width: 0.38rem;
+    height: 0.38rem;
     box-shadow: 0 0 0 4px var(--list-accent-soft);
   }
 
   .timeline {
-    gap: 2.25rem;
+    gap: 1.9rem;
     padding: 0 1.25rem;
   }
 
   .yearGroup {
     grid-template-columns: 1fr;
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
 
   .yearMarker {
     flex-direction: row;
     align-items: baseline;
-    gap: 0.7rem;
+    gap: 0;
+    margin: 0;
     padding-top: 0;
   }
 
   .yearLabel {
-    font-size: 1.7rem;
+    font-size: 1.4rem;
   }
 
   .yearLabel::after {
     display: none;
   }
 
-  .yearCount {
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-  }
-
   .postLink {
-    grid-template-columns: 3.4rem minmax(0, 1fr);
-    gap: 0.85rem;
+    gap: 0.6rem;
     margin: 0 -0.5rem;
-    padding: 1.1rem 0.6rem;
+    padding: 0.85rem 0.6rem;
   }
 
   .postLink::before {
-    top: 1.1rem;
-    bottom: 1.1rem;
-  }
-
-  .postArrow {
-    display: none;
+    top: 0.85rem;
+    bottom: 0.85rem;
   }
 
   .postTitle {
-    font-size: 1.075rem;
-  }
-
-  .postDescription {
-    font-size: 0.9rem;
+    font-size: 0.98rem;
   }
 }
 
 @media (max-width: 480px) {
   .blogList {
-    padding: 2.5rem 0;
+    padding: 5rem 0;
   }
 
   .blogListHeader {
@@ -418,36 +375,31 @@
   }
 
   .blogListTitle {
-    font-size: 1.7rem;
+    font-size: 1.4rem;
   }
 
   .timeline {
-    gap: 2rem;
+    gap: 1.6rem;
     padding: 0 1rem;
   }
 
   .postLink {
-    grid-template-columns: 3.15rem minmax(0, 1fr);
-    gap: 0.65rem;
-    padding: 1rem 0.5rem;
+    gap: 0.5rem;
+    padding: 0.8rem 0.5rem;
   }
 
   .postLink::before {
-    top: 1rem;
-    bottom: 1rem;
+    top: 0.8rem;
+    bottom: 0.8rem;
   }
 
-  .postDate {
-    font-size: 0.72rem;
-    letter-spacing: 0.04em;
+  .postTitle {
+    font-size: 0.95rem;
   }
 
-  .postDate::before {
-    margin-right: 0.35rem;
-  }
-
-  .postTag {
+  .postMeta {
     font-size: 0.64rem;
+    letter-spacing: 0.03em;
   }
 }
 
@@ -456,10 +408,8 @@
   .postLink,
   .postLink::before,
   .postTitle,
-  .postDescription,
-  .postDate,
-  .postDate::before,
-  .postTag,
+  .postRight,
+  .postMeta,
   .postArrow {
     animation: none;
     transition: none;
@@ -467,16 +417,6 @@
 
   .postLink:hover .postTitle {
     transform: none;
-  }
-}
-
-@media (prefers-contrast: more) {
-  .postTag {
-    border-width: 2px;
-  }
-
-  .postTitle {
-    font-weight: 700;
   }
 }
 
@@ -491,10 +431,5 @@
 
   .postLink {
     break-inside: avoid;
-  }
-
-  .postTag {
-    border: 1px solid #000;
-    color: #000;
   }
 }

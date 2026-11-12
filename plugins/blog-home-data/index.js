@@ -23,6 +23,7 @@ module.exports = function blogHomeDataPlugin() {
           description: p.metadata.description ?? '',
           permalink: p.metadata.permalink,
           date: p.metadata.date,
+          readingTime: p.metadata.readingTime ?? null,
           tags: (p.metadata.tags ?? []).map((t) => ({label: t.label})),
         }));
       setGlobalData(posts);

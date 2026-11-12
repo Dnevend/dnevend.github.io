@@ -109,55 +109,52 @@ export default function BlogList() {
                   >
                     {year}
                   </h3>
-                  <span className={styles.yearCount}>
-                    {yearPosts.length} 篇
-                  </span>
                 </header>
 
                 <div className={styles.yearPosts}>
                   {yearPosts.map((post) => (
-                    <article key={post.permalink} className={styles.postItem}>
+                    <article key={post.permalink}>
                       <Link to={post.permalink} className={styles.postLink}>
-                        <time
-                          className={styles.postDate}
-                          dateTime={post.date}
-                          title={
-                            typeof post.date === "string"
-                              ? post.date.slice(0, 10)
-                              : "未知日期"
-                          }
-                        >
-                          {formatPostDay(post.date)}
-                        </time>
-
-                        <div className={styles.postBody}>
-                          <h4 className={styles.postTitle}>
-                            {post.title || "无标题"}
-                          </h4>
-                          {post.description && (
-                            <p className={styles.postDescription}>
-                              {post.description}
-                            </p>
-                          )}
-                          {post.tags && post.tags.length > 0 && (
-                            <div className={styles.postTags}>
-                              {post.tags.map((tag, tagIndex) => (
-                                <span
-                                  key={tagIndex}
-                                  className={styles.postTag}
-                                >
-                                  {tag.label || tag}
-                                </span>
-                              ))}
-                            </div>
-                          )}
-                        </div>
+                        <h4 className={styles.postTitle}>
+                          {post.title || "无标题"}
+                        </h4>
 
                         <span
-                          className={styles.postArrow}
+                          className={styles.postLeader}
                           aria-hidden="true"
-                        >
-                          →
+                        />
+
+                        <span className={styles.postRight}>
+                          <span className={styles.postMeta}>
+                            <time
+                              dateTime={post.date}
+                              title={
+                                typeof post.date === "string"
+                                  ? post.date.slice(0, 10)
+                                  : "未知日期"
+                              }
+                            >
+                              {formatPostDay(post.date)}
+                            </time>
+                            {post.readingTime ? (
+                              <>
+                                <span
+                                  className={styles.postMetaSep}
+                                  aria-hidden="true"
+                                >
+                                  ·
+                                </span>
+                                <span>{Math.ceil(post.readingTime)} 分钟</span>
+                              </>
+                            ) : null}
+                          </span>
+
+                          <span
+                            className={styles.postArrow}
+                            aria-hidden="true"
+                          >
+                            →
+                          </span>
                         </span>
                       </Link>
                     </article>
