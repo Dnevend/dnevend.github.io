@@ -330,6 +330,12 @@
   }
 }
 
+/* Dropdown wrapper carries Infima's item padding; reset it so the
+   Archive entry keeps the same spacing as the other nav links. */
+.navbar__inner .navbar__item.dropdown {
+  padding: 0;
+}
+
 /* Keep the Archive caret aligned with the English label */
 .navbar__item.dropdown > .navbar__link {
   display: inline-flex;
