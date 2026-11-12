@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwiki||=[]).push([[529],{1344(t){t.exports=JSON.parse('{"metadata":{"permalink":"/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":6,"blogDescription":"\u5c0f\u5b66\u5f8c\u751f\u7684\u6280\u672f\u968f\u7b14\uff1a\u524d\u7aef\u3001\u533a\u5757\u94fe\u3001AI \u4e0e\u5de5\u5177\u5b9e\u8df5\u3002","blogTitle":"\u6587\u7ae0"}}')}}]);

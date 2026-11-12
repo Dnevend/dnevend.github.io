@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwiki||=[]).push([[1672],{643(e){e.exports=JSON.parse('{"authors":[{"name":"\u5c0f\u5b66\u5f8c\u751f","title":"Full Stack Developer","url":"https://dnevend.site/about/","imageURL":"https://dnevend.site/img/avatar.webp","key":"Dnevend","page":null,"count":6}]}')}}]);
