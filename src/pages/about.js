@@ -89,7 +89,7 @@ export default function About() {
                 >
                   秘密後院
                 </a>
-                ”里——白日看世态炎凉，夜来再把吴钩暗赏。
+                ”里——看世态炎凉，把吴钩暗赏。
               </p>
             </section>
 
