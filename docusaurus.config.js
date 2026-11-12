@@ -125,16 +125,16 @@ const config = {
             title: 'More',
             items: [
               {
-                label: '归档',
-                to: '/archive',
+                label: '关于',
+                to: '/about',
+              },
+              {
+                label: '项目',
+                to: '/projects',
               },
               {
                 label: '留言',
                 href: 'https://tally.so/r/nPBJRe'
-              },
-              {
-                label: 'RSS',
-                href: 'https://dnevend.site/blog/rss.xml'
               }
             ],
           },
