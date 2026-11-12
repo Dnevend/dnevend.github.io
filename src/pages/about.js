@@ -115,16 +115,20 @@ export default function About() {
               关于
             </h1>
             <p className={styles.lead}>
-              你好👋我是小学後生，现位于浙江湖州，一名全栈开发者。关注技术、人文、区块链及前沿AI应用。
+              你好👋我是小学後生，现位于浙江湖州，00后，一名全栈开发者。关注技术、人文、区块链及前沿AI应用。
             </p>
-            <SocialLinks className={styles.socials} align="flex-start" />
+            <SocialLinks
+              className={styles.socials}
+              align="flex-start"
+              showEmail
+            />
           </header>
 
           <div className={styles.grid}>
             <section className={styles.bio}>
               <h2 className={styles.sectionTitle}>我</h2>
               <p>
-                我喜欢阅读，群星闪耀让我认识到自己的渺小同时也在不断的激励我。我喜欢简单纯粹的文字，令我痴迷的作家有
+                我喜欢阅读，群星闪耀让我认识到自己的渺小同时也在不断的激励着我。我喜欢简单纯粹的文字，令我痴迷的作家有
                 <a
                   {...photoLinkProps(
                     "leeao",

@@ -10,6 +10,7 @@ const socialLinks = [
     href: "https://twitter.com/Dnevend_09",
   },
   { id: "github", label: "GitHub", href: "https://github.com/Dnevend" },
+  { id: "email", label: "邮箱", href: "mailto:dnevend@gmail.com" },
 ];
 
 function TwitterIcon() {
@@ -40,8 +41,29 @@ function GithubIcon() {
   );
 }
 
-export default function SocialLinks({ className, align = "center" }) {
+function EmailIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z" />
+    </svg>
+  );
+}
+
+export default function SocialLinks({
+  className,
+  align = "center",
+  showEmail = false,
+}) {
   const jikeLogo = useBaseUrl("/img/jike-logo.svg");
+  const links = showEmail
+    ? socialLinks
+    : socialLinks.filter(({ id }) => id !== "email");
 
   return (
     <nav
@@ -49,13 +71,14 @@ export default function SocialLinks({ className, align = "center" }) {
       style={{ justifyContent: align }}
       aria-label="社交主页"
     >
-      {socialLinks.map(({ id, label, href }) => (
+      {links.map(({ id, label, href }) => (
         <a
           key={id}
           className={styles.socialLink}
           href={href}
-          target="_blank"
-          rel="noreferrer"
+          {...(id === "email"
+            ? {}
+            : { target: "_blank", rel: "noreferrer" })}
           aria-label={label}
           title={label}
         >
@@ -69,8 +92,10 @@ export default function SocialLinks({ className, align = "center" }) {
             />
           ) : id === "twitter" ? (
             <TwitterIcon />
-          ) : (
+          ) : id === "github" ? (
             <GithubIcon />
+          ) : (
+            <EmailIcon />
           )}
         </a>
       ))}
