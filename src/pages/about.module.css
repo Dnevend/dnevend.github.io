@@ -109,6 +109,19 @@
   }
 }
 
+a.photoTrigger {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline dotted var(--ifm-color-emphasis-300);
+  text-underline-offset: 3px;
+}
+
+a.photoTrigger:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 [data-theme="dark"] .photoTrigger:hover,
 [data-theme="dark"] .photoTriggerActive {
   background: rgba(45, 212, 191, 0.12);

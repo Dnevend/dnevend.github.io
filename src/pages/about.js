@@ -27,6 +27,13 @@ export default function About() {
     onMouseLeave: () => setActivePhoto(null),
   });
 
+  const photoLinkProps = (key, href) => ({
+    ...photoProps(key),
+    href,
+    target: "_blank",
+    rel: "noopener noreferrer",
+  });
+
   return (
     <Layout title="关于" description="关于 Dnevend 与小学後生">
       <main className={styles.about}>
@@ -46,13 +53,40 @@ export default function About() {
             <section className={styles.bio}>
               <h2 className={styles.sectionTitle}>我</h2>
               <p>
-                我喜欢阅读，读过深奥的哲学想要显摆却发现我的脑袋只适合当个普通人，现在喜欢简单纯粹的文字。令我痴迷的作家有<span {...photoProps("leeao")}>李敖</span>、<span {...photoProps("yefu")}>野夫</span>还有匡笑余，我沉醉于他们笔触里的江湖色彩以及他们身上所具有的近乎古人的风范。
+                我喜欢阅读，群星闪耀让我认识到自己的渺小同时也在不断的激励我。我喜欢简单纯粹的文字，令我痴迷的作家有
+                <a
+                  {...photoLinkProps(
+                    "leeao",
+                    "https://zh.wikipedia.org/wiki/%E6%9D%8E%E6%95%96",
+                  )}
+                >
+                  李敖
+                </a>
+                、
+                <a
+                  {...photoLinkProps(
+                    "yefu",
+                    "https://zh.wikipedia.org/wiki/%E9%87%8E%E5%A4%AB",
+                  )}
+                >
+                  野夫
+                </a>
+                还有匡笑余，我沉醉于他们笔触里的江湖色彩以及他们身上所具有的近乎古人的风范。
               </p>
               <p>
-                我喜欢运动，情绪低落的时候总得找个出口，曾跑过半马、横渡钱塘江；也曾骑单车七百多公里自湖州出发，经富春江、翻过会稽山、跨越剡溪一路游历”唐诗之路“，直至舟山岛。
+                我喜欢运动，这是情绪的出口，我感激于自己拥有健全的四肢和奔跑的能力，曾跑过半马、横渡钱塘江；也曾骑单车七百多公里自湖州出发，经富春江、翻过会稽山、跨越剡溪一路游历“唐诗之路”，直至舟山岛。
               </p>
               <p>
-                音乐是上帝赐给人类的礼物，我喜欢听歌，很难想象没有音乐的生活会是多么暗淡。我的耳朵曾流浪在各个年代、语种和地区，有时会在粤语老歌里歇歇脚。但最终，我还是会选择待在江湖边的“<span {...photoProps("jianghu")}>秘密後院</span>”里——白日看世态炎凉，夜来再把吴钩暗赏。
+                音乐是上帝赐给人类的礼物，我喜欢听歌，很难想象没有音乐的生活会是多么暗淡。我的耳朵曾流浪在各个年代、语种和地区，有时会在粤语老歌里歇歇脚。但最终，我还是会选择待在江湖边的“
+                <a
+                  {...photoLinkProps(
+                    "jianghu",
+                    "https://douban.com/subject/35842470",
+                  )}
+                >
+                  秘密後院
+                </a>
+                ”里——白日看世态炎凉，夜来再把吴钩暗赏。
               </p>
             </section>
 
