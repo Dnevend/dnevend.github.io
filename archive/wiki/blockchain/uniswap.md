@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 tags: [blockchain, uniswap]
+description: "Uniswap 的 AMM 模型拆解：流动性池与 LP、交易者两类角色，以及 V1 必须经 ETH 兑换到 V2 支持 ERC-20 直兑的演进。"
 ---
 
 # Uniswap

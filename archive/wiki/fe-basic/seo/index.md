@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 tags: [fe-basic, seo]
+description: "SEO 优化要点：内容质量、页面因素与站外链接如何影响排名，并解释 Core Web Vitals 三项指标与性能的关系。"
 ---
 
 # SEO 优化

@@ -5,6 +5,7 @@ description: 通过`chrome://inspect` 和 `whistle`对移动设备前端页面�
 date: 2024-06-01
 authors: [Dnevend]
 tags: [tech]
+keywords: [tech, 移动端调试, whistle]
 ---
 
 # 移动端调试

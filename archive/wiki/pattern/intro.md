@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 tags: [pattern]
+description: "设计模式与反面模式简介：模式如何隔离变化、降低耦合一类的概念界定，并列举分析瘫痪、黄金大锤等常见反面模式。"
 ---
 
 # 介绍

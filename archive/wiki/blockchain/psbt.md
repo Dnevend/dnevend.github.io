@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 tags: [blockchain, psbt]
+description: "部分签名比特币交易（PSBT）由 BIP 174 引入，支持多方对同一笔交易共同签名，并可在冷钱包离线签名后联网广播。"
 ---
 
 # PSBT

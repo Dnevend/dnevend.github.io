@@ -44,18 +44,20 @@ export default function BlogList() {
     return {
       "@context": "https://schema.org",
       "@type": "Blog",
-      "name": "近期文章 - 小学後生",
-      "description": "最新发布的技术博客文章",
-      "url": "https://dnevend.site",
+      "@id": "https://dnevend.site/#blog",
+      "name": "小学後生",
+      "description": "小学後生的技术随笔：前端、区块链、AI 与工具实践。",
+      "url": "https://dnevend.site/",
+      "inLanguage": "zh-Hans",
       "blogPost": posts.map((post) => ({
         "@type": "BlogPosting",
         "headline": post.title,
         "description": post.description,
-        "url": `https://dnevend.site${post.permalink}`,
+        "url": `https://dnevend.site${post.permalink.replace(/\/?$/, "/")}`,
         "datePublished": post.date,
         "author": {
           "@type": "Person",
-          "name": "小学后生"
+          "name": "小学後生"
         },
         "publisher": {
           "@type": "Organization",
@@ -66,24 +68,19 @@ export default function BlogList() {
           }
         },
         "keywords": post.tags?.map((tag) => tag.label).join(", ") || "",
-        "inLanguage": "zh-CN"
+        "inLanguage": "zh-Hans"
       }))
     };
   }, [posts]);
 
   return (
     <>
-      {/* SEO和结构化数据 */}
+      {/* SEO 结构化数据 */}
       {structuredData && (
         <Head>
           <script type="application/ld+json">
             {JSON.stringify(structuredData)}
           </script>
-          <meta property="og:title" content="近期文章 - 小学後生" />
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://dnevend.site" />
-          <meta name="twitter:card" content="summary" />
-          <meta name="twitter:title" content="近期文章 - 小学後生" />
         </Head>
       )}
 

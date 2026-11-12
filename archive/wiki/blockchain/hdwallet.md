@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 tags: [blockchain, hdwallet]
+description: "HD 钱包原理笔记：由单一助记词种子派生密钥树，梳理 BIP32 分层结构与 BIP44/49/84 的账户路径规则。"
 ---
 
 # HDWallet

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 tags: [command, linux]
+description: "Linux 系统管理命令清单：sudo 提权、systemctl 管理服务、ps/top 查看进程，以及 crontab 定时任务的常用参数。"
 ---
 
 # 系统管理

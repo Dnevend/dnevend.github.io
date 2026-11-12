@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 tags: [engineering]
+description: "前端性能优化资料汇总：浏览器渲染原理、关键渲染路径、Preload/Prefetch 预加载与 60FPS 页面优化的文章链接。"
 ---
 
 # Optimize

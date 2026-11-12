@@ -13,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # 完整 git 历史用于 sitemap lastmod
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -29,3 +32,5 @@ jobs:
         run: yarn build
       - name: Verify serif font coverage
         run: python scripts/serif_chars.py --verify-font
+      - name: SEO checks
+        run: python scripts/seo_check.py

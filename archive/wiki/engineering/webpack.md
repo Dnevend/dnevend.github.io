@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 tags: [engineering, webpack]
+description: "Webpack 配置与构建流程梳理：Entry/Module/Chunk/Loader/Plugin 各自职责，附常用配置示例与 Tree Shaking 说明。"
 ---
 
 # Webpack

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 tags: [collection, sentence]
+description: "触动思考的语句摘录：萨特论选择与自我、尼尔·泰森谈思考方式、费曼的问题清单，以及关于睡眠与深度无聊的片段。"
 ---
 
 # 摘录

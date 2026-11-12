@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 tags: [git, standard]
+description: "Git 提交规范：原子性提交、header/body/footer 三段式消息结构，以及如何用规范消息自动生成版本 ChangeLog。"
 ---
 
 # 提交规范

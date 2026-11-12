@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 tags: [blockchain, utxo]
+description: "比特币 UTXO 模型：交易只由输入输出构成、地址余额实为未花费输出之和，并用一笔转账加找零的交易过程说明。"
 ---
 
 # UTXO

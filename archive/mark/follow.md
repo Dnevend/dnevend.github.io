@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 tags: [collection, subscribe]
+description: "值得长期关注的信息源收藏：产品沉思录、地心引力等 Newsletter，以及开发技术类播客与博客的订阅清单。"
 ---
 
 # 关注

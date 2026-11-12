@@ -6,6 +6,7 @@ image: ./pipeline.webp
 date: 2026-10-20
 authors: [Dnevend]
 tags: [捉刀, AI, OpenClaw, 英语学习]
+keywords: [捉刀, AI, OpenClaw, 英语学习]
 ---
 
 # 斯多葛打印机

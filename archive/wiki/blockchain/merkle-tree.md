@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 tags: [blockchain, markle]
+description: "默克尔树（哈希树）原理：叶子节点存数据块哈希、逐层合并至根哈希，以及它如何支撑区块链的交易完整性验证。"
 ---
 
 # 默克尔树

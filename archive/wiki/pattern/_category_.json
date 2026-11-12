@@ -2,6 +2,7 @@
     "label": "设计模式",
     "position": 8,
     "link": {
-        "type": "generated-index"
+        "type": "generated-index",
+        "description": "常见设计模式的学习笔记与代码示例。"
     }
 }

@@ -5,6 +5,7 @@ description: 总结一下那些在加密货币二级市场不断受到的教训
 date: 2025-11-08
 authors: [Dnevend]
 tags: [Crypto, Trading]
+keywords: [Crypto, Trading, 交易复盘]
 ---
 
 # 多么痛的领悟

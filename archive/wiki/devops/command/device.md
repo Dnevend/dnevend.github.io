@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 tags: [command, linux]
+description: "Linux 设备管理命令清单：hwclock 时钟、df/du 磁盘占用、uname 内核信息，以及 top/free/lsof 等性能排查工具。"
 ---
 
 # 设备管理

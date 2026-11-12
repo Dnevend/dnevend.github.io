@@ -5,6 +5,14 @@ const { themes } = require('prism-react-renderer');
 const lightTheme = themes.github;
 const darkTheme = themes.dracula;
 
+// 搜索引擎站点验证 token（留空则不输出对应 meta）。
+// Google: https://search.google.com/search-console -> 添加资源 -> HTML 标记
+// Bing:   https://www.bing.com/webmasters -> 添加站点 -> 验证 -> HTML 标记
+const SITE_VERIFICATION = {
+  google: '',
+  bing: '',
+};
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: '小学後生',
@@ -17,6 +25,10 @@ const config = {
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
+
+  // 线上 nginx 会把无尾斜杠 URL 301 到带尾斜杠版本。
+  // 统一构建产物、canonical、sitemap 与内链的形态，避免全站 URL 指到 301。
+  trailingSlash: true,
 
   onBrokenLinks: 'throw',
 
@@ -46,6 +58,9 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          showLastUpdateTime: true,
+          blogTitle: '文章',
+          blogDescription: '小学後生的技术随笔：前端、区块链、AI 与工具实践。',
           blogSidebarTitle: '全部文章',
           blogSidebarCount: 'ALL',
           feedOptions: {
@@ -60,6 +75,10 @@ const config = {
               });
             },
           }
+        },
+        sitemap: {
+          // 用 git 历史生成 lastmod；部署工作流需 fetch-depth: 0
+          lastmod: 'date',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -80,6 +99,8 @@ const config = {
     ],
     // 首页博客列表数据：直接复用博客插件的 frontMatter，构建时生成全局数据
     './plugins/blog-home-data',
+    // 清除 React 18 SSR 在中文文本 chunk 边界写入的 NUL 字节
+    './plugins/strip-nul-html',
   ],
 
   themeConfig:
@@ -87,6 +108,14 @@ const config = {
     ({
       // 站点分享卡片（OpenGraph / Twitter）
       image: 'img/social-card.webp',
+      metadata: [
+        ...(SITE_VERIFICATION.google
+          ? [{ name: 'google-site-verification', content: SITE_VERIFICATION.google }]
+          : []),
+        ...(SITE_VERIFICATION.bing
+          ? [{ name: 'msvalidate.01', content: SITE_VERIFICATION.bing }]
+          : []),
+      ],
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: false,

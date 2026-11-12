@@ -16,6 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # 完整 git 历史用于 sitemap lastmod
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -36,6 +39,9 @@ jobs:
 
       - name: Verify serif font coverage
         run: python scripts/serif_chars.py --verify-font
+
+      - name: SEO checks
+        run: python scripts/seo_check.py
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
@@ -73,3 +79,18 @@ jobs:
 
           echo "::error::5 分钟内源站仍是旧版本，检查 VPS 上的 dnevend-sync.timer"
           exit 1
+
+      - name: Submit URLs to IndexNow
+        continue-on-error: true
+        run: python scripts/indexnow.py
+
+      - name: Submit URLs to Baidu
+        continue-on-error: true
+        env:
+          BAIDU_TOKEN: ${{ secrets.BAIDU_TOKEN }}
+        run: |
+          if [ -z "$BAIDU_TOKEN" ]; then
+            echo "BAIDU_TOKEN 未配置，跳过百度主动推送"
+            exit 0
+          fi
+          python scripts/baidu_push.py

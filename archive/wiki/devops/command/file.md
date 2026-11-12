@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 tags: [command, linux]
+description: "Linux 文件管理命令速查：scp/ftp 传输、touch/ln/cat 处理、diff/which/find 查找比对，按场景分组便于按需检索。"
 ---
 
 # 文件管理

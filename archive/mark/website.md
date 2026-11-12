@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 tags: [collection, website]
+description: "开发与设计常用网站收藏：工具导航 DevTooly、Web 开发检查清单、Mock API、Git 排错手册与 UI 组件库入口。"
 ---
 
 # 网站

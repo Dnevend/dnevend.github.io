@@ -37,7 +37,7 @@ export default function About() {
   return (
     <Layout
       title="关于"
-      description="你好👋我是小学後生，全栈开发者。关注技术、人文、区块链及前沿 AI 应用。"
+      description="关于小学後生（Dnevend）：现居浙江湖州的全栈开发者，关注技术、人文、区块链与前沿 AI 应用。"
     >
       <main className={styles.about}>
         <div className={styles.inner}>

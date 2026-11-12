@@ -1,6 +1,7 @@
 ---
 sidebar_position: 9
 tags: [blockchain, btc]
+description: "区块链学习资料索引：比特币白皮书中文版、钱包技术指南、交易示例演示与入门路线图等外部链接收藏。"
 ---
 
 # 资料

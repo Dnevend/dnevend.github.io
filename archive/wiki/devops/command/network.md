@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 tags: [command, linux]
+description: "Linux 网络管理命令手册：curl 与 wget 下载传参、iptables 放行端口，以及 dig、ping、netstat 等连通性排查示例。"
 ---
 
 # 网络管理

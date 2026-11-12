@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 tags: [command, linux]
+description: "Linux 目录管理命令速查：ls/cd/pwd 定位、mkdir/rmdir 增删、cp/mv 复制与重命名，以及 tree、dirs 等辅助命令。"
 ---
 
 # 目录管理

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 tags: [devops, linux]
+description: "Linux 基础速查：常用系统目录语义、文件权限与进程查看，以及 firewalld 防火墙的增删查规则操作。"
 ---
 
 # Linux

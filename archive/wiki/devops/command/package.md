@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 tags: [command, linux]
+description: "Linux 软件包管理：对比 rpm/yum 与 deb/apt 两套体系的安装卸载，附源码编译安装和 man/help/info 查帮助的方式。"
 ---
 
 # 软件包管理

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 tags: [blockchain, eip]
+description: "以太坊改进提案（EIP）速查，含 EIP-6963 多钱包自动发现与注入冲突、EIP-1193 提供者接口的规范与实现链接。"
 ---
 
 # EIP

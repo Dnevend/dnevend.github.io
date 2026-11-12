@@ -101,7 +101,7 @@ function HomepageHeader() {
 export default function Home() {
   return (
     <Layout
-      title="Welcome"
+      title="全栈开发者，关注技术、人文、区块链与 AI"
       description="你好👋我是小学後生，全栈开发者。关注技术、人文、区块链及前沿 AI 应用。"
       wrapperClassName="homepage-wrapper"
     >

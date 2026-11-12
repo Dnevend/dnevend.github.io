@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 tags: [vim, linux]
+description: "vim 三种模式的切换与用法：命令模式下的移动删除、输入模式的文本编辑，以及命令行模式的保存退出操作。"
 ---
 
 # vim

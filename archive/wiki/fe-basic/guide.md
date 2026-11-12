@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 tags: [fe-basic, html-guide]
+description: "前端基础规范索引：HTML 语义元素、JavaScript 与 CSS 编码风格指南，以及 TypeScript、a11y 等进阶资料入口。"
 ---
 
 # 修养&规范

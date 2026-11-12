@@ -3,67 +3,84 @@
 # label 是页面上展示的名字，permalink 是 /blog/tags/<permalink> 的稳定地址。
 # 好处：标签 URL 不再被 lodash.kebabCase 自动推导（例如 OpenCode → open-code），
 # 也让 "Claude Code"、"Telegram BOT" 之类的展示名不被 _.capitalize 改写。
+# description 会用于标签页的 meta description 和分享摘要。
 
 捉刀:
   label: 捉刀
   permalink: /捉刀
+  description: AI 代笔与自动化写作相关的实践记录。
 
 AI:
   label: AI
   permalink: /ai
+  description: AI 工具、Agent 与自动化工作流相关文章。
 
 Agent:
   label: Agent
   permalink: /agent
+  description: AI Agent 的设计、开发与使用笔记。
 
 Claude Code:
   label: Claude Code
   permalink: /claude-code
+  description: Claude Code 的配置、技巧与实践。
 
 OpenCode:
   label: OpenCode
   permalink: /opencode
+  description: OpenCode 的使用与配置记录。
 
 OpenClaw:
   label: OpenClaw
   permalink: /openclaw
+  description: OpenClaw 自动化工作流与个人实践。
 
 英语学习:
   label: 英语学习
   permalink: /english-learning
+  description: 英语学习工具、方法与日常练习记录。
 
 Telegram BOT:
   label: Telegram BOT
   permalink: /telegram-bot
+  description: Telegram Bot 开发、部署与运营笔记。
 
 Telegram Stars:
   label: Telegram Stars
   permalink: /telegram-stars
+  description: Telegram Stars 支付与数字商品接入。
 
 TON:
   label: TON
   permalink: /ton
+  description: TON 区块链生态与支付集成。
 
 Crypto:
   label: Crypto
   permalink: /crypto
+  description: 加密货币市场、交易与链上实践。
 
 Trading:
   label: Trading
   permalink: /trading
+  description: 交易复盘、策略与风险管理。
 
 extension:
   label: extension
   permalink: /extension
+  description: 浏览器扩展开发与实践。
 
 tech:
   label: tech
   permalink: /tech
+  description: 技术工具、调试与工程实践。
 
 frontend:
   label: frontend
   permalink: /frontend
+  description: 前端开发、CSS 与浏览器技术。
 
 css:
   label: css
   permalink: /css
+  description: CSS 布局、动画与现代特性。
