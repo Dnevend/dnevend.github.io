@@ -79,14 +79,11 @@ export default function BlogList() {
           <script type="application/ld+json">
             {JSON.stringify(structuredData)}
           </script>
-          <meta name="description" content="最新发布的技术博客文章 - 小学後生的个人技术博客" />
           <meta property="og:title" content="近期文章 - 小学後生" />
-          <meta property="og:description" content="最新发布的技术博客文章" />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://dnevend.site" />
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:title" content="近期文章 - 小学後生" />
-          <meta name="twitter:description" content="最新发布的技术博客文章" />
         </Head>
       )}
 

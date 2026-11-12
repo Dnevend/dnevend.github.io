@@ -102,7 +102,7 @@ export default function Home() {
   return (
     <Layout
       title="Welcome"
-      description="在战争中学习战争"
+      description="你好👋我是小学後生，全栈开发者。关注技术、人文、区块链及前沿 AI 应用。"
       wrapperClassName="homepage-wrapper"
     >
       <HomepageHeader />
