@@ -185,7 +185,10 @@ export default function About() {
                     }}
                   >
                     <img src={src} alt={alt} loading="lazy" />
-                    <figcaption className={styles.galleryCaption}>
+                    <figcaption
+                      className={styles.galleryCaption}
+                      data-serif="true"
+                    >
                       {caption}
                     </figcaption>
                   </figure>
