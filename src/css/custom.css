@@ -430,8 +430,9 @@
   }
 
   .navbar__inner > .navbar__items:first-child > .navbar__brand {
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: auto;
+    right: 18px;
+    transform: translateY(-50%);
   }
 
   .navbar__toggle {
