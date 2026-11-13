@@ -209,10 +209,16 @@
 
 .navbar__inner > .navbar__items:first-child > .navbar__brand {
   position: absolute;
-  left: 18px;
+  left: 28px;
   top: 50%;
   margin-right: 0;
   transform: translateY(-50%);
+  transition: left var(--navbar-morph), right var(--navbar-morph);
+}
+
+/* Match the avatar edge to the theme toggle icon edge (rest and glass pill) */
+.navbar-scrolled .navbar__inner > .navbar__items:first-child > .navbar__brand {
+  left: 12px;
 }
 
 .navbar__inner > .navbar__items--right {
@@ -351,6 +357,7 @@
 /* Dropdown submenu keeps the default width; labels use the same reel */
 
 .navbar__logo {
+  margin-right: 0;
   transition: var(--custom-transition-smooth);
 }
 
@@ -361,6 +368,12 @@
 .navbar__logo > img {
   border-radius: 8px;
   box-shadow: var(--ifm-global-shadow-lw);
+  transition: border-radius var(--navbar-morph);
+}
+
+/* The 32px logo turns into a perfect circle in sync with the glass pill */
+.navbar-scrolled .navbar__logo > img {
+  border-radius: 16px;
 }
 
 .navbar__items--right .clean-btn {
@@ -431,8 +444,13 @@
 
   .navbar__inner > .navbar__items:first-child > .navbar__brand {
     left: auto;
-    right: 18px;
+    right: 20px;
     transform: translateY(-50%);
+  }
+
+  .navbar-scrolled .navbar__inner > .navbar__items:first-child > .navbar__brand {
+    left: auto;
+    right: 12px;
   }
 
   .navbar__toggle {
@@ -449,7 +467,9 @@
 @media (prefers-reduced-motion: reduce) {
   .navbar,
   .navbar__inner,
-  .navbar__inner > .navbar__items--right {
+  .navbar__inner > .navbar__items--right,
+  .navbar__brand,
+  .navbar__logo > img {
     transition: none;
   }
 }
@@ -1040,6 +1060,10 @@ hr::before {
 
 /* Blog post footer pagination — lighter cards, no shadow */
 html.blog-post-page .pagination-nav {
+  width: 100%;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
   gap: 1rem;
 }
 
@@ -1303,6 +1327,316 @@ html.blog-post-page[data-theme="dark"]
 
 [data-theme="dark"] .token-line:hover {
   background: rgba(45, 212, 191, 0.05);
+}
+
+/* Blog post reading layout — scoped to article content only */
+html.blog-post-page .markdown {
+  max-width: 42rem;
+  margin: 0 auto;
+  color: #3f3f46;
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  overflow-wrap: break-word;
+}
+
+html.blog-post-page article > header,
+html.blog-post-page article > footer {
+  width: 100%;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+html.blog-post-page[data-theme="dark"] .markdown {
+  color: #d4d4d8;
+}
+
+html.blog-post-page .markdown p {
+  margin: 0 0 1.45em;
+  color: inherit;
+  line-height: inherit;
+  text-wrap: pretty;
+}
+
+html.blog-post-page .markdown > p:first-of-type:not(:has(img)) {
+  color: var(--custom-text-primary);
+  font-size: 1.06em;
+  line-height: 1.8;
+}
+
+html.blog-post-page .markdown strong {
+  color: var(--custom-text-primary);
+  font-weight: 600;
+}
+
+html.blog-post-page .markdown a:not(.hash-link) {
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(26, 92, 58, 0.28);
+  text-underline-offset: 0.18em;
+}
+
+html.blog-post-page[data-theme="dark"] .markdown a:not(.hash-link) {
+  text-decoration-color: rgba(45, 212, 191, 0.3);
+}
+
+html.blog-post-page .markdown a:not(.hash-link):hover {
+  color: var(--ifm-color-primary-dark);
+  text-decoration-color: currentColor;
+}
+
+html.blog-post-page .markdown h2,
+html.blog-post-page .markdown h3,
+html.blog-post-page .markdown h4 {
+  color: var(--custom-text-primary);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 2rem);
+  text-wrap: balance;
+}
+
+html.blog-post-page .markdown h2 {
+  position: relative;
+  margin: 3.5rem 0 1rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--custom-border-color);
+  font-size: 1.75rem;
+}
+
+html.blog-post-page .markdown h2::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  z-index: 1;
+  width: 2.25rem;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--ifm-color-primary), transparent);
+}
+
+html.blog-post-page .markdown h3 {
+  margin: 2.25rem 0 0.65rem;
+  font-size: 1.3rem;
+}
+
+html.blog-post-page .markdown h4 {
+  margin: 1.75rem 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+html.blog-post-page .markdown ul,
+html.blog-post-page .markdown ol {
+  margin: 1.25rem 0 1.6rem;
+  padding-left: 1.4rem;
+}
+
+html.blog-post-page .markdown li {
+  margin: 0.35rem 0;
+  line-height: 1.8;
+}
+
+html.blog-post-page .markdown li::marker {
+  color: var(--ifm-color-primary);
+}
+
+html.blog-post-page .markdown blockquote {
+  margin: 2rem 0;
+  padding: 0.15rem 0 0.15rem 1.25rem;
+  border: 0;
+  border-left: 2px solid var(--ifm-color-primary);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--custom-text-secondary);
+  font-family: var(--font-serif);
+  font-size: 1.05em;
+  font-style: normal;
+  line-height: 1.9;
+}
+
+html.blog-post-page .markdown blockquote:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+html.blog-post-page .markdown blockquote p {
+  margin-bottom: 0.6em;
+  color: inherit;
+  line-height: inherit;
+}
+
+html.blog-post-page .markdown blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+html.blog-post-page .markdown :not(pre) > code {
+  padding: 0.12em 0.38em;
+  border: 0 !important;
+  border-radius: 5px;
+  background: var(--custom-background-light) !important;
+  color: var(--custom-text-primary) !important;
+  font-size: 0.88em;
+  font-weight: 500;
+}
+
+html.blog-post-page .markdown .theme-code-block {
+  margin: 1.75rem 0;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+html.blog-post-page .markdown .theme-code-block .prism-code {
+  border: 1px solid var(--custom-border-color) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+html.blog-post-page .markdown table {
+  width: 100%;
+  margin: 2rem 0;
+  border: 0;
+  border-radius: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+  box-shadow: none;
+  overflow: visible;
+  font-size: 0.92em;
+  line-height: 1.65;
+}
+
+html.blog-post-page .markdown th,
+html.blog-post-page .markdown td {
+  padding: 0.8rem 1rem;
+  border: 0;
+  border-bottom: 1px solid var(--custom-border-color);
+  text-align: left;
+}
+
+html.blog-post-page .markdown thead th {
+  background: var(--custom-background-light);
+  color: var(--custom-text-primary);
+  font-weight: 600;
+}
+
+html.blog-post-page .markdown tbody tr:hover td {
+  background: transparent;
+}
+
+html.blog-post-page .markdown hr {
+  height: 1px;
+  margin: 3rem 0;
+  border: 0;
+  background: var(--custom-border-color);
+}
+
+html.blog-post-page .markdown hr::before {
+  display: none;
+}
+
+html.blog-post-page .markdown img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.75rem auto;
+  border: 1px solid var(--custom-border-color);
+  border-radius: 12px;
+}
+
+html.blog-post-page .markdown p:has(> img) {
+  margin: 0;
+}
+
+html.blog-post-page .markdown figure {
+  margin: 2rem 0;
+}
+
+html.blog-post-page .markdown figure img {
+  margin: 0;
+}
+
+html.blog-post-page .markdown figcaption {
+  margin-top: 0.6rem;
+  color: var(--custom-text-muted);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.68rem;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+html.blog-post-page .markdown .theme-admonition {
+  --ifm-alert-foreground-color: var(--ifm-color-primary);
+
+  margin: 2rem 0;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--custom-border-color);
+  border-left: 3px solid var(--ifm-color-primary);
+  border-radius: 10px;
+  background: var(--custom-background-light);
+  box-shadow: none;
+  color: var(--custom-text-primary);
+  font-size: 0.95em;
+  line-height: 1.75;
+  transition: none;
+}
+
+html.blog-post-page .markdown .theme-admonition:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+html.blog-post-page .markdown .theme-admonition-tip,
+html.blog-post-page .markdown .alert--success {
+  border-left-color: var(--ifm-color-success);
+}
+
+html.blog-post-page .markdown .theme-admonition-info,
+html.blog-post-page .markdown .alert--info {
+  border-left-color: var(--ifm-color-info);
+}
+
+html.blog-post-page .markdown .theme-admonition-warning,
+html.blog-post-page .markdown .alert--warning {
+  border-left-color: var(--ifm-color-warning);
+}
+
+html.blog-post-page .markdown .theme-admonition-danger,
+html.blog-post-page .markdown .alert--danger {
+  border-left-color: var(--ifm-color-danger);
+}
+
+html.blog-post-page
+  .markdown
+  .theme-admonition
+  > div:first-child:not(:last-child) {
+  margin-bottom: 0.35rem;
+  color: var(--ifm-color-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+html.blog-post-page .markdown .theme-admonition p {
+  color: inherit;
+  line-height: inherit;
+}
+
+html.blog-post-page .markdown .theme-admonition p:last-child {
+  margin-bottom: 0;
+}
+
+html.blog-post-page .markdown ::selection {
+  background: rgba(26, 92, 58, 0.16);
+  color: inherit;
+}
+
+html.blog-post-page[data-theme="dark"] .markdown ::selection {
+  background: rgba(45, 212, 191, 0.2);
 }
 
 /* Performance Optimizations */
