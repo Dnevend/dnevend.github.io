@@ -1,0 +1,92 @@
+.toc {
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + 2rem);
+  max-height: calc(100vh - (var(--ifm-navbar-height) + 3.5rem));
+  padding: 0 0.25rem 1rem 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.title {
+  margin: 0 0 0.8rem;
+  color: var(--ifm-color-primary);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.64rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.16em;
+}
+
+/* Strip the old card look and keep a single hairline rail. */
+.toc :global(.table-of-contents) {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-left: 1px solid var(--custom-border-color);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  list-style: none;
+}
+
+.toc :global(.table-of-contents li) {
+  margin: 0;
+}
+
+.toc :global(.table-of-contents ul) {
+  padding-left: 0.85rem;
+}
+
+.toc :global(.table-of-contents__link) {
+  display: block;
+  margin: 0 0 0 -1px;
+  padding: 0.34rem 0.2rem 0.34rem 0.85rem;
+  border-left: 2px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: var(--custom-text-secondary);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.55;
+  text-decoration: none;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.toc :global(.table-of-contents__link:hover) {
+  border-left-color: transparent;
+  background: transparent;
+  color: var(--ifm-color-primary);
+  transform: none;
+}
+
+.toc :global(.table-of-contents__link--active) {
+  border-left-color: var(--ifm-color-primary);
+  background: transparent;
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+}
+
+.toc :global(.table-of-contents ul .table-of-contents__link) {
+  margin-left: 0;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-left: 0;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.73rem;
+}
+
+.toc :global(.table-of-contents ul .table-of-contents__link--active) {
+  color: var(--ifm-color-primary);
+}
+
+@media (max-width: 996px) {
+  .toc {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toc :global(.table-of-contents__link) {
+    transition: none;
+  }
+}
