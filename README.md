@@ -1,6 +1,6 @@
 # Dnevend · 小学後生
 
-你好👋我是小学後生，现位于浙江湖州，一名全栈开发者。关注技术、人文、区块链及前沿AI应用。
+你好👋我是小学後生，00后，一名全栈开发者。关注技术、人文、区块链及前沿AI应用。
 
 [Live Site](https://dnevend.site) · [Blog](https://dnevend.site/blog) · [Projects](https://dnevend.site/projects) · [About](https://dnevend.site/about)
 
