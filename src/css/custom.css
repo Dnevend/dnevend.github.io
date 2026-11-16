@@ -921,12 +921,43 @@ hr::before {
 }
 
 .footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem 1.25rem;
   margin-top: 1.75rem;
   color: var(--custom-text-muted);
   font-family: var(--ifm-font-family-monospace);
   font-size: 0.78rem;
   letter-spacing: 0.02em;
   text-align: center;
+}
+
+.footer__badge {
+  display: inline-flex;
+  line-height: 0;
+  opacity: 0.85;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.footer__badge:hover,
+.footer__badge:focus-visible {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.footer__badge img {
+  display: block;
+  width: 88px;
+  height: 31px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__badge {
+    transition: none;
+  }
 }
 
 [data-theme="dark"] .footer {

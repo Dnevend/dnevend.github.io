@@ -33,6 +33,20 @@ export default function FooterLayout({ style, links, logo, copyright }) {
             <div className="footer__bottom">
               {logo && <div className="margin-bottom--sm">{logo}</div>}
               {copyright}
+              <a
+                className="footer__badge"
+                href="https://classygit.pages.dev/dnevend"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://classygit.pages.dev/badge/dnevend.svg?theme=mac"
+                  width="88"
+                  height="31"
+                  alt="ClassyGit"
+                  loading="lazy"
+                />
+              </a>
             </div>
           )}
         </div>
