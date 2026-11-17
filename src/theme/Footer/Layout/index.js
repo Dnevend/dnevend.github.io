@@ -35,12 +35,12 @@ export default function FooterLayout({ style, links, logo, copyright }) {
               {copyright}
               <a
                 className="footer__badge"
-                href="https://classygit.pages.dev/dnevend"
+                href="https://classygit.dev/dnevend"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img
-                  src="https://classygit.pages.dev/badge/dnevend.svg?theme=mac"
+                  src="https://classygit.dev/badge/dnevend.svg?theme=mac"
                   width="88"
                   height="31"
                   alt="ClassyGit"
