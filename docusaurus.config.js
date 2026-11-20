@@ -125,7 +125,7 @@ const config = {
         // title: 'Dnevend',
         logo: {
           alt: '小学後生',
-          src: 'img/logo.png',
+          src: 'img/logo.webp',
           width: 32,
           height: 32,
         },

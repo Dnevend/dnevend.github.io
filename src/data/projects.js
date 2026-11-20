@@ -7,12 +7,18 @@ import AttentionUnblurred from "../../static/img/projects/attention-unblurred.we
 import SSCHome from '../../static/img/projects/ssc-home.webp';
 import SSCDetail from '../../static/img/projects/ssc-detail.webp';
 import SSCData from '../../static/img/projects/ssc-data.webp';
-import ClassyGit from '../../static/img/projects/classy-home.webp';
-import ClassyGitUser from '../../static/img/projects/classy-user.webp';
-import ClassyGitRepo from '../../static/img/projects/classy-repo.webp';
-import ClassyGitGists from '../../static/img/projects/classy-gists.webp';
-import ClassyGitOutline from '../../static/img/projects/classy-outline.png';
-import ClassyGitArticle from '../../static/img/projects/classy-article.webp';
+// import ClassyGit from '../../static/img/projects/classy-home.webp';
+// import ClassyGitUser from '../../static/img/projects/classy-user.webp';
+// import ClassyGitRepo from '../../static/img/projects/classy-repo.webp';
+// import ClassyGitGists from '../../static/img/projects/classy-gists.webp';
+// import ClassyGitOutline from '../../static/img/projects/classy-outline.png';
+// import ClassyGitArticle from '../../static/img/projects/classy-article.webp';
+import ClassyGitPreview from '../../static/img/projects/classy-preview.webp';
+import ClassyGitThemeMac from '../../static/img/projects/classy-theme-mac.webp';
+import ClassyGitThemeWin98 from '../../static/img/projects/classy-theme-nes.webp';
+import ClassyGitThemeTui from '../../static/img/projects/classy-theme-tui.webp';
+import ClassyGitThemeNes from '../../static/img/projects/classy-theme-win98.webp';
+import ClassyGitNFT from '../../static/img/projects/classy-nft.png';
 
 // 项目数据：新增项目时复制一个对象即可。
 // status 只使用 "active"（活跃）或 "ended"（结束）。
@@ -52,20 +58,21 @@ export const projects = [
   {
     title: "ClassyGithub",
     description:
-      "无需部署的多主题个人主页、随笔记录、博客平台。利用 GitHub 公开接口并将 Gists 作为博客内容载体。使用 Hono 框架代理接口并部署在 Cloudflare 边缘服务器，同时解决了GitHub官方接口请求频率限制。",
-    image: ClassyGit,
+      "不是又一个静态博客生成器。它不托管内容，也不要求你把文章搬过来。利用公共 GraphQL / REST 接口把 GitHub 公开数据渲染成你的复古个人主页。通过仓库 `classy.config.json` 实现实现个性化配置，将 Gists 作为博客内容载体。",
+    image: ClassyGitPreview,
     imageAlt: "ClassyGithub 入口",
     gallery: [
-      { src: ClassyGitUser, alt: "个人主页" },
-      { src: ClassyGitRepo, alt: "仓库详情页" },
-      { src: ClassyGitOutline, alt: "Gists 列表页" },
-      { src: ClassyGitGists, alt: "Gists 详细详细列表页" },
-      { src: ClassyGitArticle, alt: "Gists 文章内容页" },
+      { src: ClassyGitPreview, alt: "ClassyGit Social Preview" },
+      { src: ClassyGitThemeMac, alt: "ClassyGit Theme MAC" },
+      { src: ClassyGitThemeWin98, alt: "ClassyGit Theme Win98" },
+      { src: ClassyGitThemeTui, alt: "ClassyGit Theme TUI" },
+      { src: ClassyGitThemeNes, alt: "ClassyGit Theme NES" },
+      { src: ClassyGitNFT, alt: "ClassyGit NFT" },
     ],
     href: "https://github.com/Dnevend/classy-github",
-    status: "ended",
+    status: "active",
     year: "2024",
-    tags: ["ClassyGithub", "Blog"],
+    tags: ["ClassyGithub", "Cloudflare", "Retro", "Blog"],
   },
   {
     title: "X-Comfort-Browser",
